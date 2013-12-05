@@ -13,16 +13,32 @@
 #
 # include <boost/preprocessor/arithmetic/add.hpp>
 # include <boost/preprocessor/arithmetic/sub.hpp>
+# include <boost/preprocessor/comparison/equal.hpp>
 # include <boost/preprocessor/comparison/less.hpp>
+# include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/list.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/array/elem.hpp>
 # include <boost/preprocessor/seq/elem.hpp>
+# include <boost/preprocessor/variadic/elem.hpp>
 # include <libs/preprocessor/test/test.h>
 
+# define LISTNIL BOOST_PP_NIL
 # define LIST (4, (1, (5, (2, BOOST_PP_NIL))))
 
 # define REVERSAL(d, x, y) BOOST_PP_SUB_D(d, y, x)
+
+BEGIN BOOST_PP_LIST_FIRST(LIST) == 4 END
+BEGIN BOOST_PP_LIST_IS_CONS(LIST) == 1 END
+BEGIN BOOST_PP_LIST_IS_CONS(LISTNIL) == 0 END
+BEGIN BOOST_PP_LIST_IS_NIL(LIST) == 0 END
+BEGIN BOOST_PP_LIST_IS_NIL(LISTNIL) == 1 END
+
+#if BOOST_PP_VARIADICS
+
+BEGIN BOOST_PP_VARIADIC_ELEM(2,BOOST_PP_LIST_ENUM(LIST)) == 5 END
+
+#endif
 
 BEGIN BOOST_PP_LIST_FOLD_LEFT(BOOST_PP_SUB_D, 22, LIST) == 10 END
 BEGIN BOOST_PP_LIST_FOLD_RIGHT(BOOST_PP_ADD_D, 0, LIST) == 12 END
@@ -40,7 +56,10 @@ BEGIN BOOST_PP_LIST_CAT(BOOST_PP_LIST_TRANSFORM(BOOST_PP_ADD_D, 2, LIST)) == 637
 BEGIN BOOST_PP_LIST_CAT(BOOST_PP_LIST_APPEND(BOOST_PP_LIST_REST(LIST), LIST)) == 1524152 END
 
 # define F1(r, state, x) + x + state
+# define FI2(r, state, i, x) BOOST_PP_IIF(BOOST_PP_EQUAL(i,1),+ x + x + state,+ x + state)
+
 BEGIN BOOST_PP_LIST_FOR_EACH(F1, 1, LIST) == 16 END
+BEGIN BOOST_PP_LIST_FOR_EACH_I(FI2, 1, LIST) == 17 END
 
 BEGIN BOOST_PP_TUPLE_ELEM(4, 3, BOOST_PP_LIST_TO_TUPLE(LIST)) == 2 END
 

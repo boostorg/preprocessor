@@ -13,17 +13,24 @@
 #
 # include <boost/preprocessor/arithmetic/add.hpp>
 # include <boost/preprocessor/arithmetic/sub.hpp>
+# include <boost/preprocessor/comparison/equal.hpp>
 # include <boost/preprocessor/comparison/less.hpp>
+# include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/seq.hpp>
+# include <boost/preprocessor/array/elem.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/list/at.hpp>
+# include <boost/preprocessor/variadic/elem.hpp>
 # include <libs/preprocessor/test/test.h>
 
 # define SEQ (4)(1)(5)(2)
+# define SEQVAR (4,5,8,3,61)(1,0)(5,22,43)(2)(17,45,33)
 
 # define REVERSAL(s, x, y) BOOST_PP_SUB(y, x)
 # define SUB_S(s, x, y) BOOST_PP_SUB(x, y)
 # define ADD_S(s, x, y) BOOST_PP_ADD(x, y)
+
+BEGIN BOOST_PP_SEQ_HEAD(SEQ) == 4 END
 
 BEGIN BOOST_PP_SEQ_FOLD_LEFT(SUB_S, 22, SEQ) == 10 END
 BEGIN BOOST_PP_SEQ_FOLD_RIGHT(ADD_S, 0, SEQ) == 12 END
@@ -41,9 +48,12 @@ BEGIN BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_TRANSFORM(ADD_S, 2, SEQ)) == 6374 END
 BEGIN BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_TAIL(SEQ) SEQ) == 1524152 END
 
 # define F1(r, state, x) + x + state
+# define FI2(r, state, i, x) BOOST_PP_IIF(BOOST_PP_EQUAL(i,2),+ x + x + state,+ x + state)
 BEGIN BOOST_PP_SEQ_FOR_EACH(F1, 1, SEQ) == 16 END
+BEGIN BOOST_PP_SEQ_FOR_EACH_I(FI2, 1, SEQ) == 21 END
 
 BEGIN BOOST_PP_TUPLE_ELEM(4, 3, BOOST_PP_SEQ_TO_TUPLE(SEQ)) == 2 END
+BEGIN BOOST_PP_ARRAY_ELEM(3, BOOST_PP_SEQ_TO_ARRAY(SEQ)) == 2 END
 
 # define LESS_S(s, x, y) BOOST_PP_LESS(x, y)
 BEGIN BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_FILTER(LESS_S, 3, SEQ)) == 45 END
@@ -88,3 +98,10 @@ BEGIN BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_TAIL(BOOST_PP_SEQ_FOLD_LEFT(SEQ_APPEND, (~),
 BEGIN BOOST_PP_SEQ_SIZE(BOOST_PP_SEQ_TAIL(BOOST_PP_SEQ_FOLD_LEFT(SEQ_APPEND, (~), LL))) == 9 END
 
 BEGIN BOOST_PP_LIST_AT(BOOST_PP_SEQ_TO_LIST(SEQ), 2) == 5 END
+
+#if BOOST_PP_VARIADICS
+
+BEGIN BOOST_PP_VARIADIC_ELEM(0,BOOST_PP_SEQ_ENUM(SEQ)) == 4 END
+BEGIN BOOST_PP_TUPLE_ELEM(2,BOOST_PP_SEQ_ELEM(0,BOOST_PP_VARIADIC_SEQ_TO_SEQ(SEQVAR))) == 8 END
+
+#endif

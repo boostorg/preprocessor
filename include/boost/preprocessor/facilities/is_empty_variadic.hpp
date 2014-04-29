@@ -16,10 +16,10 @@
 #
 # if BOOST_PP_VARIADICS
 #
+# include <boost/preprocessor/facilities/empty.hpp>
 # include <boost/preprocessor/punctuation/is_begin_parens.hpp>
 # include <boost/preprocessor/facilities/detail/is_empty.hpp>
 #
-#define BOOST_PP_IS_EMPTY_GEN_ZERO(...) 0
 #if BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400
 #
 #define BOOST_PP_IS_EMPTY(param) \
@@ -31,7 +31,7 @@
         ) \
       ) \
       ( \
-      BOOST_PP_IS_EMPTY_GEN_ZERO, \
+      0 BOOST_PP_EMPTY, \
       BOOST_PP_DETAIL_IS_EMPTY_PROCESS \
       ) \
     (param) \
@@ -46,7 +46,7 @@
         ) \
       ) \
       ( \
-      BOOST_PP_IS_EMPTY_GEN_ZERO, \
+      0 BOOST_PP_EMPTY, \
       BOOST_PP_DETAIL_IS_EMPTY_PROCESS \
       ) \
     (__VA_ARGS__) \

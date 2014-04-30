@@ -9,4 +9,17 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <libs/preprocessor/test/isempty.cxx>
+# include <boost/preprocessor/facilities/is_empty.hpp>
+# include <libs/preprocessor/test/test.h>
+
+#if BOOST_PP_VARIADICS && !defined(BOOST_PP_VARIADICS_MSVC)
+
+#define FUNC_GEN9(x,y,z) anything
+  
+BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN9) == 0 END
+
+#else
+  
+BEGIN 1 == 0 END
+
+#endif

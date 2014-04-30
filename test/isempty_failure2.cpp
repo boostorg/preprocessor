@@ -9,4 +9,4 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <libs/preprocessor/test/isempty.cxx>
+# include <libs/preprocessor/test/isempty_failure2.cxx>

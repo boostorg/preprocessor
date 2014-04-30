@@ -22,10 +22,13 @@
 # else
 #
 # include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/cat.hpp>
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC() && ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/facilities/empty.hpp>
+# else
+# include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/detail/split.hpp>
+# endif
 #
 # /* BOOST_PP_IS_EMPTY */
 #

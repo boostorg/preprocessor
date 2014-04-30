@@ -7,10 +7,12 @@
 #  *                                                                          *
 #  ************************************************************************** */
 #
-# /* Revised by Edward Diener (2011) */
+# /* Revised by Edward Diener (2011,2014) */
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/control/if.hpp>
 # include <boost/preprocessor/tuple.hpp>
 # include <boost/preprocessor/array/elem.hpp>
 # include <boost/preprocessor/list/at.hpp>
@@ -20,6 +22,7 @@
 # include <boost/preprocessor/variadic/elem.hpp>
 # endif
 # include <libs/preprocessor/test/test.h>
+# include <libs/preprocessor/test/tuple_elem_bug_test.cxx>
 
 # define TUPLE (0, 1, 2, 3, 4, 5)
 # define TUPLE_LARGE (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32)

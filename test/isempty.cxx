@@ -9,6 +9,10 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/config/config.hpp>
+#
+#if (BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()) || (BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC())
+
 # include <boost/preprocessor/facilities/empty.hpp>
 # include <boost/preprocessor/facilities/is_empty.hpp>
 # include <libs/preprocessor/test/test.h>
@@ -135,5 +139,7 @@ BEGIN BOOST_PP_IS_EMPTY(FUNC(z) BOOST_PP_EMPTY()) == 1 END
 BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN6) == 0 END
 BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN7) == 0 END
 BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN9) == 0 END
+
+#endif
 
 #endif

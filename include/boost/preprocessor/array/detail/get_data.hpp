@@ -15,7 +15,7 @@
 # include <boost/preprocessor/config/config.hpp>
 # include <boost/preprocessor/tuple/rem.hpp>
 #
-# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && _MSC_VER != 1400
+# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && _MSC_VER > 1400
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/control/if.hpp>
 # include <boost/preprocessor/control/iif.hpp>
@@ -45,6 +45,6 @@
 /**/
 # else
 # define BOOST_PP_ARRAY_DETAIL_GET_DATA(size, data) BOOST_PP_TUPLE_REM(size) data
-# endif /* BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && _MSC_VER != 1400 */
+# endif /* BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && _MSC_VER > 1400 */
 #
 # endif /* BOOST_PREPROCESSOR_ARRAY_DETAIL_GET_DATA_HPP */

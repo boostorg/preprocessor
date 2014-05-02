@@ -189,8 +189,6 @@ test-suite preprocessor_isempty
 test-suite preprocessor_isempty_nvm
    :   
         [ compile isempty.cpp : <define>BOOST_PP_VARIADICS=0 : isempty_nvm ]
-        [ compile-fail isempty_failure.cpp : <define>BOOST_PP_VARIADICS=0 : isempty_failure_nvm ]
-        [ compile-fail isempty_failure2.cpp : <define>BOOST_PP_VARIADICS=0 : isempty_failure2_nvm ]
   ;
   
 test-suite preprocessor_isempty_c
@@ -215,15 +213,5 @@ test-suite preprocessor_isempty_c_nvm
           : <define>BOOST_PP_VARIADICS=0
             <toolset>gcc:<cflags>-std=c99
           : isempty_c_nvm 
-        ]
-        [ compile-fail isempty_failure.c 
-          : <define>BOOST_PP_VARIADICS=0
-            <toolset>gcc:<cflags>-std=c99
-          : isempty_failure_c_nvm 
-        ]
-        [ compile-fail isempty_failure2.c 
-          : <define>BOOST_PP_VARIADICS=0
-            <toolset>gcc:<cflags>-std=c99
-          : isempty_failure2_c_nvm 
         ]
   ;

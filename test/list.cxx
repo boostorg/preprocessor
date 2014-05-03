@@ -19,6 +19,7 @@
 # include <boost/preprocessor/list.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/array/elem.hpp>
+# include <boost/preprocessor/array/size.hpp>
 # include <boost/preprocessor/seq/elem.hpp>
 # include <boost/preprocessor/variadic/elem.hpp>
 # include <libs/preprocessor/test/test.h>
@@ -77,4 +78,5 @@ BEGIN BOOST_PP_LIST_FOR_EACH_PRODUCT(F2, 2, ( (1, (0, BOOST_PP_NIL)), (2, (3, BO
 BEGIN BOOST_PP_LIST_CAT(BOOST_PP_LIST_FOLD_LEFT(BOOST_PP_LIST_APPEND_D, BOOST_PP_NIL, LL)) == 0x0a1b2c3d END
 
 BEGIN BOOST_PP_ARRAY_ELEM(2, BOOST_PP_LIST_TO_ARRAY(LIST)) == 5 END
+BEGIN BOOST_PP_ARRAY_SIZE(BOOST_PP_LIST_TO_ARRAY(LISTNIL)) == 0 END
 BEGIN BOOST_PP_SEQ_ELEM(3, BOOST_PP_LIST_TO_SEQ(LIST)) == 2 END

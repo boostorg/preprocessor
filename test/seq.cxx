@@ -16,6 +16,7 @@
 # include <boost/preprocessor/comparison/equal.hpp>
 # include <boost/preprocessor/comparison/less.hpp>
 # include <boost/preprocessor/control/iif.hpp>
+# include <boost/preprocessor/facilities/is_empty.hpp>
 # include <boost/preprocessor/seq.hpp>
 # include <boost/preprocessor/array/elem.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
@@ -23,6 +24,7 @@
 # include <boost/preprocessor/variadic/elem.hpp>
 # include <libs/preprocessor/test/test.h>
 
+# define SEQ_NONE ()
 # define SEQ (4)(1)(5)(2)
 # define SEQVAR (4,5,8,3,61)(1,0)(5,22,43)(2)(17,45,33)
 
@@ -98,6 +100,7 @@ BEGIN BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_TAIL(BOOST_PP_SEQ_FOLD_LEFT(SEQ_APPEND, (~),
 BEGIN BOOST_PP_SEQ_SIZE(BOOST_PP_SEQ_TAIL(BOOST_PP_SEQ_FOLD_LEFT(SEQ_APPEND, (~), LL))) == 9 END
 
 BEGIN BOOST_PP_LIST_AT(BOOST_PP_SEQ_TO_LIST(SEQ), 2) == 5 END
+BEGIN BOOST_PP_IS_EMPTY(BOOST_PP_LIST_AT(BOOST_PP_SEQ_TO_LIST(SEQ_NONE),0)) == 1 END
 
 #if BOOST_PP_VARIADICS
 

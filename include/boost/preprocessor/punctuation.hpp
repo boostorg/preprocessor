@@ -17,5 +17,6 @@
 # include <boost/preprocessor/punctuation/is_begin_parens.hpp>
 # include <boost/preprocessor/punctuation/paren.hpp>
 # include <boost/preprocessor/punctuation/paren_if.hpp>
+# include <boost/preprocessor/punctuation/remove_parens.hpp>
 #
 # endif

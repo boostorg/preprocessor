@@ -21,10 +21,27 @@
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/tuple/rem.hpp>
 # include <boost/preprocessor/array/detail/get_data.hpp>
+# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
+# include <boost/preprocessor/control/iif.hpp>
+# endif
 #
 # /* BOOST_PP_LIST_TO_ARRAY */
 #
+# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
+# define BOOST_PP_LIST_TO_ARRAY(list) \
+	BOOST_PP_IIF \
+		( \
+		BOOST_PP_LIST_IS_NIL(list), \
+		BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_EMPTY, \
+		BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_DO \
+		) \
+	(list) \
+/**/
+# define BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_EMPTY(list) (0,())
+# define BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_DO(list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE, list)
+# else
 # define BOOST_PP_LIST_TO_ARRAY(list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE, list)
+# endif
 
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
 #    define BOOST_PP_LIST_TO_ARRAY_I(w, list) \

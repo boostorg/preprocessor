@@ -13,9 +13,13 @@
 #
 # include <boost/preprocessor/array.hpp>
 # include <libs/preprocessor/test/test.h>
+# include <boost/preprocessor/facilities/is_empty.hpp>
 # include <boost/preprocessor/list/at.hpp>
+# include <boost/preprocessor/list/size.hpp>
 # include <boost/preprocessor/seq/elem.hpp>
+# include <boost/preprocessor/seq/size.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
+# include <boost/preprocessor/tuple/size.hpp>
 # if BOOST_PP_VARIADICS
 # include <boost/preprocessor/variadic/size.hpp>
 # include <boost/preprocessor/variadic/elem.hpp>
@@ -67,6 +71,7 @@ BEGIN BOOST_PP_LIST_AT(BOOST_PP_ARRAY_TO_LIST(ARRAY), 1) == 1 END
 BEGIN BOOST_PP_LIST_AT(BOOST_PP_ARRAY_TO_LIST((5, (0, 1, 2, 3, 4))), 4) == 4 END
 BEGIN BOOST_PP_LIST_AT(BOOST_PP_ARRAY_TO_LIST((33, (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32))), 26) == 26 END
 BEGIN BOOST_PP_LIST_AT(BOOST_PP_ARRAY_TO_LIST(ARRAY_VERY_LARGE), 60) == 60 END
+BEGIN BOOST_PP_LIST_SIZE(BOOST_PP_ARRAY_TO_LIST(ARRAY_EMPTY)) == 0 END
 
 // to_seq
 
@@ -74,6 +79,8 @@ BEGIN BOOST_PP_SEQ_ELEM(0, BOOST_PP_ARRAY_TO_SEQ(ARRAY)) == 0 END
 BEGIN BOOST_PP_SEQ_ELEM(3, BOOST_PP_ARRAY_TO_SEQ((5, (0, 1, 2, 3, 4)))) == 3 END
 BEGIN BOOST_PP_SEQ_ELEM(17, BOOST_PP_ARRAY_TO_SEQ(ARRAY_LARGE)) == 17 END
 BEGIN BOOST_PP_SEQ_ELEM(42, BOOST_PP_ARRAY_TO_SEQ((64, (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63)))) == 42 END
+BEGIN BOOST_PP_IS_EMPTY(BOOST_PP_SEQ_ELEM(0,BOOST_PP_ARRAY_TO_SEQ(ARRAY_EMPTY))) == 1 END
+BEGIN BOOST_PP_SEQ_SIZE(BOOST_PP_ARRAY_TO_SEQ(ARRAY_EMPTY)) == 1 END
 
 // to_tuple
 
@@ -83,6 +90,8 @@ BEGIN BOOST_PP_TUPLE_ELEM(2, BOOST_PP_ARRAY_TO_TUPLE(ARRAY)) == 2 END
 BEGIN BOOST_PP_TUPLE_ELEM(1, BOOST_PP_ARRAY_TO_TUPLE((5, (0, 1, 2, 3, 4)))) == 1 END
 BEGIN BOOST_PP_TUPLE_ELEM(26, BOOST_PP_ARRAY_TO_TUPLE(ARRAY_LARGE)) == 26 END
 BEGIN BOOST_PP_TUPLE_ELEM(37, BOOST_PP_ARRAY_TO_TUPLE((64, (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63)))) == 37 END
+BEGIN BOOST_PP_TUPLE_SIZE(BOOST_PP_ARRAY_TO_TUPLE(ARRAY_EMPTY)) == 1 END
+BEGIN BOOST_PP_IS_EMPTY(BOOST_PP_TUPLE_ELEM(0, BOOST_PP_ARRAY_TO_TUPLE(ARRAY_EMPTY))) == 1 END
 
 # else
 
@@ -90,6 +99,7 @@ BEGIN BOOST_PP_TUPLE_ELEM(3, 2, BOOST_PP_ARRAY_TO_TUPLE(ARRAY)) == 2 END
 BEGIN BOOST_PP_TUPLE_ELEM(5, 1, BOOST_PP_ARRAY_TO_TUPLE((5, (0, 1, 2, 3, 4)))) == 1 END
 BEGIN BOOST_PP_TUPLE_ELEM(33, 26, BOOST_PP_ARRAY_TO_TUPLE(ARRAY_LARGE)) == 26 END
 BEGIN BOOST_PP_TUPLE_ELEM(64, 37, BOOST_PP_ARRAY_TO_TUPLE((64, (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63)))) == 37 END
+BEGIN BOOST_PP_IS_EMPTY(BOOST_PP_TUPLE_ELEM(1, 0, BOOST_PP_ARRAY_TO_TUPLE(ARRAY_EMPTY))) == 1 END
 
 # endif
 

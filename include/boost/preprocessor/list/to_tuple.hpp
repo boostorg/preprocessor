@@ -17,7 +17,6 @@
 # include <boost/preprocessor/config/config.hpp>
 # include <boost/preprocessor/list/enum.hpp>
 # include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/facilities/empty.hpp>
 #
 # /* BOOST_PP_LIST_TO_TUPLE */
 #
@@ -25,11 +24,12 @@
 	BOOST_PP_IIF \
 		( \
 		BOOST_PP_LIST_IS_NIL(list), \
-		BOOST_PP_EMPTY, \
+		BOOST_PP_LIST_TO_TUPLE_EMPTY, \
 		BOOST_PP_LIST_TO_TUPLE_DO \
 		) \
 	(list) \
 /**/
+# define BOOST_PP_LIST_TO_TUPLE_EMPTY(list)
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
 #    define BOOST_PP_LIST_TO_TUPLE_DO(list) (BOOST_PP_LIST_ENUM(list))
@@ -44,11 +44,12 @@
 	BOOST_PP_IIF \
 		( \
 		BOOST_PP_LIST_IS_NIL(list), \
-		BOOST_PP_EMPTY, \
+		BOOST_PP_LIST_TO_TUPLE_R_EMPTY, \
 		BOOST_PP_LIST_TO_TUPLE_R_DO \
 		) \
 	(r, list) \
 /**/
+# define BOOST_PP_LIST_TO_TUPLE_R_EMPTY(r,list)
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
 #    define BOOST_PP_LIST_TO_TUPLE_R_DO(r, list) (BOOST_PP_LIST_ENUM_R(r, list))

@@ -19,10 +19,14 @@
 #
 # /* BOOST_PP_EMPTY */
 #
-# if BOOST_PP_VARIADICS
+# if BOOST_PP_VARIADICS && !BOOST_PP_VARIADICS_MSVC
 # define BOOST_PP_EMPTY(...)
 # else
 # define BOOST_PP_EMPTY()
+# endif
+#
+# if BOOST_PP_VARIADICS
+# define BOOST_PP_VARIADIC_EMPTY(...)
 # endif
 #
 # endif

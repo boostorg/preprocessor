@@ -16,7 +16,6 @@
 # include <boost/preprocessor/array/data.hpp>
 # include <boost/preprocessor/array/size.hpp>
 # include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/facilities/empty.hpp>
 #
 # /* BOOST_PP_ARRAY_TO_TUPLE */
 #
@@ -25,9 +24,10 @@
 			( \
 			BOOST_PP_ARRAY_SIZE(array), \
 			BOOST_PP_ARRAY_DATA, \
-			BOOST_PP_EMPTY \
+			BOOST_PP_ARRAY_TO_TUPLE_EMPTY \
 			) \
 		(array) \
 /**/
+#    define BOOST_PP_ARRAY_TO_TUPLE_EMPTY(array)
 #
 # endif

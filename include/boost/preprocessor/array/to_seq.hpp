@@ -17,7 +17,6 @@
 # include <boost/preprocessor/config/config.hpp>
 # include <boost/preprocessor/array/size.hpp>
 # include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/facilities/empty.hpp>
 # include <boost/preprocessor/tuple/to_seq.hpp>
 #
 # /* BOOST_PP_ARRAY_TO_SEQ */
@@ -27,10 +26,11 @@
 			( \
 			BOOST_PP_ARRAY_SIZE(array), \
 			BOOST_PP_ARRAY_TO_SEQ_DO, \
-			BOOST_PP_EMPTY \
+			BOOST_PP_ARRAY_TO_SEQ_EMPTY \
 			) \
 		(array) \
 /**/
+#    define BOOST_PP_ARRAY_TO_SEQ_EMPTY(array)
 #
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
 #    define BOOST_PP_ARRAY_TO_SEQ_DO(array) BOOST_PP_ARRAY_TO_SEQ_I(BOOST_PP_TUPLE_TO_SEQ, array)

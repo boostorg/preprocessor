@@ -8,7 +8,6 @@
 #  */
 #
 # /* Revised by Paul Mensonides (2002) */
-# /* Revised by Edward Diener (2014) */
 #
 # /* See http://www.boost.org for most recent version. */
 #
@@ -19,14 +18,6 @@
 #
 # /* BOOST_PP_EMPTY */
 #
-# if BOOST_PP_VARIADICS && !BOOST_PP_VARIADICS_MSVC
-# define BOOST_PP_EMPTY(...)
-# else
 # define BOOST_PP_EMPTY()
-# endif
-#
-# if BOOST_PP_VARIADICS
-# define BOOST_PP_VARIADIC_EMPTY(...)
-# endif
 #
 # endif

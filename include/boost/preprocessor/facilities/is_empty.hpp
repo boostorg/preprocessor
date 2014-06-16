@@ -15,13 +15,6 @@
 #
 # include <boost/preprocessor/config/config.hpp>
 #
-# if BOOST_PP_VARIADICS
-#
-# include <boost/preprocessor/facilities/is_empty_variadic.hpp>
-#
-# else
-#
-# include <boost/preprocessor/config/config.hpp>
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC() && ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/facilities/identity.hpp>
@@ -51,7 +44,5 @@
 #    define BOOST_PP_IS_EMPTY_DEF_1 1, BOOST_PP_NIL
 #    define BOOST_PP_IS_EMPTY_DEF_BOOST_PP_IS_EMPTY_HELPER 0, BOOST_PP_NIL
 # endif
-#
-# endif /* BOOST_PP_VARIADICS */
 #
 # endif /* BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_HPP */

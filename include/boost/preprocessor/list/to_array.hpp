@@ -1,7 +1,6 @@
 # /* **************************************************************************
 #  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2011.
-#  *     (C) Copyright Edward Diener 2011,2014.
+#  *     (C) Copyright Edward Diener 2011.
 #  *     Distributed under the Boost Software License, Version 1.0. (See
 #  *     accompanying file LICENSE_1_0.txt or copy at
 #  *     http://www.boost.org/LICENSE_1_0.txt)
@@ -20,28 +19,10 @@
 # include <boost/preprocessor/list/adt.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/array/detail/get_data.hpp>
-# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
-# include <boost/preprocessor/control/iif.hpp>
-# endif
 #
 # /* BOOST_PP_LIST_TO_ARRAY */
 #
-# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
-# define BOOST_PP_LIST_TO_ARRAY(list) \
-	BOOST_PP_IIF \
-		( \
-		BOOST_PP_LIST_IS_NIL(list), \
-		BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_EMPTY, \
-		BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_DO \
-		) \
-	(list) \
-/**/
-# define BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_EMPTY(list) (0,())
-# define BOOST_PP_LIST_TO_ARRAY_VC8ORLESS_DO(list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE, list)
-# else
 # define BOOST_PP_LIST_TO_ARRAY(list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE, list)
-# endif
 
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
 #    define BOOST_PP_LIST_TO_ARRAY_I(w, list) \
@@ -133,24 +114,10 @@
 # endif
 # define BOOST_PP_LIST_TO_ARRAY_P(d, state) BOOST_PP_LIST_IS_CONS(BOOST_PP_TUPLE_ELEM(3, 0, state))
 # define BOOST_PP_LIST_TO_ARRAY_O(d, state) BOOST_PP_LIST_TO_ARRAY_O_I state
-# define BOOST_PP_LIST_TO_ARRAY_O_I(list, size, tuple) (BOOST_PP_LIST_REST(list), BOOST_PP_INC(size), (BOOST_PP_ARRAY_DETAIL_GET_DATA(size,tuple), BOOST_PP_LIST_FIRST(list)))
+# define BOOST_PP_LIST_TO_ARRAY_O_I(list, size, tuple) (BOOST_PP_LIST_REST(list), BOOST_PP_INC(size), (BOOST_PP_TUPLE_REM(size) tuple, BOOST_PP_LIST_FIRST(list)))
 #
 # /* BOOST_PP_LIST_TO_ARRAY_D */
 #
-# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
-# define BOOST_PP_LIST_TO_ARRAY_D(d, list) \
-	BOOST_PP_IIF \
-		( \
-		BOOST_PP_LIST_IS_NIL(list), \
-		BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_EMPTY, \
-		BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_DO \
-		) \
-	(d, list) \
-/**/
-# define BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_EMPTY(d, list) (0,())
-# define BOOST_PP_LIST_TO_ARRAY_D_VC8ORLESS_DO(d, list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE_ ## d, list)
-# else
 # define BOOST_PP_LIST_TO_ARRAY_D(d, list) BOOST_PP_LIST_TO_ARRAY_I(BOOST_PP_WHILE_ ## d, list)
-# endif
 #
 # endif /* BOOST_PREPROCESSOR_LIST_TO_ARRAY_HPP */

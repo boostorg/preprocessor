@@ -21,7 +21,7 @@
 #
 # if BOOST_PP_VARIADICS
 # 	 if BOOST_PP_VARIADICS_MSVC
-		/* To be used internally when __VA_ARGS__ is a single element */
+		/* To be used internally when __VA_ARGS__ could be empty ( or is a single element ) */
 #    	define BOOST_PP_REM_CAT(...) BOOST_PP_CAT(__VA_ARGS__,)
 # 	 endif
 #    define BOOST_PP_REM(...) __VA_ARGS__
@@ -36,7 +36,7 @@
 */
 # if BOOST_PP_VARIADICS && !(BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400)
 # 	 if BOOST_PP_VARIADICS_MSVC
-		/* To be used internally when the size is 1 */
+		/* To be used internally when the size could be 0 ( or 1 ) */
 #    	define BOOST_PP_TUPLE_REM_CAT(size) BOOST_PP_REM_CAT
 # 	 endif
 #    define BOOST_PP_TUPLE_REM(size) BOOST_PP_REM

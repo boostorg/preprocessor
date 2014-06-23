@@ -20,10 +20,7 @@
 # include <boost/preprocessor/facilities/overload.hpp>
 # include <boost/preprocessor/tuple/rem.hpp>
 # include <boost/preprocessor/variadic/elem.hpp>
-#
-# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC
 # include <boost/preprocessor/tuple/detail/is_single_return.hpp>
-# endif
 #
 # if BOOST_PP_VARIADICS
 #    if BOOST_PP_VARIADICS_MSVC

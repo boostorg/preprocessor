@@ -16,9 +16,7 @@
 # include <boost/preprocessor/config/config.hpp>
 # include <boost/preprocessor/tuple/eat.hpp>
 # include <boost/preprocessor/tuple/rem.hpp>
-# if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC
 # include <boost/preprocessor/variadic/detail/is_single_return.hpp>
-# endif
 #
 # /* BOOST_PP_SEQ_BINARY_TRANSFORM */
 #

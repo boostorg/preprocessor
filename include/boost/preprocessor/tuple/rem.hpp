@@ -15,7 +15,9 @@
 #
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/facilities/expand.hpp>
 # include <boost/preprocessor/facilities/overload.hpp>
+# include <boost/preprocessor/tuple/detail/is_single_return.hpp>
 #
 # /* BOOST_PP_REM */
 #
@@ -121,11 +123,12 @@
 #    if BOOST_PP_VARIADICS_MSVC
 #        define BOOST_PP_TUPLE_REM_CTOR(...) BOOST_PP_TUPLE_REM_CTOR_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REM_CTOR_O_, __VA_ARGS__), (__VA_ARGS__))
 #        define BOOST_PP_TUPLE_REM_CTOR_I(m, args) BOOST_PP_TUPLE_REM_CTOR_II(m, args)
-#        define BOOST_PP_TUPLE_REM_CTOR_II(m, args) BOOST_PP_CAT(m ## args,)
+#        define BOOST_PP_TUPLE_REM_CTOR_II(m, args) BOOST_PP_CAT(BOOST_PP_EXPAND(m ## args),)
+#    	 define BOOST_PP_TUPLE_REM_CTOR_O_1(tuple) BOOST_PP_TUPLE_IS_SINGLE_RETURN(BOOST_PP_REM_CAT,BOOST_PP_REM,tuple) tuple
 #    else
 #        define BOOST_PP_TUPLE_REM_CTOR(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REM_CTOR_O_, __VA_ARGS__)(__VA_ARGS__)
+#    	 define BOOST_PP_TUPLE_REM_CTOR_O_1(tuple) BOOST_PP_REM tuple
 #    endif
-#    define BOOST_PP_TUPLE_REM_CTOR_O_1(tuple) BOOST_PP_REM tuple
 #    define BOOST_PP_TUPLE_REM_CTOR_O_2(size, tuple) BOOST_PP_TUPLE_REM_CTOR_O_1(tuple)
 # else
 #    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()

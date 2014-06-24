@@ -20,7 +20,6 @@
 # include <boost/preprocessor/list/adt.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/array/detail/get_data.hpp>
 # if BOOST_PP_VARIADICS && BOOST_PP_VARIADICS_MSVC && (_MSC_VER <= 1400)
 # include <boost/preprocessor/control/iif.hpp>
 # endif
@@ -133,7 +132,7 @@
 # endif
 # define BOOST_PP_LIST_TO_ARRAY_P(d, state) BOOST_PP_LIST_IS_CONS(BOOST_PP_TUPLE_ELEM(3, 0, state))
 # define BOOST_PP_LIST_TO_ARRAY_O(d, state) BOOST_PP_LIST_TO_ARRAY_O_I state
-# define BOOST_PP_LIST_TO_ARRAY_O_I(list, size, tuple) (BOOST_PP_LIST_REST(list), BOOST_PP_INC(size), (BOOST_PP_ARRAY_DETAIL_GET_DATA(size,tuple), BOOST_PP_LIST_FIRST(list)))
+# define BOOST_PP_LIST_TO_ARRAY_O_I(list, size, tuple) (BOOST_PP_LIST_REST(list), BOOST_PP_INC(size), (BOOST_PP_TUPLE_REM(size) tuple, BOOST_PP_LIST_FIRST(list)))
 #
 # /* BOOST_PP_LIST_TO_ARRAY_D */
 #

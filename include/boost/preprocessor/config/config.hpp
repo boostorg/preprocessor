@@ -70,6 +70,7 @@
 #
 # /* BOOST_PP_VARIADICS */
 #
+# define BOOST_PP_VARIADICS_MSVC 0
 # if !defined BOOST_PP_VARIADICS
 #    /* variadic support explicitly disabled for all untested compilers */
 #    if defined __GCCXML__ || defined __CUDACC__ || defined __PATHSCALE__ || defined __DMC__ || defined __CODEGEARC__ || defined __BORLANDC__ || defined __MWERKS__ || defined __SUNPRO_CC || defined __HP_aCC && !defined __EDG__ || defined __MRC__ || defined __SC__ || defined __IBMCPP__ || defined __PGI
@@ -79,7 +80,7 @@
 #        define BOOST_PP_VARIADICS 1
 #        define BOOST_PP_VARIADICS_MSVC 1
 #    /* Wave (C/C++), GCC (C++) */
-#    elif defined __WAVE__ && __WAVE_HAS_VARIADICS__ || defined __GNUC__ && __GXX_EXPERIMENTAL_CXX0X__
+#    elif defined __WAVE__ && __WAVE_HAS_VARIADICS__ || defined __GNUC__ && defined __GXX_EXPERIMENTAL_CXX0X__ && __GXX_EXPERIMENTAL_CXX0X__
 #        define BOOST_PP_VARIADICS 1
 #    /* EDG-based (C/C++), GCC (C), and unknown (C/C++) */
 #    elif !defined __cplusplus && __STDC_VERSION__ >= 199901L || __cplusplus >= 201103L

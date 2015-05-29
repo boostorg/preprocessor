@@ -16,10 +16,9 @@
 # include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/logical/bool.hpp>
 # include <boost/preprocessor/logical/compl.hpp>
+# include <boost/preprocessor/seq/size.hpp>
 #
-/* A empty is one that is just BOOST_PP_SEQ_NIL,
-   but for out purposes here it is a seq which
-   does not start with a unary, ie '(anything)' */
+/* An empty seq is one that is just BOOST_PP_SEQ_NIL */
 #
 # define BOOST_PP_SEQ_DETAIL_IS_EMPTY(seq) \
 	BOOST_PP_COMPL \
@@ -28,8 +27,23 @@
 		) \
 /**/
 #
+# define BOOST_PP_SEQ_DETAIL_IS_EMPTY_SIZE(size) \
+	BOOST_PP_COMPL \
+		( \
+		BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY_SIZE(size) \
+		) \
+/**/
+#
 # define BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY(seq) \
-	BOOST_PP_BOOL(BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq (nil)))) \
+	BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY_SIZE(BOOST_PP_SEQ_DETAIL_EMPTY_SIZE(seq)) \
+/**/
+#
+# define BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY_SIZE(size) \
+	BOOST_PP_BOOL(size) \
+/**/
+#
+# define BOOST_PP_SEQ_DETAIL_EMPTY_SIZE(seq) \
+	BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq (nil))) \
 /**/
 #
 # endif

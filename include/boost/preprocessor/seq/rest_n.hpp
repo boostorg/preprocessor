@@ -13,6 +13,7 @@
 # define BOOST_PREPROCESSOR_SEQ_REST_N_HPP
 #
 # include <boost/preprocessor/arithmetic/inc.hpp>
+# include <boost/preprocessor/comparison/not_equal.hpp>
 # include <boost/preprocessor/config/config.hpp>
 # include <boost/preprocessor/control/expr_iif.hpp>
 # include <boost/preprocessor/facilities/identity.hpp>

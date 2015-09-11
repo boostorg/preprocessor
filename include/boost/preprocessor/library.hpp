@@ -20,6 +20,7 @@
 # include <boost/preprocessor/config/limits.hpp>
 # include <boost/preprocessor/control.hpp>
 # include <boost/preprocessor/debug.hpp>
+# include <boost/preprocessor/discard.hpp>
 # include <boost/preprocessor/facilities.hpp>
 # include <boost/preprocessor/iteration.hpp>
 # include <boost/preprocessor/list.hpp>

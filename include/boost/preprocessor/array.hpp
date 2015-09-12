@@ -13,6 +13,7 @@
 # ifndef BOOST_PREPROCESSOR_ARRAY_HPP
 # define BOOST_PREPROCESSOR_ARRAY_HPP
 #
+# include <boost/preprocessor/array/cat.hpp>
 # include <boost/preprocessor/array/data.hpp>
 # include <boost/preprocessor/array/elem.hpp>
 # include <boost/preprocessor/array/enum.hpp>

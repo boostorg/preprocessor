@@ -301,4 +301,23 @@ BEGIN BOOST_PP_TUPLE_LOWER_BOUND(TEST_TLB_4, 0) == 0 END
 BEGIN BOOST_PP_TUPLE_LOWER_BOUND(TEST_TLB_4, 1) == 0 END
 BEGIN BOOST_PP_TUPLE_LOWER_BOUND(TEST_TLB_4, 2) == 3 END
 
+// tuple sort
+
+#define TEST_TS_0 (1)
+#define TEST_TS_1 (1, 2)
+#define TEST_TS_2 (2, 1)
+#define TEST_TS_3 (2, 2)
+#define TEST_TS_4 (2, 1, 1, 4, 3, 5, 12, 6, 0, 4, 5, 3)
+
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT(TEST_TS_0),    (1))                                   == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT(TEST_TS_1),    (1, 2))                                == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT(TEST_TS_2),    (1, 2))                                == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT(TEST_TS_3),    (2, 2))                                == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT(TEST_TS_4),    (0, 1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 12)) == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT_U(TEST_TS_0),  (1))                                   == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT_U(TEST_TS_1),  (1, 2))                                == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT_U(TEST_TS_2),  (1, 2))                                == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT_U(TEST_TS_3),  (2))                                   == 1 END
+BEGIN BOOST_PP_TUPLE_EQUAL(BOOST_PP_TUPLE_SORT_U(TEST_TS_4),  (0, 1, 2, 3, 4, 5, 6, 12))             == 1 END
+
 #endif

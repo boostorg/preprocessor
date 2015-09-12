@@ -31,6 +31,7 @@
 # include <boost/preprocessor/tuple/replace.hpp>
 # include <boost/preprocessor/tuple/reverse.hpp>
 # include <boost/preprocessor/tuple/size.hpp>
+# include <boost/preprocessor/tuple/sort.hpp>
 # include <boost/preprocessor/tuple/to_array.hpp>
 # include <boost/preprocessor/tuple/to_list.hpp>
 # include <boost/preprocessor/tuple/to_seq.hpp>

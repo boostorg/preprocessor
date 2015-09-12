@@ -234,3 +234,25 @@ BEGIN BOOST_PP_ARRAY_LOWER_BOUND(TEST_ALB_3, 4) == 3 END
 BEGIN BOOST_PP_ARRAY_LOWER_BOUND(TEST_ALB_4, 0) == 0 END
 BEGIN BOOST_PP_ARRAY_LOWER_BOUND(TEST_ALB_4, 1) == 0 END
 BEGIN BOOST_PP_ARRAY_LOWER_BOUND(TEST_ALB_4, 2) == 3 END
+
+// sort
+
+#define TEST_AS_0 ( 1, (1))
+#define TEST_AS_1 ( 2, (1, 2))
+#define TEST_AS_2 ( 2, (2, 1))
+#define TEST_AS_3 ( 2, (2, 2))
+#define TEST_AS_4 (12, (2, 1, 1, 4, 3, 5, 12, 6, 0, 4, 5, 3))
+#define TEST_AS_5 ( 0, ())
+
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT(TEST_AS_0),   (1, (1)))                                    == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT(TEST_AS_1),   (2, (1, 2)))                                 == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT(TEST_AS_2),   (2, (1, 2)))                                 == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT(TEST_AS_3),   (2, (2, 2)))                                 == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT(TEST_AS_4),   (12, (0, 1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 12))) == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT(TEST_AS_5),   (0, ()))                                     == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT_U(TEST_AS_0), (1, (1)))                                    == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT_U(TEST_AS_1), (2, (1, 2)))                                 == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT_U(TEST_AS_2), (2, (1, 2)))                                 == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT_U(TEST_AS_3), (1, (2)))                                    == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT_U(TEST_AS_4), (8, (0, 1, 2, 3, 4, 5, 6, 12)))              == 1 END
+BEGIN BOOST_PP_ARRAY_EQUAL(BOOST_PP_ARRAY_SORT_U(TEST_AS_5), (0, ()))                                     == 1 END

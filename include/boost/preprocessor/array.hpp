@@ -28,6 +28,7 @@
 # include <boost/preprocessor/array/replace.hpp>
 # include <boost/preprocessor/array/reverse.hpp>
 # include <boost/preprocessor/array/size.hpp>
+# include <boost/preprocessor/array/sort.hpp>
 # include <boost/preprocessor/array/to_list.hpp>
 # include <boost/preprocessor/array/to_seq.hpp>
 # include <boost/preprocessor/array/to_tuple.hpp>

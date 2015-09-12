@@ -15,6 +15,7 @@
 # ifndef BOOST_PREPROCESSOR_TUPLE_HPP
 # define BOOST_PREPROCESSOR_TUPLE_HPP
 #
+# include <boost/preprocessor/tuple/cat.hpp>
 # include <boost/preprocessor/tuple/eat.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/tuple/enum.hpp>

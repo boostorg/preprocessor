@@ -18,6 +18,7 @@
 # include <boost/preprocessor/tuple/eat.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/tuple/enum.hpp>
+# include <boost/preprocessor/tuple/equal.hpp>
 # include <boost/preprocessor/tuple/insert.hpp>
 # include <boost/preprocessor/tuple/pop_back.hpp>
 # include <boost/preprocessor/tuple/pop_front.hpp>

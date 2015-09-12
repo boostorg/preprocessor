@@ -19,6 +19,7 @@
 # include <boost/preprocessor/array/enum.hpp>
 # include <boost/preprocessor/array/equal.hpp>
 # include <boost/preprocessor/array/insert.hpp>
+# include <boost/preprocessor/array/lower_bound.hpp>
 # include <boost/preprocessor/array/pop_back.hpp>
 # include <boost/preprocessor/array/pop_front.hpp>
 # include <boost/preprocessor/array/push_back.hpp>

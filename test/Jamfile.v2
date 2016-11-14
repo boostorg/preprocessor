@@ -215,3 +215,8 @@ test-suite preprocessor_isempty_c_nvm
           : isempty_c_nvm 
         ]
   ;
+
+test-suite preprocessor_config
+   :   
+        [ run config_info.cpp ]
+  ;

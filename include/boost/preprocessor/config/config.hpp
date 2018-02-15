@@ -83,6 +83,8 @@
 #    /* Wave (C/C++), GCC (C++) */
 #    elif defined __WAVE__ && __WAVE_HAS_VARIADICS__ || defined __GNUC__ && defined __GXX_EXPERIMENTAL_CXX0X__ && __GXX_EXPERIMENTAL_CXX0X__
 #        define BOOST_PP_VARIADICS 1
+#    elif defined __CUDACC__
+#        define BOOST_PP_VARIADICS 1
 #    /* EDG-based (C/C++), GCC (C), and unknown (C/C++) */
 #    elif !defined __cplusplus && __STDC_VERSION__ >= 199901L || __cplusplus >= 201103L
 #        define BOOST_PP_VARIADICS 1

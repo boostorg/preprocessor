@@ -48,6 +48,7 @@ alias preprocessor
         [ compile selection.cpp : <toolset>gcc:<cxxflags>-std=c++0x <toolset>clang-linux:<cxxflags>-std=c++0x ]
         [ compile seq.cpp : <toolset>gcc:<cxxflags>-std=c++0x <toolset>clang-linux:<cxxflags>-std=c++0x ]
         [ compile slot.cpp : <toolset>gcc:<cxxflags>-std=c++0x <toolset>clang-linux:<cxxflags>-std=c++0x ]
+        [ compile stringize.cpp : <toolset>gcc:<cxxflags>-std=c++0x <toolset>clang-linux:<cxxflags>-std=c++0x ]
         [ compile tuple.cpp : <toolset>gcc:<cxxflags>-std=c++0x <toolset>clang-linux:<cxxflags>-std=c++0x ]
         [ compile variadic.cpp : <toolset>gcc:<cxxflags>-std=c++0x <toolset>clang-linux:<cxxflags>-std=c++0x ]
   ;
@@ -67,6 +68,7 @@ alias preprocessor_nvm
         [ compile selection.cpp : <define>BOOST_PP_VARIADICS=0 : selection_nvm ]
         [ compile seq.cpp : <define>BOOST_PP_VARIADICS=0 : seq_nvm ]
         [ compile slot.cpp : <define>BOOST_PP_VARIADICS=0 : slot_nvm ]
+        [ compile stringize.cpp : <define>BOOST_PP_VARIADICS=0 : stringize_nvm ]
         [ compile tuple.cpp : <define>BOOST_PP_VARIADICS=0 : tuple_nvm ]
   ;
 
@@ -119,6 +121,10 @@ alias preprocessor_c
         [ compile slot.c 
           : <toolset>gcc:<cflags>-std=c99 <toolset>clang-linux:<cflags>-std=c99
           : slot_c 
+        ]
+        [ compile stringize.c 
+          : <toolset>gcc:<cflags>-std=c99 <toolset>clang-linux:<cflags>-std=c99
+          : stringize_c 
         ]
         [ compile tuple.c 
           : <toolset>gcc:<cflags>-std=c99 <toolset>clang-linux:<cflags>-std=c99
@@ -186,6 +192,11 @@ alias preprocessor_c_nvm
           : <define>BOOST_PP_VARIADICS=0
             <toolset>gcc:<cflags>-std=c99 <toolset>clang-linux:<cflags>-std=c99
           : slot_c_nvm 
+        ]
+        [ compile stringize.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <toolset>gcc:<cflags>-std=c99 <toolset>clang-linux:<cflags>-std=c99
+          : stringize_c_nvm 
         ]
         [ compile tuple.c 
           : <define>BOOST_PP_VARIADICS=0

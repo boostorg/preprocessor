@@ -1,4 +1,5 @@
 # Copyright 2017 Edward Diener
+# Copyright 2018 Mike Dev
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at http://boost.org/LICENSE_1_0.txt)
 
@@ -30,7 +31,6 @@ for:
     only:
       - configuration: cmake_self_test
 
-  build: off
   test_script:
     - mkdir __build__
     - cd __build__
@@ -41,6 +41,7 @@ for:
   matrix:
     only:
       - configuration: boost_test
+
   install:
     - cd ..
     - git clone -b %APPVEYOR_REPO_BRANCH% https://github.com/boostorg/boost.git boost-root
@@ -53,13 +54,7 @@ for:
     - bootstrap
     - b2 headers
 
-  build: off
-
   test_script:
     - b2 libs/preprocessor/test toolset=%TOOLSET%
     - cd ../preprocessor/test
-
-
-
-
 

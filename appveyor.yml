@@ -6,6 +6,10 @@ version: 1.0.{build}-{branch}
 
 shallow_clone: true
 
+configuration:
+  - boost_test
+  - cmake_self_test
+
 branches:
   only:
     - master
@@ -18,19 +22,44 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       TOOLSET: msvc-14.1
 
-install:
-  - cd ..
-  - git clone -b %APPVEYOR_REPO_BRANCH% https://github.com/boostorg/boost.git boost-root
-  - cd boost-root
-  - git submodule update --init tools/build
-  - git submodule update --init libs/config
-  - git submodule update --init tools/boostdep
-  - xcopy /s /e /q %APPVEYOR_BUILD_FOLDER% libs\preprocessor
-  - python tools/boostdep/depinst/depinst.py preprocessor
-  - bootstrap
-  - b2 headers
-
 build: off
 
-test_script:
-  - b2 libs/preprocessor/test toolset=%TOOLSET%
+for:
+-
+  matrix:
+    only:
+      - configuration: cmake_self_test
+
+  build: off
+  test_script:
+    - mkdir __build__
+    - cd __build__
+    - cmake ../test
+    - cmake --build .
+
+-
+  matrix:
+    only:
+      - configuration: boost_test
+  install:
+    - cd ..
+    - git clone -b %APPVEYOR_REPO_BRANCH% https://github.com/boostorg/boost.git boost-root
+    - cd boost-root
+    - git submodule update --init tools/build
+    - git submodule update --init libs/config
+    - git submodule update --init tools/boostdep
+    - xcopy /s /e /q %APPVEYOR_BUILD_FOLDER% libs\preprocessor
+    - python tools/boostdep/depinst/depinst.py preprocessor
+    - bootstrap
+    - b2 headers
+
+  build: off
+
+  test_script:
+    - b2 libs/preprocessor/test toolset=%TOOLSET%
+    - cd ../preprocessor/test
+
+
+
+
+

@@ -12,6 +12,9 @@
 # include <boost/preprocessor/stringize.hpp>
 # include <boost/preprocessor/wstringize.hpp>
 # include <boost/preprocessor/arithmetic/inc.hpp>
+# if !defined __cplusplus
+#include <wchar.h>
+#endif
 # include <libs/preprocessor/test/test.h>
 
 #define VDATA 1,2,3,4
@@ -21,21 +24,15 @@
 
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
 BEGIN sizeof(BOOST_PP_STRINGIZE(NDATA)) / sizeof(char) == 1 END
-# if defined __cplusplus
 BEGIN sizeof(BOOST_PP_WSTRINGIZE(NDATA)) / sizeof(wchar_t) == 1 END
-#endif
 #endif
 BEGIN sizeof(BOOST_PP_STRINGIZE(DATA)) / sizeof(char) == 5 END
 BEGIN sizeof(BOOST_PP_STRINGIZE(FDATA(1))) / sizeof(char) == 2 END
 BEGIN sizeof(BOOST_PP_STRINGIZE(FDATA(9))) / sizeof(char) == 3 END
-# if defined __cplusplus
 BEGIN sizeof(BOOST_PP_WSTRINGIZE(DATA)) / sizeof(wchar_t) == 5 END
 BEGIN sizeof(BOOST_PP_WSTRINGIZE(FDATA(1))) / sizeof(wchar_t) == 2 END
 BEGIN sizeof(BOOST_PP_WSTRINGIZE(FDATA(9))) / sizeof(wchar_t) == 3 END
-#endif
 #if BOOST_PP_VARIADICS
 BEGIN sizeof(BOOST_PP_STRINGIZE(VDATA)) / sizeof(char) == 8 END
-# if defined __cplusplus
 BEGIN sizeof(BOOST_PP_WSTRINGIZE(VDATA)) / sizeof(wchar_t) == 8 END
-#endif
 #endif

@@ -17,6 +17,15 @@ branches:
     - master
     - develop
 
+matrix:
+  include:
+    - install: true
+      script:
+        - mkdir __build__ && cd __build__
+        - cmake ../test
+        - cmake --build .
+
+
 install:
   - cd ..
   - git clone -b $TRAVIS_BRANCH --depth 1 https://github.com/boostorg/boost.git boost-root

@@ -247,3 +247,13 @@ alias preprocessor_config
    :   
         [ run config_info.cpp ]
   ;
+  
+alias clang_cuda
+   :   
+        [ compile clang_cuda.cu 
+          : <cxxflags>--cuda-gpu-arch=sm_20
+          : clang_cuda_cu
+        ]
+  ;
+
+explicit clang_cuda ;

@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>BOOST_PP_VARIADIC_OPT</title>
+  <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+<div style="margin-left: 0px;"> The <b>BOOST_PP_VARIADIC_OPT</b> macro
+determines whether or not the C++20 __VA_OPT__ construct is supported for the compiler's preprocessor being used. 
+Expands to 1 if the __VA_OPT__ construct is supported, otherwise expands to 0.
+</div>
+<h4>Usage</h4>
+<div class="code"> <b>BOOST_PP_VARIADIC_OPT</b>() <br>
+  </div>
+<h4>Arguments</h4>
+<dl>
+  <dt>None<br>
+</dt>
+</dl>
+<h4>Requirements</h4>
+<div> <b>Header:</b> &nbsp;<a href="../headers/variadic/opt.html">&lt;boost/preprocessor/variadic/opt.hpp&gt;</a>
+</div>
+<h4>Sample Code</h4>
+<div>
+<pre>
+#include &lt;<a href="../headers/variadic/opt.html">boost/preprocessor/variadic/opt.hpp</a>&gt;<br>
+#if <a href="variadic_opt.html">BOOST_PP_VARIADIC_OPT</a>()<br>
+// Preprocessor code which uses __VA_OPT__<br>
+#else<br>
+// Preprocessor code which does not use __VA_OPT__<br>
+#endif<br>
+</pre>
+</div>
+<hr size="1">
+<div style="margin-left: 0px;"> <i></i><i>© Copyright Edward Diener 2019</i> </div>
+<div style="margin-left: 0px;">
+<p><small>Distributed under the Boost Software License, Version 1.0.
+(See accompanying file <a href="../../../../LICENSE_1_0.txt">LICENSE_1_0.txt</a>
+or copy at <a href="http://www.boost.org/LICENSE_1_0.txt">www.boost.org/LICENSE_1_0.txt</a>)</small></p>
+</div>
+</body>
+</html>

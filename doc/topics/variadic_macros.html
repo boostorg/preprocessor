@@ -136,6 +136,27 @@
       use this variadic data reliably as arguments to other macros, one needs
       variadic macro support.<br>
     </div>
+    <h4>C++20 Support For Variadic Macros</h4>
+    <div>
+      In the C++20 specification there is a new construct which can be
+      used in the expansion of a variadic macro, called __VA_OPT__. This
+      construct when used in the expansion of a variadic macro is followed
+      by an opening paranthesis ('('), preprocessor data, and a closing
+      parenthesis ('}'). When the variadic data passed by the invocation
+      of a variadic macro is empty, this new construct expands to nothing.
+      When the variadic data passed by the invocation of a variadic macro
+      is not empty, this new construct expands to the preprocessor data
+      between its opening and closing parentheses.
+      <br><br>
+      This library offers support for this new C++20 construct by automatically
+      detecting whether this new construct is supported by the compiler's
+      preprocessor when using the library. The library macro which detects
+      support for the __VA_OPT__ construct is called BOOST_PP_VARIADIC_OPT.
+      This is a function-like macro which takes no parameters and returns
+      1 if the compiler is working in C++20 mode and supports the __VA_OPT__
+      construct, while otherwise it returns 0.
+      <br>
+    </div>
     <u  style="font-weight: bold;"> Using a Tuple Instead of an Array<br>
     </u>
     <div>An array as a preprocessor data type is a two-element tuple where the
@@ -257,6 +278,5 @@
           (See accompanying file <a  href="../../../../LICENSE_1_0.txt">LICENSE_1_0.txt</a>
           or copy at <a  href="http://www.boost.org/LICENSE_1_0.txt">www.boost.org/LICENSE_1_0.txt</a>)</small></p>
     </div>
-  
-
-</body></html>
+  </body>
+</html>

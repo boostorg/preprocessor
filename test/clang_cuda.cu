@@ -9,10 +9,7 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <boost/preprocessor/cat.hpp>
-#
-# define BEGIN typedef int BOOST_PP_CAT(test_, __LINE__)[((
-# define END )==1) ? 1 : -1];
+# include <libs/preprocessor/test/test_macro.h>
 
 #if defined(__clang__) && defined(__CUDACC__) && defined(__CUDA__)
 

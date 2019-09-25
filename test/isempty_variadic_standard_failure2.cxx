@@ -16,7 +16,17 @@
 
 #define FUNC_GEN9(x,y,z) anything
   
+#if defined(__cplusplus) && __cplusplus > 201703L
+  
+# include <boost/preprocessor/variadic/opt.hpp>
+
+BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN9) == BOOST_PP_VARIADIC_OPT() END
+
+#else
+
 BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN9) == 0 END
+
+#endif
 
 #else
   

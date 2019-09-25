@@ -15,8 +15,18 @@
 #if BOOST_PP_VARIADICS && (BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()) && !BOOST_PP_VARIADICS_MSVC
 
 #define FUNC_GEN8(x,y) (1,2,3)
+
+#if defined(__cplusplus) && __cplusplus > 201703L
   
+# include <boost/preprocessor/variadic/opt.hpp>
+
+BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN8) == BOOST_PP_VARIADIC_OPT() END
+
+#else
+
 BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN8) == 0 END
+
+#endif
 
 #else
   

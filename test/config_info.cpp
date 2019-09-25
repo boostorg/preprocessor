@@ -13,6 +13,7 @@
 #include <iomanip>
 #include <string.h>
 #include <boost/preprocessor/stringize.hpp>
+#include <boost/preprocessor/variadic/opt.hpp>
 
 static unsigned int indent = 4;
 static unsigned int width = 40;
@@ -93,6 +94,8 @@ void print_macros()
   PRINT_MACRO(BOOST_PP_CONFIG_FLAGS());
   PRINT_MACRO(BOOST_PP_VARIADICS);
   PRINT_MACRO(BOOST_PP_VARIADICS_MSVC);
+  PRINT_MACRO(BOOST_PP_VARIADICS_MSVC);
+  PRINT_MACRO(BOOST_PP_VARIADIC_OPT());
 }
 
 int main()

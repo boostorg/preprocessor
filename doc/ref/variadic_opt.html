@@ -23,11 +23,20 @@ Expands to 1 if the __VA_OPT__ construct is supported, otherwise expands to 0.
 <div>
 <pre>
 #include &lt;<a href="../headers/variadic/opt.html">boost/preprocessor/variadic/opt.hpp</a>&gt;<br>
-#if <a href="variadic_opt.html">BOOST_PP_VARIADIC_OPT</a>()<br>
-// Preprocessor code which uses __VA_OPT__<br>
-#else<br>
-// Preprocessor code which does not use __VA_OPT__<br>
-#endif<br>
+#if <a href="variadic_opt.html">BOOST_PP_VARIADIC_OPT</a>()
+// Preprocessor code which uses __VA_OPT__
+#else
+// Preprocessor code which does not use __VA_OPT__
+#endif
+</pre>
+<br>
+or within a macro definition<br><br>
+<pre>
+#include &lt;boost/preprocessor/control/iif.hpp&gt;
+#include &lt;<a href="../headers/variadic/opt.html">boost/preprocessor/variadic/opt.hpp</a>&gt;<br>
+#define USE_OPT(...) BOOST_PP_IIF(<a href="variadic_opt.html">BOOST_PP_VARIADIC_OPT</a>(),MACRO_USING_OPT,MACRO_NOT_USING_OPT)(__VA_ARGS__)
+#define MACRO_USING_OPT(...) __VA_OPT__( preprocessor tokens ) anything
+#define MACRO_NOT_USING_OPT(...) anything
 </pre>
 </div>
 <hr size="1">

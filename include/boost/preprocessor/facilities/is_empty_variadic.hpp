@@ -64,7 +64,7 @@
     (__VA_ARGS__) \
 /**/
 #define BOOST_PP_IS_EMPTY_ZERO(...) 0
-#if BOOST_PP_VARIADIC_OPT()
+# if defined(__cplusplus) && __cplusplus > 201703L
 #define BOOST_PP_IS_EMPTY_FUNCTION2(...) \
     __VA_OPT__(0,) 1 \
 /**/

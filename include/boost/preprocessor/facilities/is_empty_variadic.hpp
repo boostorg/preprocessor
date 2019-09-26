@@ -16,20 +16,6 @@
 #
 # if BOOST_PP_VARIADICS
 #
-# include <boost/preprocessor/variadic/opt.hpp>
-#
-# if BOOST_PP_VARIADIC_OPT()
-#
-#define BOOST_PP_IS_EMPTY_FUNCTION2(...) \
-    __VA_OPT__(0,) 1 \
-/**/
-#define BOOST_PP_IS_EMPTY_FUNCTION(...) \
-    BOOST_PP_IS_EMPTY_FUNCTION2(__VA_ARGS__) \
-/**/
-#define BOOST_PP_IS_EMPTY(...) \
-    BOOST_PP_VARIADIC_OPT_ELEM0(BOOST_PP_IS_EMPTY_FUNCTION(__VA_ARGS__),) \
-/**/
-# else
 # include <boost/preprocessor/punctuation/is_begin_parens.hpp>
 # include <boost/preprocessor/facilities/detail/is_empty.hpp>
 #
@@ -51,7 +37,19 @@
 /**/
 #define BOOST_PP_IS_EMPTY_ZERO(param) 0
 # else
+# include <boost/preprocessor/variadic/opt.hpp>
 #define BOOST_PP_IS_EMPTY(...) \
+    BOOST_PP_DETAIL_IS_EMPTY_IIF \
+      ( \
+      BOOST_PP_VARIADIC_OPT() \
+      ) \
+      ( \
+      BOOST_PP_IS_EMPTY_OPT, \
+      BOOST_PP_IS_EMPTY_NO_OPT \
+      ) \
+    (__VA_ARGS__) \
+/**/
+#define BOOST_PP_IS_EMPTY_NO_OPT(...) \
     BOOST_PP_DETAIL_IS_EMPTY_IIF \
       ( \
       BOOST_PP_IS_BEGIN_PARENS \
@@ -66,7 +64,15 @@
     (__VA_ARGS__) \
 /**/
 #define BOOST_PP_IS_EMPTY_ZERO(...) 0
+#define BOOST_PP_IS_EMPTY_FUNCTION2(...) \
+    __VA_OPT__(0,) 1 \
+/**/
+#define BOOST_PP_IS_EMPTY_FUNCTION(...) \
+    BOOST_PP_IS_EMPTY_FUNCTION2(__VA_ARGS__) \
+/**/
+#define BOOST_PP_IS_EMPTY_OPT(...) \
+    BOOST_PP_VARIADIC_OPT_ELEM0(BOOST_PP_IS_EMPTY_FUNCTION(__VA_ARGS__),) \
+/**/
 # endif /* BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400 */
-# endif /* BOOST_PP_VARIADIC_OPT() */
 # endif /* BOOST_PP_VARIADICS */
 # endif /* BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_VARIADIC_HPP */

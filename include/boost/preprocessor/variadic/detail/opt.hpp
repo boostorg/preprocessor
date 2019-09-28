@@ -17,7 +17,7 @@
 # if BOOST_PP_VARIADICS && defined(__cplusplus) && __cplusplus > 201703L
 #
 # define BOOST_PP_VARIADIC_OPT_FUNCTION(...) \
-    __VA_OPT__(0,) 0, 0, 1 \
+    __VA_OPT__(,) , 1, 0 \
 /**/
 #
 # define BOOST_PP_VARIADIC_OPT_ELEM0(e0, ...) BOOST_PP_VARIADIC_OPT_ELEM_0(e0,__VA_ARGS__)

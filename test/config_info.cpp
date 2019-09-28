@@ -1,6 +1,6 @@
 # /* **************************************************************************
 #  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.
+#  *     (C) Copyright Edward Diener 2014,2019.
 #  *     Distributed under the Boost Software License, Version 1.0. (See
 #  *     accompanying file LICENSE_1_0.txt or copy at
 #  *     http://www.boost.org/LICENSE_1_0.txt)
@@ -93,7 +93,6 @@ void print_macros()
   PRINT_MACRO(BOOST_PP_CONFIG_EXTENDED_LINE_INFO);
   PRINT_MACRO(BOOST_PP_CONFIG_FLAGS());
   PRINT_MACRO(BOOST_PP_VARIADICS);
-  PRINT_MACRO(BOOST_PP_VARIADICS_MSVC);
   PRINT_MACRO(BOOST_PP_VARIADICS_MSVC);
   PRINT_MACRO(BOOST_PP_VARIADIC_OPT());
 }

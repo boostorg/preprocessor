@@ -1,7 +1,19 @@
+# /* **************************************************************************
+#  *                                                                          *
+#  *     (C) Copyright Edward Diener 2014,2019.
+#  *     Distributed under the Boost Software License, Version 1.0. (See
+#  *     accompanying file LICENSE_1_0.txt or copy at
+#  *     http://www.boost.org/LICENSE_1_0.txt)
+#  *                                                                          *
+#  ************************************************************************** */
+#
+# /* See http://www.boost.org for most recent version. */
+#
 #include <iostream>
 #include <iomanip>
 #include <string.h>
 #include <boost/preprocessor/stringize.hpp>
+#include <boost/preprocessor/variadic/opt.hpp>
 
 static unsigned int indent = 4;
 static unsigned int width = 40;
@@ -82,6 +94,7 @@ void print_macros()
   PRINT_MACRO(BOOST_PP_CONFIG_FLAGS());
   PRINT_MACRO(BOOST_PP_VARIADICS);
   PRINT_MACRO(BOOST_PP_VARIADICS_MSVC);
+  PRINT_MACRO(BOOST_PP_VARIADIC_OPT());
 }
 
 int main()

@@ -1,6 +1,6 @@
 # /* **************************************************************************
 #  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.
+#  *     (C) Copyright Edward Diener 2019.
 #  *     Distributed under the Boost Software License, Version 1.0. (See
 #  *     accompanying file LICENSE_1_0.txt or copy at
 #  *     http://www.boost.org/LICENSE_1_0.txt)
@@ -9,27 +9,18 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <boost/preprocessor/facilities/is_empty.hpp>
-# include <libs/preprocessor/test/test.h>
+# include <libs/preprocessor/test/test_macro.h>
 
-#if BOOST_PP_VARIADICS && (BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()) && !BOOST_PP_VARIADICS_MSVC
+#if defined(__clang__) && defined(__CUDACC__) && defined(__CUDA__)
 
-#define FUNC_GEN8(x,y) (1,2,3)
-
-#if defined(__cplusplus) && __cplusplus > 201703L
-  
-# include <boost/preprocessor/variadic/opt.hpp>
-
-BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN8) == BOOST_PP_VARIADIC_OPT() END
+BEGIN BOOST_PP_VARIADICS == 1 END
 
 #else
 
-BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN8) == 0 END
+BEGIN 0 == 1 END
 
 #endif
 
-#else
-  
-BEGIN 1 == 0 END
-
-#endif
+int main(void) {
+    return 0;
+}

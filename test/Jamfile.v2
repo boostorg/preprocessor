@@ -3,6 +3,7 @@
 #~ (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 import testing ;
+import cast ;
 
 project preprocessor_tests : requirements <warnings>on
                                           <toolset>gcc-4.3.0:<warnings>all
@@ -247,3 +248,15 @@ alias preprocessor_config
    :   
         [ run config_info.cpp ]
   ;
+  
+alias test_clang_cuda
+   :   
+        [ compile [ cast _ cpp : clang_cuda.cu ]
+          : <cxxflags>-nocudalib
+            <cxxflags>-nocudainc
+            <cxxflags>"-x cuda"
+          : clang_cuda_cu
+        ]
+  ;
+
+explicit test_clang_cuda ;

@@ -1,7 +1,6 @@
 # /* **************************************************************************
 #  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
+#  *     (C) Copyright Edward Diener 2019.                                    *
 #  *     Distributed under the Boost Software License, Version 1.0. (See      *
 #  *     accompanying file LICENSE_1_0.txt or copy at                         *
 #  *     http://www.boost.org/LICENSE_1_0.txt)                                *
@@ -10,15 +9,20 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# ifndef BOOST_PREPROCESSOR_VARIADIC_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_HPP
+# ifndef BOOST_PREPROCESSOR_VARIADIC_OPT_HPP
+# define BOOST_PREPROCESSOR_VARIADIC_OPT_HPP
 #
-# include <boost/preprocessor/variadic/elem.hpp>
-# include <boost/preprocessor/variadic/opt.hpp>
-# include <boost/preprocessor/variadic/size.hpp>
-# include <boost/preprocessor/variadic/to_array.hpp>
-# include <boost/preprocessor/variadic/to_list.hpp>
-# include <boost/preprocessor/variadic/to_seq.hpp>
-# include <boost/preprocessor/variadic/to_tuple.hpp>
+# include <boost/preprocessor/config/config.hpp>
+#
+# /* BOOST_PP_VARIADIC_OPT */
+#
+# if BOOST_PP_VARIADICS && defined(__cplusplus) && __cplusplus > 201703L
+# include <boost/preprocessor/variadic/detail/opt.hpp>
+# define BOOST_PP_VARIADIC_OPT() \
+  BOOST_PP_VARIADIC_OPT_ELEM2(BOOST_PP_VARIADIC_OPT_FUNCTION(?),) \
+/**/
+# else
+# define BOOST_PP_VARIADIC_OPT() 0
+# endif
 #
 # endif

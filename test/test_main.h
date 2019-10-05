@@ -11,10 +11,22 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# ifndef BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_H
-# define BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_H
+# ifndef BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_MAIN_H
+# define BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_MAIN_H
 #
-# include <libs/preprocessor/test/test_macro.h>
-# include <libs/preprocessor/test/test_main.h>
-#
+#if defined(__cplusplus)
+#include <cstdio>
+#if !defined(_STLP_MSVC) || _STLP_MSVC >= 1300
+namespace std { }
+using namespace std;
+#endif
+#else
+#include <stdio.h>
+#endif
+
+int main(void) {
+    printf("pass " __TIME__);
+    return 0;
+}
+
 # endif

@@ -49,6 +49,8 @@ for:
     - git submodule update --init tools/build
     - git submodule update --init libs/config
     - git submodule update --init tools/boostdep
+    - git submodule update --init tools/boost_install
+    - git submodule update --init libs/headers
     - xcopy /s /e /q %APPVEYOR_BUILD_FOLDER% libs\preprocessor
     - python tools/boostdep/depinst/depinst.py preprocessor
     - bootstrap

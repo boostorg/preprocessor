@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <meta  content="text/html; charset=windows-1252"  http-equiv="content-type">
+    <title>emptiness.html</title>
+    <link  rel="stylesheet"  type="text/css"  href="../styles.css">
+    <style>
+    u { font-weight: normal; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <h4>Variadic Macros</h4>
+    <div> Variadic macros are supported by a number of compilers. They are
+      macros of the form: </div>
+    <div  class="code">
+      <pre>#define SOME_MACRO(ZeroOrMoreParameters,...) macro expansion possible specifying __VA_ARGS__</pre>
+    </div>
+    <div> The '...' in the parameter list represents the variadic data when the
+      macro is invoked and the __VA_ARGS__ in the expansion represents the
+      variadic data in the expansion of the macro. Variadic data is of the form
+      of 1 or more preprocessor tokens separated by commas.<br>
+      <br>
+      The '...' must be the last parameter in the macro definition and there may
+      be 0 or more non-variadic parameters preceding it.<br>
+      <br>
+      In the expansion of the macro __VA_ARGS__ may be specified 0 or more times
+      to represent the variadic data. The variadic data in the expansion is a
+      comma separated list of preprocessor tokens representing the variadic data
+      which the invoker of the macro enters as the last arguments to the macro.<br>
+    </div>
+    <h4>Example<u> - Creating and invoking a variadic macro.</u></h4>
+    <div  class="code">
+      <pre>#define INITIALIZE_INT_ARRAY(array_name,...) \ <br> static int array_name[] = { __VA_ARGS__ }; \ <br> /**/<br><br> INITIALIZE_INT_ARRAY(myname,45,789,33510,9346,2)</pre>
+    </div>
+    <u> <span  style="font-weight: bold;">Preprocessor
+        Library Support<br>
+      </span></u>
+    <div>The library offers support for variadic macros for those
+      compilers
+      which support the feature. The library can automatically detect whether
+      a compiler supports variadic macros and sets the macro
+      BOOST_PP_VARIADICS accordingly to 1 if the compiler supports variadic
+      macros or 0 if the compiler does not support variadic macros.<br>
+      <br>
+      The end-user can #define BOOST_PP_VARIADICS to 1 or 0 himself in a
+      translation unit, before including any preprocessor header files, to
+      prevent the library from attempting to detect whether the compiler
+      supports variadic macros. This has the effect of manually turning on or
+      off variadic macro support in the library. Of course if one manually
+      turns on variadic macro support in the library, and one's compiler does
+      not support variadic macros, functionality in the library which uses
+      variadic macros will fail with error messages from the compiler.<br>
+      <br>
+      When BOOST_PP_VARIADICS is 1, the library offers some extended
+      functionality
+      by using variadic macros, and also offers extended support for working
+      with variadic data.<br><br>
+      <a  name="vmvcquirk"></a>Visual C++ has a 
+      few quirks related to variadic macros which require the end-user to code
+      slightly differently. When BOOST_PP_VARIADICS is 1 and Visual C++ is the
+      compiler BOOST_PP_VARIADICS_MSVC is 1, else when BOOST_PP_VARIADICS is 1
+      and Visual C++ is not the compiler BOOST_PP_VARIADICS_MSVC is 0. When
+      BOOST_PP_VARIADICS is 0 then BOOST_PP_VARIADICS_MSVC is not defined.
+      In this way the end-user, when using variadic macros, can test for the
+      presence of Visual C++ as the compiler and code accordingly.<br>
+      <br>
+      Support for working with variadic
+      data is largely centered on being able to convert variadic data to
+      other library data types, since the
+      functionality for working with those Boost preprocessor library data
+      types is much greater than that for working with variadic data directly.<br>
+    </div>
+    <b>See</b> <b>Also</b><br>
+    <ul>
+      <li><a  href="../ref/variadics.html">BOOST_PP_VARIADICS</a></li>
+      <li><a  href="../headers/tuple.html">Tuple Macros</a><br>
+      </li>
+      <li><a  href="../headers/variadic.html">Variadic
+          Macros<br>
+        </a></li>
+      <li><a  href="../ref/array_enum.html">BOOST_PP_ARRAY_ENUM</a></li>
+      <li><a  href="../ref/list_enum_r.html">BOOST_PP_LIST_ENUM</a></li>
+      <li><a  href="../ref/seq_enum.html">BOOST_PP_SEQ_ENUM</a></li>
+      <li><a  href="../ref/tuple_enum.html">BOOST_PP_TUPLE_ENUM</a></li>
+      <li><a  href="../ref/overload.html">BOOST_PP_OVERLOAD</a></li>
+    </ul>
+    <hr  size="1">
+    <div  style="margin-left: 0px;"> <i>© Copyright
+        Edward Diener
+        2019</i> </div>
+    <div  style="margin-left: 0px;">
+      <p><small>Distributed under the Boost Software License,
+          Version 1.0.
+          (See accompanying file <a  href="../../../../LICENSE_1_0.txt">LICENSE_1_0.txt</a>
+          or copy at <a  href="http://www.boost.org/LICENSE_1_0.txt">www.boost.org/LICENSE_1_0.txt</a>)</small></p>
+    </div>
+  </body>
+</html>

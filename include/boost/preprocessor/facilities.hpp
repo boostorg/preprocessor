@@ -14,6 +14,7 @@
 # define BOOST_PREPROCESSOR_FACILITIES_HPP
 #
 # include <boost/preprocessor/facilities/apply.hpp>
+# include <boost/preprocessor/facilities/check_empty.hpp>
 # include <boost/preprocessor/facilities/empty.hpp>
 # include <boost/preprocessor/facilities/expand.hpp>
 # include <boost/preprocessor/facilities/identity.hpp>

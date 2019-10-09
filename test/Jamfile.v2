@@ -211,6 +211,7 @@ alias preprocessor_isempty : :
 alias preprocessor_isempty
   :   
        [ compile isempty.cpp ]
+       [ compile checkempty.cpp ]
        [ compile-fail isempty_variadic_standard_failure.cpp : <define>BOOST_PP_VARIADICS=1 ]
        [ compile-fail isempty_variadic_standard_failure2.cpp : <define>BOOST_PP_VARIADICS=1 ]
  ; 

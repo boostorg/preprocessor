@@ -16,6 +16,19 @@ Expands to 1 if the __VA_OPT__ construct is supported, otherwise expands to 0.
   <dt>None<br>
 </dt>
 </dl>
+	<h4>Remarks</h4>
+		<div>
+			This macro only returns 1 if the compiler is compiling at its own C++20 level and
+			__VA_OPT__ is supported. It is possible for a compiler to support the __VA_OPT__
+			construct when not compiling at its own C++20 level, but this macro will return
+			0 in that case even if __VA_OPT__ is normally supported for that level. The reason
+			for this is that such a compiler may have a compiler switch, enforcing a strict
+			adherence to a particular C++ standard level, which	gives a warning or an error
+			if __VA_OPT__ is specified below the C++20 level, and the preprocessor library
+			wants to avoid that happening. Therefore the macro will only test to see whether
+			or not __VA_OPT__ is supported at the C++20 level, while otherwise always returning
+			0 for all lesser C++ standard levels.
+		</div>
 <h4>Requirements</h4>
 <div> <b>Header:</b> &nbsp;<a href="../headers/variadic/opt.html">&lt;boost/preprocessor/variadic/opt.hpp&gt;</a>
 </div>

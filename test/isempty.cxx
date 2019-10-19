@@ -38,7 +38,7 @@
 
 #if BOOST_PP_VARIADICS
 
-# include <boost/preprocessor/variadic/opt.hpp>
+# include <boost/preprocessor/variadic/has_opt.hpp>
 
 #if defined(__cplusplus) && __cplusplus > 201703L && BOOST_PP_VARIADIC_HAS_OPT()
 

@@ -13,7 +13,7 @@
 #include <iomanip>
 #include <string.h>
 #include <boost/preprocessor/stringize.hpp>
-#include <boost/preprocessor/variadic/opt.hpp>
+#include <boost/preprocessor/variadic/has_opt.hpp>
 
 static unsigned int indent = 4;
 static unsigned int width = 40;

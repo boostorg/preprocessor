@@ -18,7 +18,7 @@
   
 #if defined(__cplusplus) && __cplusplus > 201703L
   
-# include <boost/preprocessor/variadic/opt.hpp>
+# include <boost/preprocessor/variadic/has_opt.hpp>
 
 BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN9) == BOOST_PP_VARIADIC_HAS_OPT() END
 

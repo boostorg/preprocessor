@@ -11,7 +11,7 @@
 #
 # ifndef BOOST_PREPROCESSOR_FACILITIES_CHECK_EMPTY_HPP
 # define BOOST_PREPROCESSOR_FACILITIES_CHECK_EMPTY_HPP
-# include <boost/preprocessor/variadic/opt.hpp>
+# include <boost/preprocessor/variadic/has_opt.hpp>
 # if BOOST_PP_VARIADIC_HAS_OPT()
 # include <boost/preprocessor/facilities/is_empty_variadic.hpp>
 # define BOOST_PP_CHECK_EMPTY(...) BOOST_PP_IS_EMPTY_OPT(__VA_ARGS__)

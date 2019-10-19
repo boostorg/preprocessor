@@ -14,15 +14,15 @@
 #
 # include <boost/preprocessor/config/config.hpp>
 #
-# /* BOOST_PP_VARIADIC_OPT */
+# /* BOOST_PP_VARIADIC_HAS_OPT */
 #
 # if BOOST_PP_VARIADICS && defined(__cplusplus) && __cplusplus > 201703L
 # include <boost/preprocessor/variadic/detail/opt.hpp>
-# define BOOST_PP_VARIADIC_OPT() \
-  BOOST_PP_VARIADIC_OPT_ELEM2(BOOST_PP_VARIADIC_OPT_FUNCTION(?),) \
+# define BOOST_PP_VARIADIC_HAS_OPT() \
+  BOOST_PP_VARIADIC_HAS_OPT_ELEM2(BOOST_PP_VARIADIC_HAS_OPT_FUNCTION(?),) \
 /**/
 # else
-# define BOOST_PP_VARIADIC_OPT() 0
+# define BOOST_PP_VARIADIC_HAS_OPT() 0
 # endif
 #
 # endif

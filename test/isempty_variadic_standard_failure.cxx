@@ -20,7 +20,7 @@
   
 # include <boost/preprocessor/variadic/opt.hpp>
 
-BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN8) == BOOST_PP_VARIADIC_OPT() END
+BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN8) == BOOST_PP_VARIADIC_HAS_OPT() END
 
 #else
 

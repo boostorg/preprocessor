@@ -98,7 +98,7 @@
       not publicly appeared. This library uses that code to test for __VA_OPT__ as a necessary prelude
       for creating a variadic macro which is 100% reliable in testing for emptiness.<br><br>
       The Boost Preprocessor macro for testing whether the __VA_OPT__ construct is supported during
-      compilation is called BOOST_PP_VARIADIC_OPT, which is a function-like macro taking no parameters
+      compilation is called BOOST_PP_VARIADIC_HAS_OPT, which is a function-like macro taking no parameters
       and returning 1 if the __VA_OPT__ construct is supported and 0 if it is not. The macro
       only returns 1 when variadic macros are supported, when the compiler is at the C++20 level,
       and when the __VA_OPT__ construct can be used according to the C++20 standard. In particular
@@ -109,13 +109,13 @@
       can produce a warning, or even an error, when it even sees a macro using the __VA_OPT__
       construct at a level below C++20, even though it supports it, if other compiler options
       requiring strict adherence to the level of the C++ standard being used are passed on the
-      command line. So taking a conservative approach the BOOST_PP_VARIADIC_OPT macros requires
+      command line. So taking a conservative approach the BOOST_PP_VARIADIC_HAS_OPT macros requires
       compilation at the C++20 level, along with variadic macro support, along with the testing code
       expanding to 1, in order to specify that __VA_OPT__ is supported.<br><br>
       The actual Boost Preprocessor library for testing for emptiness in C++20 mode is called
       BOOST_PP_CHECK_EMPTY. The macro is a variadic macro with a single variadic parameter. The
-      macro only exists if our previous macro for testing for __VA_OPT__ called BOOST_PP_VARIADIC_OPT
-      expands to 1 when invoked as BOOST_PP_VARIADIC_OPT(). If BOOST_PP_VARIADIC_OPT() expands to 0
+      macro only exists if our previous macro for testing for __VA_OPT__ called BOOST_PP_VARIADIC_HAS_OPT
+      expands to 1 when invoked as BOOST_PP_VARIADIC_HAS_OPT(). If BOOST_PP_VARIADIC_HAS_OPT() expands to 0
       the BOOST_PP_CHECK_EMPTY macro does not exist at all in this library. The input to the macro
       can be any variadic data. If the data passed to the macro is empty, or if the data passed to
       the macro is not empty but when the data itself is expanded it is empty, the macro returns
@@ -135,7 +135,7 @@
     </div>
     <b>See</b> <b>Also</b><br>
     <ul>
-      <li><a  href="../ref/variadic_opt.html">BOOST_PP_VARIADIC_OPT</a></li>
+      <li><a  href="../ref/variadic_opt.html">BOOST_PP_VARIADIC_HAS_OPT</a></li>
       <li><a  href="../ref/check_empty.html">BOOST_PP_CHECK_EMPTY</a></li>
     </ul>
     <hr  size="1">

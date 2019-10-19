@@ -12,7 +12,7 @@
 # include <libs/preprocessor/test/test.h>
 # include <boost/preprocessor/facilities/check_empty.hpp>
 
-# if BOOST_PP_VARIADIC_OPT()
+# if BOOST_PP_VARIADIC_HAS_OPT()
 
 # include <boost/preprocessor/facilities/empty.hpp>
 

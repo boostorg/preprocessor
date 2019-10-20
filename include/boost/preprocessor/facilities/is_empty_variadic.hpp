@@ -38,11 +38,11 @@
 #define BOOST_PP_IS_EMPTY_ZERO(param) 0
 # else
 # if defined(__cplusplus) && __cplusplus > 201703L
-# include <boost/preprocessor/variadic/opt.hpp>
+# include <boost/preprocessor/variadic/has_opt.hpp>
 #define BOOST_PP_IS_EMPTY(...) \
     BOOST_PP_DETAIL_IS_EMPTY_IIF \
       ( \
-      BOOST_PP_VARIADIC_OPT() \
+      BOOST_PP_VARIADIC_HAS_OPT() \
       ) \
       ( \
       BOOST_PP_IS_EMPTY_OPT, \
@@ -57,7 +57,7 @@
     BOOST_PP_IS_EMPTY_FUNCTION2(__VA_ARGS__) \
 /**/
 #define BOOST_PP_IS_EMPTY_OPT(...) \
-    BOOST_PP_VARIADIC_OPT_ELEM0(BOOST_PP_IS_EMPTY_FUNCTION(__VA_ARGS__),) \
+    BOOST_PP_VARIADIC_HAS_OPT_ELEM0(BOOST_PP_IS_EMPTY_FUNCTION(__VA_ARGS__),) \
 /**/
 # else
 #define BOOST_PP_IS_EMPTY(...) \

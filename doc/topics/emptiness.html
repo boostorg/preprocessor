@@ -32,11 +32,11 @@
     <h4>Expanding to nothing</h4>
     <div>
       Given certain arguments a macro might expand to nothing, aka no preprocessor tokens. This may
-      happen more than the previous case of an argument to a macro being nothing because the expansion of a macro
+      happen more than in the previous case of an argument to a macro being nothing because the expansion of a macro
       is often used to initialize some C++ construct, and C++ has some places where
       a part of a compile-time construct can be empty. However a macro which expands to nothing
-      rarely occurs when a macro's expansion is used as an argument to another macro, although
-      again it is perfectly legal C++.
+      rarely occurs when that macro's expansion is used as an argument to another macro because we would again have
+      a macro where we are passing nothing as an argument.
     </div>
     <div  class="code">
       <pre>

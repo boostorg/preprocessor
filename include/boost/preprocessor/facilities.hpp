@@ -20,5 +20,6 @@
 # include <boost/preprocessor/facilities/identity.hpp>
 # include <boost/preprocessor/facilities/intercept.hpp>
 # include <boost/preprocessor/facilities/overload.hpp>
+# include <boost/preprocessor/facilities/va_opt.hpp>
 #
 # endif

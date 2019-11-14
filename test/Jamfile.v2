@@ -262,3 +262,8 @@ alias test_clang_cuda
   ;
 
 explicit test_clang_cuda ;
+
+alias test_iso
+   :   
+        [ run cpp_standard.cpp ]
+  ;

@@ -267,3 +267,5 @@ alias test_iso
    :   
         [ run cpp_standard.cpp ]
   ;
+  
+explicit test_iso ;

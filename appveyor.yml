@@ -29,6 +29,13 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       TOOLSET: msvc-14.2
 
+matrix:
+  exclude:
+    - configuration: cmake_test
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - configuration: cmake_test
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
 build: off
 
 install:
@@ -40,8 +47,6 @@ install:
   - git submodule update --init tools/boostdep
   - xcopy /s /e /q %APPVEYOR_BUILD_FOLDER% libs\preprocessor\
   - python tools/boostdep/depinst/depinst.py preprocessor
-  - bootstrap
-  - b2 -d0 headers
 
 for:
 -
@@ -50,6 +55,8 @@ for:
       - configuration: boost_build_test
 
   test_script:
+    - bootstrap
+    - b2 -d0 headers
     - b2 -j3 libs/preprocessor/test toolset=%TOOLSET%
 
 -

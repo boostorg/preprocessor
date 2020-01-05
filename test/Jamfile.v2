@@ -22,17 +22,17 @@ alias preprocessor : :
         <toolset>gcc
         <toolset-gcc:version>3.4
     ;
-    
+
 alias preprocessor : : 
         <toolset>gcc
         <toolset-gcc:version>4.1
     ;
-    
+
 alias preprocessor : : 
         <toolset>gcc
         <toolset-gcc:version>4.2
     ;
-    
+
 alias preprocessor
    :   
         [ compile arithmetic.cpp ]
@@ -192,22 +192,22 @@ alias preprocessor_c_nvm
           : tuple_c_nvm 
         ]
   ;
-  
+
 alias preprocessor_isempty : : 
         <toolset>gcc
         <toolset-gcc:version>3.4
     ;
-    
+
 alias preprocessor_isempty : : 
         <toolset>gcc
         <toolset-gcc:version>4.1
     ;
-    
+
 alias preprocessor_isempty : : 
         <toolset>gcc
         <toolset-gcc:version>4.2
     ;
-    
+
 alias preprocessor_isempty
   :   
        [ compile isempty.cpp ]
@@ -216,12 +216,12 @@ alias preprocessor_isempty
        [ compile-fail isempty_variadic_standard_failure2.cpp : <define>BOOST_PP_VARIADICS=1 ]
        [ compile vaopt.cpp ]
  ; 
-  
+
 alias preprocessor_isempty_nvm
    :   
        [ compile isempty.cpp : <define>BOOST_PP_VARIADICS=0 : isempty_nvm ]
   ;
-  
+
 alias preprocessor_isempty_c
   :   
        [ compile isempty.c 
@@ -237,7 +237,7 @@ alias preprocessor_isempty_c
          : isempty_variadic_standard_failure2_c 
        ]
  ;
-  
+
 alias preprocessor_isempty_c_nvm
    :   
         [ compile isempty.c 
@@ -250,7 +250,7 @@ alias preprocessor_config
    :   
         [ run config_info.cpp ]
   ;
-  
+
 alias test_clang_cuda
    :   
         [ compile [ cast _ cpp : clang_cuda.cu ]
@@ -267,5 +267,7 @@ alias test_iso
    :   
         [ run cpp_standard.cpp ]
   ;
-  
+
 explicit test_iso ;
+
+compile quick.cpp ; # "Quick" test (for CI)

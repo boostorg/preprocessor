@@ -8,6 +8,8 @@ if(NOT HAVE_BOOST_TEST)
   return()
 endif()
 
+enable_language(C)
+
 set(tests_common arithmetic array comparison control debug facilities list logical punctuation selection seq slot stringize tuple variadic isempty)
 set(tests_c ${tests_common})
 set(tests_cpp ${tests_common} iteration repetition quick)

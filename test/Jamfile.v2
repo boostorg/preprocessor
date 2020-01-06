@@ -270,4 +270,4 @@ alias test_iso
 
 explicit test_iso ;
 
-compile quick.cpp ; # "Quick" test (for CI)
+explicit compile quick.cpp ; # "Quick" test (for CI)

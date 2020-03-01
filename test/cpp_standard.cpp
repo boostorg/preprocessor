@@ -378,8 +378,6 @@ bret += PRINT_MACRO_RESULTS(xglue(HIGH, LOW),"hello" ", world");
   
 }
 
-#if BOOST_PP_VARIADICS || __cplusplus > 199711L
-
 int print_macros_common_2()
 {
 
@@ -406,6 +404,8 @@ bret += PRINT_MACRO_RESULTS(char p[] = join(x, y);,char p[] = "x ## y";);
   return bret;
   
 }
+
+#if BOOST_PP_VARIADICS && __cplusplus > 199711L
 
 int print_macros_common_3()
 {
@@ -514,8 +514,14 @@ int print_macros()
 #define FTN_LIKE(a) ( a )
 #define FTN_LIKE( a )( /* note the white space */ a /* other stuff on this line */ )
 
-#if __cplusplus <= 199711L && !BOOST_PP_VARIADICS
+#if !BOOST_PP_VARIADICS
 
+bret += print_macros_common_1();
+bret += print_macros_common_4();
+
+#elif __cplusplus <= 199711L
+
+bret += print_macros_common_2();
 bret += print_macros_common_1();
 bret += print_macros_common_4();
 

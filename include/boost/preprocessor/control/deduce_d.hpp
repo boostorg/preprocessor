@@ -12,11 +12,16 @@
 # ifndef BOOST_PREPROCESSOR_CONTROL_DEDUCE_D_HPP
 # define BOOST_PREPROCESSOR_CONTROL_DEDUCE_D_HPP
 #
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/detail/auto_rec.hpp>
-#
 # /* BOOST_PP_DEDUCE_D */
 #
-# define BOOST_PP_DEDUCE_D() BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256)
+# include <boost/preprocessor/config/limits.hpp>
+#
+# if BOOST_PP_LIMIT_WHILE == 256
+# include <boost/preprocessor/control/deduce_d_256.hpp>
+# elif BOOST_PP_LIMIT_WHILE == 512
+# include <boost/preprocessor/control/deduce_d_512.hpp>
+# else
+# error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
+# endif
 #
 # endif

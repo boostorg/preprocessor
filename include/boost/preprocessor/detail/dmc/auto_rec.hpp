@@ -16,12 +16,32 @@
 #
 # include <boost/preprocessor/config/limits.hpp>
 #
-# if BOOST_PP_LIMIT_WHILE == 256
-# include <boost/preprocessor/control/detail/dmc/auto_rec_256.hpp>
-# elif BOOST_PP_LIMIT_WHILE == 512
-# include <boost/preprocessor/control/detail/dmc/auto_rec_512.hpp>
+# define BOOST_PP_LOCAL_AUTOREC 256
+# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_SEQ
+# undef BOOST_PP_LOCAL_AUTOREC
+# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_SEQ
+# endif
+# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_WHILE
+# undef BOOST_PP_LOCAL_AUTOREC
+# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_WHILE
+# endif
+# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_REPEAT
+# undef BOOST_PP_LOCAL_AUTOREC
+# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_REPEAT
+# endif
+# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_FOR
+# undef BOOST_PP_LOCAL_AUTOREC
+# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_FOR
+# endif
+#
+# if BOOST_PP_LOCAL_AUTOREC == 256
+# undef BOOST_PP_LOCAL_AUTOREC
+# include <boost/preprocessor/detail/dmc/auto_rec_256.hpp>
+# elif BOOST_PP_LOCAL_AUTOREC == 512
+# undef BOOST_PP_LOCAL_AUTOREC
+# include <boost/preprocessor/detail/dmc/auto_rec_512.hpp>
 # else
-# error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
+# undef BOOST_PP_LOCAL_AUTOREC
 # endif
 #
 # endif

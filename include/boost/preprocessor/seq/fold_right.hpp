@@ -14,12 +14,12 @@
 #
 # include <boost/preprocessor/config/limits.hpp>
 #
-# if BOOST_PP_LIMIT_MAG == 256
+# if BOOST_PP_LIMIT_SEQ == 256
 # include <boost/preprocessor/seq/fold_right_256.hpp>
-# elif BOOST_PP_LIMIT_MAG == 512
+# elif BOOST_PP_LIMIT_SEQ == 512
 # include <boost/preprocessor/seq/fold_right_512.hpp>
 # else
-# error Incorrect value for the BOOST_PP_LIMIT_MAG limit
+# error Incorrect value for the BOOST_PP_LIMIT_SEQ limit
 # endif
 #
 # endif

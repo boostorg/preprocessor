@@ -19,9 +19,9 @@
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_MAG == 256
-# include <boost/preprocessor/logical/bool_256.hpp>
+# include <boost/preprocessor/logical/limits/bool_256.hpp>
 # elif BOOST_PP_LIMIT_MAG == 512
-# include <boost/preprocessor/logical/bool_512.hpp>
+# include <boost/preprocessor/logical/limits/bool_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit
 # endif

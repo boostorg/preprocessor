@@ -42,10 +42,10 @@
 #
 # if BOOST_PP_LOCAL_AUTOREC == 256
 # undef BOOST_PP_LOCAL_AUTOREC
-# include <boost/preprocessor/detail/auto_rec_256.hpp>
+# include <boost/preprocessor/detail/limits/auto_rec_256.hpp>
 # elif BOOST_PP_LOCAL_AUTOREC == 512
 # undef BOOST_PP_LOCAL_AUTOREC
-# include <boost/preprocessor/detail/auto_rec_512.hpp>
+# include <boost/preprocessor/detail/limits/auto_rec_512.hpp>
 # else
 # undef BOOST_PP_LOCAL_AUTOREC
 # endif

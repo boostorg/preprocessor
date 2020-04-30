@@ -20,9 +20,9 @@
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_MAG == 256
-# include <boost/preprocessor/comparison/not_equal_256.hpp>
+# include <boost/preprocessor/comparison/limits/not_equal_256.hpp>
 # elif BOOST_PP_LIMIT_MAG == 512
-# include <boost/preprocessor/comparison/not_equal_512.hpp>
+# include <boost/preprocessor/comparison/limits/not_equal_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit
 # endif

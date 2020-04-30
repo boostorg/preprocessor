@@ -17,9 +17,9 @@
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_MAG == 256
-# include <boost/preprocessor/facilities/intercept_256.hpp>
+# include <boost/preprocessor/facilities/limits/intercept_256.hpp>
 # elif BOOST_PP_LIMIT_MAG == 512
-# include <boost/preprocessor/facilities/intercept_512.hpp>
+# include <boost/preprocessor/facilities/limits/intercept_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit
 # endif

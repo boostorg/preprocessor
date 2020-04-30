@@ -19,9 +19,9 @@
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_MAG == 256
-# include <boost/preprocessor/repetition/repeat_from_to_256.hpp>
+# include <boost/preprocessor/repetition/limits/repeat_from_to_256.hpp>
 # elif BOOST_PP_LIMIT_MAG == 512
-# include <boost/preprocessor/repetition/repeat_from_to_512.hpp>
+# include <boost/preprocessor/repetition/limits/repeat_from_to_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
 # endif

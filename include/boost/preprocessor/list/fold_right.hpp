@@ -17,9 +17,9 @@
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_WHILE == 256
-# include <boost/preprocessor/list/fold_right_256.hpp>
+# include <boost/preprocessor/list/limits/fold_right_256.hpp>
 # elif BOOST_PP_LIMIT_WHILE == 512
-# include <boost/preprocessor/list/fold_right_512.hpp>
+# include <boost/preprocessor/list/limits/fold_right_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
 # endif

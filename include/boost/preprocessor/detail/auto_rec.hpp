@@ -7,6 +7,8 @@
 #  *                                                                          *
 #  ************************************************************************** */
 #
+# /* Revised by Edward Diener (2020) */
+#
 # /* See http://www.boost.org for most recent version. */
 #
 # ifndef BOOST_PREPROCESSOR_DETAIL_AUTO_REC_HPP
@@ -22,32 +24,12 @@
 #
 # include <boost/preprocessor/config/limits.hpp>
 #
-# define BOOST_PP_LOCAL_AUTOREC 256
-# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_SEQ
-# undef BOOST_PP_LOCAL_AUTOREC
-# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_SEQ
-# endif
-# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_WHILE
-# undef BOOST_PP_LOCAL_AUTOREC
-# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_WHILE
-# endif
-# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_REPEAT
-# undef BOOST_PP_LOCAL_AUTOREC
-# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_REPEAT
-# endif
-# if BOOST_PP_LOCAL_AUTOREC < BOOST_PP_LIMIT_FOR
-# undef BOOST_PP_LOCAL_AUTOREC
-# define BOOST_PP_LOCAL_AUTOREC BOOST_PP_LIMIT_FOR
-# endif
-#
-# if BOOST_PP_LOCAL_AUTOREC == 256
-# undef BOOST_PP_LOCAL_AUTOREC
+# if BOOST_PP_LIMIT_MAG == 256
 # include <boost/preprocessor/detail/limits/auto_rec_256.hpp>
-# elif BOOST_PP_LOCAL_AUTOREC == 512
-# undef BOOST_PP_LOCAL_AUTOREC
+# elif BOOST_PP_LIMIT_MAG == 512
 # include <boost/preprocessor/detail/limits/auto_rec_512.hpp>
 # else
-# undef BOOST_PP_LOCAL_AUTOREC
+# error Incorrect value for the BOOST_PP_LIMIT_MAG limit
 # endif
 #
 # endif

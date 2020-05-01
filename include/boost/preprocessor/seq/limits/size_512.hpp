@@ -7,6 +7,8 @@
 #  *                                                                          *
 #  ************************************************************************** */
 #
+# /* Revised by Edward Diener (2020) */
+#
 # /* See http://www.boost.org for most recent version. */
 #
 # ifndef BOOST_PREPROCESSOR_SEQ_SIZE_512_HPP

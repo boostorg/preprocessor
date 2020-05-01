@@ -7,6 +7,8 @@
 #  *                                                                          *
 #  ************************************************************************** */
 #
+# /* Revised by Edward Diener (2020) */
+#
 # /* See http://www.boost.org for most recent version. */
 #
 # ifndef BOOST_PREPROCESSOR_FACILITIES_INTERCEPT_512_HPP

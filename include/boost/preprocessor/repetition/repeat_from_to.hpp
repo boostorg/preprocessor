@@ -8,6 +8,7 @@
 #  */
 #
 # /* Revised by Paul Mensonides (2002) */
+# /* Revised by Edward Diener (2020) */
 #
 # /* See http://www.boost.org for most recent version. */
 #
@@ -18,12 +19,12 @@
 #
 # include <boost/preprocessor/config/limits.hpp>
 #
-# if BOOST_PP_LIMIT_MAG == 256
+# if BOOST_PP_LIMIT_REPEAT == 256
 # include <boost/preprocessor/repetition/limits/repeat_from_to_256.hpp>
-# elif BOOST_PP_LIMIT_MAG == 512
+# elif BOOST_PP_LIMIT_REPEAT == 512
 # include <boost/preprocessor/repetition/limits/repeat_from_to_512.hpp>
 # else
-# error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
+# error Incorrect value for the BOOST_PP_LIMIT_REPEAT limit
 # endif
 #
 # endif

@@ -19,11 +19,11 @@
 #
 # include <boost/preprocessor/config/limits.hpp>
 #
-# if BOOST_PP_LIMIT_TUPLE == 64
+# if BOOST_PP_LIMIT_VARIADIC == 64
 # include <boost/preprocessor/variadic/limits/elem_64.hpp>
-# elif BOOST_PP_LIMIT_TUPLE == 128
+# elif BOOST_PP_LIMIT_VARIADIC == 128
 # include <boost/preprocessor/variadic/limits/elem_128.hpp>
-# elif BOOST_PP_LIMIT_TUPLE == 256
+# elif BOOST_PP_LIMIT_VARIADIC == 256
 # include <boost/preprocessor/variadic/limits/elem_256.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_TUPLE limit

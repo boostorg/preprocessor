@@ -175,6 +175,70 @@ alias preprocessor_c
         ]
   ;
 
+alias preprocessor_c_number_512
+   :   
+        [ compile arithmetic.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : arithmetic_c_num
+        ]
+        [ compile array.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : array_c_num 
+        ]
+        [ compile comparison.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : comparison_c_num 
+        ]
+        [ compile control.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : control_c_num 
+        ]
+        [ compile debug.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : debug_c_num 
+        ]
+        [ compile facilities.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : facilities_c_num 
+        ]
+        [ compile list.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : list_c_num 
+        ]
+        [ compile logical.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : logical_c_num 
+        ]
+        [ compile punctuation.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : punctuation_c_num 
+        ]
+        [ compile selection.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : selection_c_num 
+        ]
+        [ compile seq.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : seq_c_num 
+        ]
+        [ compile slot.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : slot_c_num 
+        ]
+        [ compile stringize.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : stringize_c_num 
+        ]
+        [ compile tuple.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : tuple_c_num 
+        ]
+        [ compile variadic.c 
+          : <define>BOOST_PP_LIMIT_MAG=512
+          : variadic_c_num 
+        ]
+  ;
+
 alias preprocessor_c_nvm
    :   
         [ compile arithmetic.c 
@@ -228,6 +292,75 @@ alias preprocessor_c_nvm
         [ compile tuple.c 
           : <define>BOOST_PP_VARIADICS=0
           : tuple_c_nvm 
+        ]
+  ;
+
+alias preprocessor_c_nvm_num
+   :   
+        [ compile arithmetic.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : arithmetic_c_nvm_num 
+        ]
+        [ compile array.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : array_c_nvm_num 
+        ]
+        [ compile comparison.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : comparison_c_nvm_num 
+        ]
+        [ compile control.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : control_c_nvm_num 
+        ]
+        [ compile debug.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : debug_c_nvm_num 
+        ]
+        [ compile facilities.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : facilities_c_nvm_num 
+        ]
+        [ compile list.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : list_c_nvm_num 
+        ]
+        [ compile logical.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : logical_c_nvm_num 
+        ]
+        [ compile selection.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : selection_c_nvm_num 
+        ]
+        [ compile seq.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : seq_c_nvm_num 
+        ]
+        [ compile slot.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : slot_c_nvm_num 
+        ]
+        [ compile stringize.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : stringize_c_nvm_num 
+        ]
+        [ compile tuple.c 
+          : <define>BOOST_PP_VARIADICS=0
+            <define>BOOST_PP_LIMIT_MAG=512
+          : tuple_c_nvm_num 
         ]
   ;
 

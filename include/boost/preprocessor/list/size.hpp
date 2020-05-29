@@ -16,6 +16,7 @@
 #
 # include <boost/preprocessor/arithmetic/inc.hpp>
 # include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/control/while.hpp>
 # include <boost/preprocessor/list/adt.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
@@ -23,11 +24,15 @@
 #
 # /* BOOST_PP_LIST_SIZE */
 #
+#    define BOOST_PP_LIST_SIZE(list) BOOST_PP_IIF(BOOST_PP_LIST_IS_CONS(list),BOOST_PP_LIST_SIZE_S,BOOST_PP_LIST_SIZE_E)(list)
+#    define BOOST_PP_LIST_SIZE_E(list) 0
+#    define BOOST_PP_LIST_SIZE_S(list) BOOST_PP_LIST_SIZE_DO(BOOST_PP_LIST_REST(list))
+#
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_SIZE(list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (0, list)))
+#    define BOOST_PP_LIST_SIZE_DO(list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (1, list)))
 # else
-#    define BOOST_PP_LIST_SIZE(list) BOOST_PP_LIST_SIZE_I(list)
-#    define BOOST_PP_LIST_SIZE_I(list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (0, list)))
+#    define BOOST_PP_LIST_SIZE_DO(list) BOOST_PP_LIST_SIZE_I(list)
+#    define BOOST_PP_LIST_SIZE_I(list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (1, list)))
 # endif
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()

@@ -15,6 +15,8 @@
 # ifndef BOOST_PREPROCESSOR_CONFIG_LIMITS_HPP
 # define BOOST_PREPROCESSOR_CONFIG_LIMITS_HPP
 #
+# include <boost/preprocessor/config/config.hpp>
+#
 # if defined(BOOST_PP_LIMIT_DIM)
 # undef BOOST_PP_LIMIT_DIM
 # endif
@@ -30,7 +32,42 @@
 # if defined(BOOST_PP_LIMIT_WHILE)
 # undef BOOST_PP_LIMIT_WHILE
 # endif
-
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
+#
+# if defined(BOOST_PP_LIMIT_MAG)
+# undef BOOST_PP_LIMIT_MAG
+# endif
+# if defined(BOOST_PP_LIMIT_VARIADIC)
+# undef BOOST_PP_LIMIT_VARIADIC
+# endif
+# if defined(BOOST_PP_LIMIT_TUPLE)
+# undef BOOST_PP_LIMIT_TUPLE
+# endif
+# if defined(BOOST_PP_LIMIT_FOR)
+# undef BOOST_PP_LIMIT_FOR
+# endif
+# if defined(BOOST_PP_LIMIT_REPEAT)
+# undef BOOST_PP_LIMIT_REPEAT
+# endif
+# if defined(BOOST_PP_LIMIT_SEQ)
+# undef BOOST_PP_LIMIT_SEQ
+# endif
+# if defined(BOOST_PP_LIMIT_ITERATION)
+# undef BOOST_PP_LIMIT_ITERATION
+# endif
+#
+# define BOOST_PP_LIMIT_MAG 256
+# define BOOST_PP_LIMIT_WHILE 256
+# define BOOST_PP_LIMIT_VARIADIC 64
+# define BOOST_PP_LIMIT_TUPLE 64
+# define BOOST_PP_LIMIT_FOR 256
+# define BOOST_PP_LIMIT_SEQ 256
+# define BOOST_PP_LIMIT_REPEAT 256
+# define BOOST_PP_LIMIT_ITERATION 256
+#
+#else
+#
 # if defined(BOOST_PP_LIMIT_MAG)
 # if !(BOOST_PP_LIMIT_MAG == 256 || BOOST_PP_LIMIT_MAG == 512)
 # undef BOOST_PP_LIMIT_MAG
@@ -44,7 +81,7 @@
 # define BOOST_PP_LIMIT_MAG 256
 # define BOOST_PP_LIMIT_WHILE 256
 # endif
-
+#
 # if defined(BOOST_PP_LIMIT_VARIADIC)
 # if !(BOOST_PP_LIMIT_VARIADIC == 64 || BOOST_PP_LIMIT_VARIADIC == 128 || BOOST_PP_LIMIT_VARIADIC == 256)
 # undef BOOST_PP_LIMIT_VARIADIC
@@ -55,7 +92,7 @@
 # else
 # define BOOST_PP_LIMIT_VARIADIC 64
 # endif
-
+#
 # if defined(BOOST_PP_LIMIT_TUPLE)
 # if !(BOOST_PP_LIMIT_TUPLE == 64 || BOOST_PP_LIMIT_TUPLE == 128 || BOOST_PP_LIMIT_TUPLE == 256)
 # undef BOOST_PP_LIMIT_TUPLE
@@ -66,7 +103,7 @@
 # else
 # define BOOST_PP_LIMIT_TUPLE 64
 # endif
-
+#
 # if defined(BOOST_PP_LIMIT_FOR)
 # if !(BOOST_PP_LIMIT_FOR == 256 || BOOST_PP_LIMIT_FOR == 512)
 # undef BOOST_PP_LIMIT_FOR
@@ -77,7 +114,7 @@
 # else
 # define BOOST_PP_LIMIT_FOR 256
 # endif
-
+#
 # if defined(BOOST_PP_LIMIT_REPEAT)
 # if !(BOOST_PP_LIMIT_REPEAT == 256 || BOOST_PP_LIMIT_REPEAT == 512)
 # undef BOOST_PP_LIMIT_REPEAT
@@ -88,7 +125,7 @@
 # else
 # define BOOST_PP_LIMIT_REPEAT 256
 # endif
-
+#
 # if defined(BOOST_PP_LIMIT_SEQ)
 # if !(BOOST_PP_LIMIT_SEQ == 256 || BOOST_PP_LIMIT_SEQ == 512)
 # undef BOOST_PP_LIMIT_SEQ
@@ -99,7 +136,7 @@
 # else
 # define BOOST_PP_LIMIT_SEQ 256
 # endif
-
+#
 # if defined(BOOST_PP_LIMIT_ITERATION)
 # if !(BOOST_PP_LIMIT_ITERATION == 256 || BOOST_PP_LIMIT_ITERATION == 512)
 # undef BOOST_PP_LIMIT_ITERATION
@@ -110,7 +147,9 @@
 # else
 # define BOOST_PP_LIMIT_ITERATION 256
 # endif
-
+#
+# endif
+#
 # define BOOST_PP_LIMIT_DIM 3
 # define BOOST_PP_LIMIT_ITERATION_DIM 3
 # define BOOST_PP_LIMIT_SLOT_SIG 10

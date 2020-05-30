@@ -9,8 +9,8 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include <boost/preprocessor/arithmetic.hpp>
 # include <boost/preprocessor/config/limits.hpp>
+# include <boost/preprocessor/arithmetic.hpp>
 # include <libs/preprocessor/test/test.h>
 
 /* addition */
@@ -20,12 +20,6 @@ BEGIN BOOST_PP_ADD(2, 3) == 5 END
 BEGIN BOOST_PP_ADD(BOOST_PP_ADD(2, 2), 2) == 6 END
 BEGIN BOOST_PP_ADD(2, BOOST_PP_ADD(1, 4)) == 7 END
 BEGIN BOOST_PP_ADD(BOOST_PP_ADD(2, 2), BOOST_PP_ADD(2, 2)) == 8 END
-
-#if BOOST_PP_LIMIT_MAG == 256
-
-BEGIN BOOST_PP_ADD(149, BOOST_PP_ADD(102, 137)) == 256 END
-
-#endif
 
 #if BOOST_PP_LIMIT_MAG == 512
 

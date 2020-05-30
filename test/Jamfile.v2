@@ -96,36 +96,32 @@ alias preprocessor_number_512
 
 alias preprocessor_v_128
    :   
-        [ compile array.cpp : <define>BOOST_PP_LIMIT_VARIADIC=128 : array_v_128 ]
-        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_VARIADIC=128 : tuple_v_128 ]
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_TUPLE=128 : array_v_128 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_TUPLE=128 : tuple_v_128 ]
         [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=128 : variadic_v_128 ]
   ;
 
 alias preprocessor_v_256
    :   
-        [ compile array.cpp : <define>BOOST_PP_LIMIT_VARIADIC=256 : array_v_256 ]
-        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_VARIADIC=256 : tuple_v_256 ]
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_TUPLE=256 : array_v_256 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_TUPLE=256 : tuple_v_256 ]
         [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=256 : variadic_v_256 ]
   ;
   
 alias preprocessor_v_128_c
    :   
-        [ compile array.c : <define>BOOST_PP_LIMIT_VARIADIC=128 : array_v_128_c ]
-        [ compile tuple.c : <define>BOOST_PP_LIMIT_VARIADIC=128 : tuple_v_128_c ]
+        [ compile array.c : <define>BOOST_PP_LIMIT_TUPLE=128 : array_v_128_c ]
+        [ compile tuple.c : <define>BOOST_PP_LIMIT_TUPLE=128 : tuple_v_128_c ]
         [ compile variadic.c : <define>BOOST_PP_LIMIT_VARIADIC=128 : variadic_v_128_c ]
   ;
 
-#|
-
 alias preprocessor_v_256_c
    :   
-        [ compile array.c : <define>BOOST_PP_LIMIT_VARIADIC=256 : array_v_256_c ]
-        [ compile tuple.c : <define>BOOST_PP_LIMIT_VARIADIC=256 : tuple_v_256_c ]
+        [ compile array.c : <define>BOOST_PP_LIMIT_TUPLE=256 : array_v_256_c ]
+        [ compile tuple.c : <define>BOOST_PP_LIMIT_TUPLE=256 : tuple_v_256_c ]
         [ compile variadic.c : <define>BOOST_PP_LIMIT_VARIADIC=256 : variadic_v_256_c ]
   ;
   
-|#
-
 alias preprocessor_number_nvm_512
    :   
         [ compile arithmetic.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : arithmetic_nvm_num ]

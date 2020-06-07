@@ -17,16 +17,23 @@
 # include <boost/preprocessor/arithmetic/add.hpp>
 # include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/control/while.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/tuple/rem.hpp>
+# include <boost/preprocessor/arithmetic/detail/is_minimum_number.hpp>
+# include <boost/preprocessor/arithmetic/detail/is_maximum_number.hpp>
 #
 # /* BOOST_PP_MUL */
 #
+#    define BOOST_PP_MUL(x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(y),BOOST_PP_MUL_CHECK_MIN,BOOST_PP_MUL_DO)(x,y)
+#
+#    define BOOST_PP_MUL_CHECK_MIN(x,y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x),0,BOOST_PP_DETAIL_MAXIMUM_NUMBER)
+#
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MUL(x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))
+#    define BOOST_PP_MUL_DO(x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))
 # else
-#    define BOOST_PP_MUL(x, y) BOOST_PP_MUL_I(x, y)
+#    define BOOST_PP_MUL_DO(x, y) BOOST_PP_MUL_I(x, y)
 #    define BOOST_PP_MUL_I(x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))
 # endif
 #
@@ -43,10 +50,14 @@
 #
 # /* BOOST_PP_MUL_D */
 #
+#    define BOOST_PP_MUL_D(d, x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(y),BOOST_PP_MUL_CHECK_MIN_D,BOOST_PP_MUL_DO_D)(d,x,y)
+#
+#    define BOOST_PP_MUL_CHECK_MIN_D(d,x,y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x),0,BOOST_PP_DETAIL_MAXIMUM_NUMBER)
+#
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MUL_D(d, x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))
+#    define BOOST_PP_MUL_DO_D(d, x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))
 # else
-#    define BOOST_PP_MUL_D(d, x, y) BOOST_PP_MUL_D_I(d, x, y)
+#    define BOOST_PP_MUL_DO_D(d, x, y) BOOST_PP_MUL_D_I(d, x, y)
 #    define BOOST_PP_MUL_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))
 # endif
 #

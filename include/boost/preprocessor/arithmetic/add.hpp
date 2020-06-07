@@ -17,15 +17,20 @@
 # include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/arithmetic/inc.hpp>
 # include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/facilities/identity.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
+# include <boost/preprocessor/arithmetic/detail/is_maximum_number.hpp>
 #
 # /* BOOST_PP_ADD */
 #
+#    define BOOST_PP_ADD(x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(y),BOOST_PP_IDENTITY_N(BOOST_PP_DETAIL_MAXIMUM_NUMBER,2),BOOST_PP_ADD_DO)(x,y)
+#
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ADD(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_ADD_P, BOOST_PP_ADD_O, (x, y)))
+#    define BOOST_PP_ADD_DO(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_ADD_P, BOOST_PP_ADD_O, (x, y)))
 # else
-#    define BOOST_PP_ADD(x, y) BOOST_PP_ADD_I(x, y)
+#    define BOOST_PP_ADD_DO(x, y) BOOST_PP_ADD_I(x, y)
 #    define BOOST_PP_ADD_I(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_ADD_P, BOOST_PP_ADD_O, (x, y)))
 # endif
 #
@@ -41,11 +46,13 @@
 #
 # /* BOOST_PP_ADD_D */
 #
+#    define BOOST_PP_ADD_D(d, x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(y),BOOST_PP_IDENTITY_N(BOOST_PP_DETAIL_MAXIMUM_NUMBER,3),BOOST_PP_ADD_D_DO)(d,x,y)
+#
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ADD_D(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_ADD_P, BOOST_PP_ADD_O, (x, y)))
+#    define BOOST_PP_ADD_D_DO(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_ADD_P, BOOST_PP_ADD_O, (x, y)))
 # else
-#    define BOOST_PP_ADD_D(d, x, y) BOOST_PP_ADD_D_I(d, x, y)
-#    define BOOST_PP_ADD_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_ADD_P, BOOST_PP_ADD_O, (x, y)))
+#    define BOOST_PP_ADD_D_DO(d, x, y) BOOST_PP_ADD_D_DO_I(d, x, y)
+#    define BOOST_PP_ADD_D_DO_I(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_ADD_P, BOOST_PP_ADD_O, (x, y)))
 # endif
 #
 # endif

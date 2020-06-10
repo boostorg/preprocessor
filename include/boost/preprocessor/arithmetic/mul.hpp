@@ -21,7 +21,6 @@
 # include <boost/preprocessor/control/while.hpp>
 # include <boost/preprocessor/facilities/identity.hpp>
 # include <boost/preprocessor/logical/bitand.hpp>
-# include <boost/preprocessor/logical/bitor.hpp>
 # include <boost/preprocessor/logical/bool.hpp>
 # include <boost/preprocessor/logical/compl.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
@@ -32,12 +31,9 @@
 #
 # /* BOOST_PP_MUL */
 #
-#    define BOOST_PP_MUL(x, y) \
-            BOOST_PP_IIF(BOOST_PP_BITOR(BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x),BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(y)),BOOST_PP_IDENTITY_N(0,2),BOOST_PP_MUL_CHECK_1X)(x,y)
+#    define BOOST_PP_MUL(x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x),BOOST_PP_IDENTITY_N(x,2),BOOST_PP_MUL_CHECK_1X)(x,y)
 #
-#    define BOOST_PP_MUL_CHECK_1X(x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(x),BOOST_PP_IDENTITY_N(y,2),BOOST_PP_MUL_CHECK_1Y)(x,y)
-#
-#    define BOOST_PP_MUL_CHECK_1Y(x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(y),BOOST_PP_IDENTITY_N(x,2),BOOST_PP_MUL_DO)(x,y)
+#    define BOOST_PP_MUL_CHECK_1X(x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(x),BOOST_PP_IDENTITY_N(y,2),BOOST_PP_MUL_DO)(x,y)
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
 #    define BOOST_PP_MUL_DO(x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))
@@ -59,12 +55,9 @@
 #
 # /* BOOST_PP_MUL_D */
 #
-#    define BOOST_PP_MUL_D(d, x, y) \
-            BOOST_PP_IIF(BOOST_PP_BITOR(BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x),BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(y)),BOOST_PP_IDENTITY_N(0,3),BOOST_PP_MUL_CHECK_1X_D)(d,x,y)
+#    define BOOST_PP_MUL_D(d, x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x),BOOST_PP_IDENTITY_N(x,3),BOOST_PP_MUL_CHECK_1X_D)(d,x,y)
 #
-#    define BOOST_PP_MUL_CHECK_1X_D(d, x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(x),BOOST_PP_IDENTITY_N(y,3),BOOST_PP_MUL_CHECK_1Y)(d,x,y)
-#
-#    define BOOST_PP_MUL_CHECK_1Y_D(d, x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(y),BOOST_PP_IDENTITY_N(x,3),BOOST_PP_MUL_DO_D)(d,x,y)
+#    define BOOST_PP_MUL_CHECK_1X_D(d, x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(x),BOOST_PP_IDENTITY_N(y,3),BOOST_PP_MUL_DO_D)(d,x,y)
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
 #    define BOOST_PP_MUL_DO_D(d, x, y) BOOST_PP_TUPLE_ELEM(3, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_MUL_P, BOOST_PP_MUL_O, (0, x, y)))

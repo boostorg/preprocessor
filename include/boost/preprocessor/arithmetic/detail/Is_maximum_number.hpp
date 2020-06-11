@@ -14,14 +14,9 @@
 #
 # /* BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER */
 #
+# include <boost/preprocessor/comparison/equal.hpp>
 # include <boost/preprocessor/arithmetic/detail/maximum_number.hpp>
 #
-# if BOOST_PP_DETAIL_MAXIMUM_NUMBER == 256
-# include <boost/preprocessor/arithmetic/detail/limits/is_maximum_number_256.hpp>
-# elif BOOST_PP_DETAIL_MAXIMUM_NUMBER == 512
-# include <boost/preprocessor/arithmetic/detail/limits/is_maximum_number_512.hpp>
-# else
-# error Incorrect value for the BOOST_PP_LIMIT_MAG limit
-# endif
+# define BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(x) BOOST_PP_EQUAL(x,BOOST_PP_DETAIL_MAXIMUM_NUMBER)
 #
 # endif

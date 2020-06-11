@@ -14,14 +14,8 @@
 #
 # /* BOOST_PP_DETAIL_IS_1_NUMBER */
 #
-# include <boost/preprocessor/config/limits.hpp>
+# include <boost/preprocessor/comparison/equal.hpp>
 #
-# if BOOST_PP_LIMIT_MAG == 256
-# include <boost/preprocessor/arithmetic/detail/limits/is_1_number_256.hpp>
-# elif BOOST_PP_LIMIT_MAG == 512
-# include <boost/preprocessor/arithmetic/detail/limits/is_1_number_512.hpp>
-# else
-# error Incorrect value for the BOOST_PP_LIMIT_MAG limit
-# endif
+# define BOOST_PP_DETAIL_IS_1_NUMBER(x) BOOST_PP_EQUAL(x,1)
 #
 # endif

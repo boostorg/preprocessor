@@ -20,6 +20,8 @@
 # include <boost/preprocessor/control/deduce_d.hpp>
 # include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/facilities/identity.hpp>
+# include <boost/preprocessor/logical/not.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 #
 # /* BOOST_PP_ARRAY_INSERT */
@@ -30,11 +32,17 @@
 # /* BOOST_PP_ARRAY_INSERT_D */
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ARRAY_INSERT_D(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_INSERT_P, BOOST_PP_ARRAY_INSERT_O, (0, i, elem, (0, ()), array)))
+#    define BOOST_PP_ARRAY_INSERT_D(d, array, i, elem) \
+            BOOST_PP_IIF(BOOST_PP_NOT(BOOST_PP_ARRAY_SIZE(array)),BOOST_PP_IDENTITY_N((1,(elem)),5),BOOST_PP_ARRAY_INSERT_ZERO_D)(d, array, i, elem, BOOST_PP_NOT(i))
 # else
 #    define BOOST_PP_ARRAY_INSERT_D(d, array, i, elem) BOOST_PP_ARRAY_INSERT_D_I(d, array, i, elem)
-#    define BOOST_PP_ARRAY_INSERT_D_I(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_INSERT_P, BOOST_PP_ARRAY_INSERT_O, (0, i, elem, (0, ()), array)))
+#    define BOOST_PP_ARRAY_INSERT_D_I(d, array, i, elem) \
+            BOOST_PP_IIF(BOOST_PP_NOT(BOOST_PP_ARRAY_SIZE(array)),BOOST_PP_IDENTITY_N((1,(elem)),5),BOOST_PP_ARRAY_INSERT_ZERO_D)(d, array, i, elem, BOOST_PP_NOT(i))
 # endif
+#
+# define BOOST_PP_ARRAY_INSERT_ZERO_D(d, array, i, elem, zero) \
+         BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_INSERT_P, BOOST_PP_ARRAY_INSERT_O, \
+         (1, i, elem, BOOST_PP_IIF( zero, ( 2 , ( elem , BOOST_PP_ARRAY_ELEM(0,array) ) ) , ( 1 , ( BOOST_PP_ARRAY_ELEM(0,array) ) ) ), array)))
 #
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
 #    define BOOST_PP_ARRAY_INSERT_P(d, state) BOOST_PP_ARRAY_INSERT_P_I state

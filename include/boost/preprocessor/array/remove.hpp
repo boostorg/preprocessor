@@ -7,6 +7,8 @@
 #  *                                                                          *
 #  ************************************************************************** */
 #
+# /* Revised by Edward Diener (2020) */
+#
 # /* See http://www.boost.org for most recent version. */
 #
 # ifndef BOOST_PREPROCESSOR_ARRAY_REMOVE_HPP
@@ -20,6 +22,7 @@
 # include <boost/preprocessor/control/deduce_d.hpp>
 # include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/logical/not.hpp>
 # include <boost/preprocessor/tuple/eat.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 #
@@ -31,11 +34,15 @@
 # /* BOOST_PP_ARRAY_REMOVE_D */
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ARRAY_REMOVE_D(d, array, i) BOOST_PP_TUPLE_ELEM(4, 2, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REMOVE_P, BOOST_PP_ARRAY_REMOVE_O, (0, i, (0, ()), array)))
+#    define BOOST_PP_ARRAY_REMOVE_D(d, array, i) BOOST_PP_ARRAY_REMOVE_ZERO_D(d, array, i, BOOST_PP_NOT(i))
 # else
 #    define BOOST_PP_ARRAY_REMOVE_D(d, array, i) BOOST_PP_ARRAY_REMOVE_D_I(d, array, i)
-#    define BOOST_PP_ARRAY_REMOVE_D_I(d, array, i) BOOST_PP_TUPLE_ELEM(4, 2, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REMOVE_P, BOOST_PP_ARRAY_REMOVE_O, (0, i, (0, ()), array)))
+#    define BOOST_PP_ARRAY_REMOVE_D_I(d, array, i) BOOST_PP_ARRAY_REMOVE_ZERO_D(d, array, i, BOOST_PP_NOT(i))
 # endif
+#
+# define BOOST_PP_ARRAY_REMOVE_ZERO_D(d, array, i, zero) \
+         BOOST_PP_TUPLE_ELEM(4, 2, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REMOVE_P, BOOST_PP_ARRAY_REMOVE_O, \
+         (1, i, BOOST_PP_IIF(zero,(0, ()),(1, (BOOST_PP_ARRAY_ELEM(0,array)))), array)))
 #
 # define BOOST_PP_ARRAY_REMOVE_P(d, st) BOOST_PP_NOT_EQUAL(BOOST_PP_TUPLE_ELEM(4, 0, st), BOOST_PP_ARRAY_SIZE(BOOST_PP_TUPLE_ELEM(4, 3, st)))
 #

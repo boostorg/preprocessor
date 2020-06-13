@@ -22,7 +22,9 @@
 # include <boost/preprocessor/control/deduce_d.hpp>
 # include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/control/while.hpp>
+# if BOOST_PP_LIMIT_TUPLE == 256
 # include <boost/preprocessor/logical/not.hpp>
+# endif
 # include <boost/preprocessor/tuple/eat.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 #
@@ -34,15 +36,25 @@
 # /* BOOST_PP_ARRAY_REMOVE_D */
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+# if BOOST_PP_LIMIT_TUPLE == 256
 #    define BOOST_PP_ARRAY_REMOVE_D(d, array, i) BOOST_PP_ARRAY_REMOVE_ZERO_D(d, array, i, BOOST_PP_NOT(i))
 # else
+#    define BOOST_PP_ARRAY_REMOVE_D(d, array, i) BOOST_PP_TUPLE_ELEM(4, 2, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REMOVE_P, BOOST_PP_ARRAY_REMOVE_O, (0, i, (0, ()), array)))
+# endif
+# else
 #    define BOOST_PP_ARRAY_REMOVE_D(d, array, i) BOOST_PP_ARRAY_REMOVE_D_I(d, array, i)
+# if BOOST_PP_LIMIT_TUPLE == 256
 #    define BOOST_PP_ARRAY_REMOVE_D_I(d, array, i) BOOST_PP_ARRAY_REMOVE_ZERO_D(d, array, i, BOOST_PP_NOT(i))
+# else
+#    define BOOST_PP_ARRAY_REMOVE_D_I(d, array, i) BOOST_PP_TUPLE_ELEM(4, 2, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REMOVE_P, BOOST_PP_ARRAY_REMOVE_O, (0, i, (0, ()), array)))
+# endif
 # endif
 #
+# if BOOST_PP_LIMIT_TUPLE == 256
 # define BOOST_PP_ARRAY_REMOVE_ZERO_D(d, array, i, zero) \
          BOOST_PP_TUPLE_ELEM(4, 2, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REMOVE_P, BOOST_PP_ARRAY_REMOVE_O, \
          (1, i, BOOST_PP_IIF(zero,(0, ()),(1, (BOOST_PP_ARRAY_ELEM(0,array)))), array)))
+# endif
 #
 # define BOOST_PP_ARRAY_REMOVE_P(d, st) BOOST_PP_NOT_EQUAL(BOOST_PP_TUPLE_ELEM(4, 0, st), BOOST_PP_ARRAY_SIZE(BOOST_PP_TUPLE_ELEM(4, 3, st)))
 #

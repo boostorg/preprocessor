@@ -20,6 +20,9 @@
 # include <boost/preprocessor/control/deduce_d.hpp>
 # include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/control/while.hpp>
+# if BOOST_PP_LIMIT_TUPLE == 256
+# include <boost/preprocessor/logical/not.hpp>
+# endif
 # include <boost/preprocessor/tuple/elem.hpp>
 #
 # /* BOOST_PP_ARRAY_REPLACE */
@@ -30,15 +33,25 @@
 # /* BOOST_PP_ARRAY_REPLACE_D */
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+# if BOOST_PP_LIMIT_TUPLE == 256
 #    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_ZERO_D(d, array, i, elem, BOOST_PP_NOT(i))
 # else
+#    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, (0, i, elem, (0, ()), array)))
+# endif
+# else
 #    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem)
+# if BOOST_PP_LIMIT_TUPLE == 256
 #    define BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_ZERO_D(d, array, i, elem, BOOST_PP_NOT(i))
+# else
+#    define BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, (0, i, elem, (0, ()), array)))
+# endif
 # endif
 #
+# if BOOST_PP_LIMIT_TUPLE == 256
 # define BOOST_PP_ARRAY_REPLACE_ZERO_D(d, array, i, elem, zero) \
          BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, \
          (1, i, elem, BOOST_PP_IIF(zero,(1, (elem)),(1, (BOOST_PP_ARRAY_ELEM(0,array)))), array)))
+# endif
 #
 # define BOOST_PP_ARRAY_REPLACE_P(d, state) BOOST_PP_NOT_EQUAL(BOOST_PP_TUPLE_ELEM(5, 0, state), BOOST_PP_ARRAY_SIZE(BOOST_PP_TUPLE_ELEM(5, 4, state)))
 #

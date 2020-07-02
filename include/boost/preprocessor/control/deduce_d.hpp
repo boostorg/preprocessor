@@ -16,8 +16,8 @@
 #
 # /* BOOST_PP_DEDUCE_D */
 #
+# include <boost/preprocessor/control/while.hpp>
 # include <boost/preprocessor/detail/auto_rec.hpp>
-#
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_WHILE == 256

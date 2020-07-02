@@ -12,12 +12,6 @@
 # ifndef BOOST_PREPROCESSOR_DETAIL_DMC_AUTO_REC_256_HPP
 # define BOOST_PREPROCESSOR_DETAIL_DMC_AUTO_REC_256_HPP
 #
-# include <boost/preprocessor/control/iif.hpp>
-#
-# /* BOOST_PP_AUTO_REC */
-#
-# define BOOST_PP_AUTO_REC(pred, n) BOOST_PP_NODE_ENTRY_ ## n(pred)
-#
 # define BOOST_PP_NODE_ENTRY_256(p) BOOST_PP_NODE_128(p)(p)(p)(p)(p)(p)(p)(p)
 # define BOOST_PP_NODE_ENTRY_128(p) BOOST_PP_NODE_64(p)(p)(p)(p)(p)(p)(p)
 # define BOOST_PP_NODE_ENTRY_64(p) BOOST_PP_NODE_32(p)(p)(p)(p)(p)(p)

@@ -15,11 +15,16 @@
 # ifndef BOOST_PREPROCESSOR_LIST_DETAIL_DMC_FOLD_LEFT_HPP
 # define BOOST_PREPROCESSOR_LIST_DETAIL_DMC_FOLD_LEFT_HPP
 #
+# include <boost/preprocessor/control/expr_iif.hpp>
+# include <boost/preprocessor/control/iif.hpp>
+# include <boost/preprocessor/list/adt.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_WHILE == 256
 # include <boost/preprocessor/list/detail/dmc/limits/fold_left_256.hpp>
 # elif BOOST_PP_LIMIT_WHILE == 512
+# include <boost/preprocessor/list/detail/dmc/limits/fold_left_256.hpp>
 # include <boost/preprocessor/list/detail/dmc/limits/fold_left_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit

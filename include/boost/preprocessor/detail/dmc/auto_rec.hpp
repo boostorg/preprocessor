@@ -14,13 +14,18 @@
 # ifndef BOOST_PREPROCESSOR_DETAIL_DMC_AUTO_REC_HPP
 # define BOOST_PREPROCESSOR_DETAIL_DMC_AUTO_REC_HPP
 #
+# include <boost/preprocessor/control/iif.hpp>
+#
 # /* BOOST_PP_AUTO_REC */
+#
+# define BOOST_PP_AUTO_REC(pred, n) BOOST_PP_NODE_ENTRY_ ## n(pred)
 #
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_MAG == 256
 # include <boost/preprocessor/detail/dmc/limits/auto_rec_256.hpp>
 # elif BOOST_PP_LIMIT_MAG == 512
+# include <boost/preprocessor/detail/dmc/limits/auto_rec_256.hpp>
 # include <boost/preprocessor/detail/dmc/limits/auto_rec_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit

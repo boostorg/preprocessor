@@ -14,10 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_LIST_DETAIL_EDG_FOLD_RIGHT_256_HPP
 # define BOOST_PREPROCESSOR_LIST_DETAIL_EDG_FOLD_RIGHT_256_HPP
 #
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/list/adt.hpp>
-# include <boost/preprocessor/tuple/eat.hpp>
-#
 # define BOOST_PP_LIST_FOLD_RIGHT_1(o, s, l) BOOST_PP_LIST_FOLD_RIGHT_1_D(o, s, l)
 # define BOOST_PP_LIST_FOLD_RIGHT_2(o, s, l) BOOST_PP_LIST_FOLD_RIGHT_2_D(o, s, l)
 # define BOOST_PP_LIST_FOLD_RIGHT_3(o, s, l) BOOST_PP_LIST_FOLD_RIGHT_3_D(o, s, l)

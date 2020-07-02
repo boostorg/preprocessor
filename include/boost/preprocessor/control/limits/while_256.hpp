@@ -14,44 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_CONTROL_WHILE_256_HPP
 # define BOOST_PREPROCESSOR_CONTROL_WHILE_256_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/debug/error.hpp>
-# include <boost/preprocessor/detail/auto_rec.hpp>
-# include <boost/preprocessor/list/fold_left.hpp>
-# include <boost/preprocessor/list/fold_right.hpp>
-# include <boost/preprocessor/logical/bitand.hpp>
-#
-# /* BOOST_PP_WHILE */
-#
-# if 0
-#    define BOOST_PP_WHILE(pred, op, state)
-# endif
-#
-# define BOOST_PP_WHILE BOOST_PP_CAT(BOOST_PP_WHILE_, BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256))
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_WHILE_P(n) BOOST_PP_BITAND(BOOST_PP_CAT(BOOST_PP_WHILE_CHECK_, BOOST_PP_WHILE_ ## n(BOOST_PP_WHILE_F, BOOST_PP_NIL, BOOST_PP_NIL)), BOOST_PP_BITAND(BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_CHECK_, BOOST_PP_LIST_FOLD_LEFT_ ## n(BOOST_PP_NIL, BOOST_PP_NIL, BOOST_PP_NIL)), BOOST_PP_CAT(BOOST_PP_LIST_FOLD_RIGHT_CHECK_, BOOST_PP_LIST_FOLD_RIGHT_ ## n(BOOST_PP_NIL, BOOST_PP_NIL, BOOST_PP_NIL))))
-# else
-#    define BOOST_PP_WHILE_P(n) BOOST_PP_BITAND(BOOST_PP_CAT(BOOST_PP_WHILE_CHECK_, BOOST_PP_WHILE_ ## n(BOOST_PP_WHILE_F, BOOST_PP_NIL, BOOST_PP_NIL)), BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_CHECK_, BOOST_PP_LIST_FOLD_LEFT_ ## n(BOOST_PP_NIL, BOOST_PP_NIL, BOOST_PP_NIL)))
-# endif
-#
-# define BOOST_PP_WHILE_F(d, _) 0
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    include <boost/preprocessor/control/detail/edg/while.hpp>
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    include <boost/preprocessor/control/detail/msvc/while.hpp>
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-#    include <boost/preprocessor/control/detail/dmc/while.hpp>
-# else
-#    include <boost/preprocessor/control/detail/while.hpp>
-# endif
-#
-# define BOOST_PP_WHILE_257(p, o, s) BOOST_PP_ERROR(0x0001)
-#
-# define BOOST_PP_WHILE_CHECK_BOOST_PP_NIL 1
-#
 # define BOOST_PP_WHILE_CHECK_BOOST_PP_WHILE_1(p, o, s) 0
 # define BOOST_PP_WHILE_CHECK_BOOST_PP_WHILE_2(p, o, s) 0
 # define BOOST_PP_WHILE_CHECK_BOOST_PP_WHILE_3(p, o, s) 0

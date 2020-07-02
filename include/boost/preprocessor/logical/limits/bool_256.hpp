@@ -14,19 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_LOGICAL_BOOL_256_HPP
 # define BOOST_PREPROCESSOR_LOGICAL_BOOL_256_HPP
 #
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_BOOL */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_BOOL(x) BOOST_PP_BOOL_I(x)
-# else
-#    define BOOST_PP_BOOL(x) BOOST_PP_BOOL_OO((x))
-#    define BOOST_PP_BOOL_OO(par) BOOST_PP_BOOL_I ## par
-# endif
-#
-# define BOOST_PP_BOOL_I(x) BOOST_PP_BOOL_ ## x
-#
 # define BOOST_PP_BOOL_0 0
 # define BOOST_PP_BOOL_1 1
 # define BOOST_PP_BOOL_2 1

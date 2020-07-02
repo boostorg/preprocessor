@@ -12,22 +12,6 @@
 # ifndef BOOST_PREPROCESSOR_SEQ_ENUM_256_HPP
 # define BOOST_PREPROCESSOR_SEQ_ENUM_256_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/seq/size.hpp>
-#
-# /* BOOST_PP_SEQ_ENUM */
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SEQ_ENUM(seq) BOOST_PP_SEQ_ENUM_I(seq)
-#    define BOOST_PP_SEQ_ENUM_I(seq) BOOST_PP_CAT(BOOST_PP_SEQ_ENUM_, BOOST_PP_SEQ_SIZE(seq)) seq
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_SEQ_ENUM(seq) BOOST_PP_SEQ_ENUM_I(BOOST_PP_SEQ_SIZE(seq), seq)
-#    define BOOST_PP_SEQ_ENUM_I(size, seq) BOOST_PP_CAT(BOOST_PP_SEQ_ENUM_, size) seq
-# else
-#    define BOOST_PP_SEQ_ENUM(seq) BOOST_PP_CAT(BOOST_PP_SEQ_ENUM_, BOOST_PP_SEQ_SIZE(seq)) seq
-# endif
-#
 # define BOOST_PP_SEQ_ENUM_1(x) x
 # define BOOST_PP_SEQ_ENUM_2(x) x, BOOST_PP_SEQ_ENUM_1
 # define BOOST_PP_SEQ_ENUM_3(x) x, BOOST_PP_SEQ_ENUM_2

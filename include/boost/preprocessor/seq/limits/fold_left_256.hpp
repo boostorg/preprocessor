@@ -12,29 +12,6 @@
 # ifndef BOOST_PREPROCESSOR_SEQ_FOLD_LEFT_256_HPP
 # define BOOST_PREPROCESSOR_SEQ_FOLD_LEFT_256_HPP
 #
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/debug/error.hpp>
-# include <boost/preprocessor/detail/auto_rec.hpp>
-# include <boost/preprocessor/seq/seq.hpp>
-# include <boost/preprocessor/seq/size.hpp>
-#
-# /* BOOST_PP_SEQ_FOLD_LEFT */
-#
-# if 0
-#    define BOOST_PP_SEQ_FOLD_LEFT(op, state, seq) ...
-# endif
-#
-# define BOOST_PP_SEQ_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_SEQ_FOLD_LEFT_, BOOST_PP_AUTO_REC(BOOST_PP_SEQ_FOLD_LEFT_P, 256))
-# define BOOST_PP_SEQ_FOLD_LEFT_P(n) BOOST_PP_CAT(BOOST_PP_SEQ_FOLD_LEFT_CHECK_, BOOST_PP_SEQ_FOLD_LEFT_I_ ## n(BOOST_PP_SEQ_FOLD_LEFT_O, BOOST_PP_NIL, (nil), 1))
-# define BOOST_PP_SEQ_FOLD_LEFT_O(s, st, _) st
-#
-# define BOOST_PP_SEQ_FOLD_LEFT_257(op, st, ss) BOOST_PP_ERROR(0x0005)
-# define BOOST_PP_SEQ_FOLD_LEFT_I_257(op, st, ss, sz) BOOST_PP_ERROR(0x0005)
-#
-# define BOOST_PP_SEQ_FOLD_LEFT_CHECK_BOOST_PP_NIL 1
-#
 # define BOOST_PP_SEQ_FOLD_LEFT_CHECK_BOOST_PP_SEQ_FOLD_LEFT_I_1(op, st, ss, sz) 0
 # define BOOST_PP_SEQ_FOLD_LEFT_CHECK_BOOST_PP_SEQ_FOLD_LEFT_I_2(op, st, ss, sz) 0
 # define BOOST_PP_SEQ_FOLD_LEFT_CHECK_BOOST_PP_SEQ_FOLD_LEFT_I_3(op, st, ss, sz) 0
@@ -291,8 +268,6 @@
 # define BOOST_PP_SEQ_FOLD_LEFT_CHECK_BOOST_PP_SEQ_FOLD_LEFT_I_254(op, st, ss, sz) 0
 # define BOOST_PP_SEQ_FOLD_LEFT_CHECK_BOOST_PP_SEQ_FOLD_LEFT_I_255(op, st, ss, sz) 0
 # define BOOST_PP_SEQ_FOLD_LEFT_CHECK_BOOST_PP_SEQ_FOLD_LEFT_I_256(op, st, ss, sz) 0
-#
-# define BOOST_PP_SEQ_FOLD_LEFT_F(op, st, ss, sz) st
 #
 # define BOOST_PP_SEQ_FOLD_LEFT_1(op, st, ss) BOOST_PP_SEQ_FOLD_LEFT_I_1(op, st, ss, BOOST_PP_SEQ_SIZE(ss))
 # define BOOST_PP_SEQ_FOLD_LEFT_2(op, st, ss) BOOST_PP_SEQ_FOLD_LEFT_I_2(op, st, ss, BOOST_PP_SEQ_SIZE(ss))

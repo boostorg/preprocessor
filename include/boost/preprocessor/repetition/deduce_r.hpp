@@ -16,12 +16,14 @@
 #
 # /* BOOST_PP_DEDUCE_R */
 #
+# include <boost/preprocessor/detail/auto_rec.hpp>
+# include <boost/preprocessor/repetition/for.hpp>
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_FOR == 256
-# include <boost/preprocessor/repetition/limits/deduce_r_256.hpp>
+# define BOOST_PP_DEDUCE_R() BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256)
 # elif BOOST_PP_LIMIT_FOR == 512
-# include <boost/preprocessor/repetition/limits/deduce_r_512.hpp>
+# define BOOST_PP_DEDUCE_R() BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 512)
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_FOR limit
 # endif

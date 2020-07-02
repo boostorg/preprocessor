@@ -14,35 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_LIST_FOLD_LEFT_256_HPP
 # define BOOST_PREPROCESSOR_LIST_FOLD_LEFT_256_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/debug/error.hpp>
-# include <boost/preprocessor/detail/auto_rec.hpp>
-#
-# /* BOOST_PP_LIST_FOLD_LEFT */
-#
-# if 0
-#    define BOOST_PP_LIST_FOLD_LEFT(op, state, list)
-# endif
-#
-# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256))
-#
-# define BOOST_PP_LIST_FOLD_LEFT_257(o, s, l) BOOST_PP_ERROR(0x0004)
-#
-# define BOOST_PP_LIST_FOLD_LEFT_D(d, o, s, l) BOOST_PP_LIST_FOLD_LEFT_ ## d(o, s, l)
-# define BOOST_PP_LIST_FOLD_LEFT_2ND BOOST_PP_LIST_FOLD_LEFT
-# define BOOST_PP_LIST_FOLD_LEFT_2ND_D BOOST_PP_LIST_FOLD_LEFT_D
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    include <boost/preprocessor/list/detail/edg/fold_left.hpp>
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-#    include <boost/preprocessor/list/detail/dmc/fold_left.hpp>
-# else
-#    include <boost/preprocessor/list/detail/fold_left.hpp>
-# endif
-#
-# define BOOST_PP_LIST_FOLD_LEFT_CHECK_BOOST_PP_NIL 1
-#
 # define BOOST_PP_LIST_FOLD_LEFT_CHECK_BOOST_PP_LIST_FOLD_LEFT_1(o, s, l) 0
 # define BOOST_PP_LIST_FOLD_LEFT_CHECK_BOOST_PP_LIST_FOLD_LEFT_2(o, s, l) 0
 # define BOOST_PP_LIST_FOLD_LEFT_CHECK_BOOST_PP_LIST_FOLD_LEFT_3(o, s, l) 0

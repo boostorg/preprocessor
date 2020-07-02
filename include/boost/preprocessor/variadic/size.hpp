@@ -15,6 +15,13 @@
 # ifndef BOOST_PREPROCESSOR_VARIADIC_SIZE_HPP
 # define BOOST_PREPROCESSOR_VARIADIC_SIZE_HPP
 #
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/config/config.hpp>
+#
+# /* BOOST_PP_VARIADIC_SIZE */
+#
+# if BOOST_PP_VARIADICS
+#
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_VARIADIC == 64
@@ -25,6 +32,8 @@
 # include <boost/preprocessor/variadic/limits/size_256.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_TUPLE limit
+# endif
+#
 # endif
 #
 # endif

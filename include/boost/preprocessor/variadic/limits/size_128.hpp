@@ -15,12 +15,6 @@
 # ifndef BOOST_PREPROCESSOR_VARIADIC_SIZE_128_HPP
 # define BOOST_PREPROCESSOR_VARIADIC_SIZE_128_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_VARIADIC_SIZE */
-#
-# if BOOST_PP_VARIADICS
 #    if BOOST_PP_VARIADICS_MSVC
 #        define BOOST_PP_VARIADIC_SIZE(...)  \
                 BOOST_PP_CAT                 \
@@ -49,6 +43,5 @@
                                     size, ... \
                                     ) size    \
      /**/
-# endif
 #
 # endif

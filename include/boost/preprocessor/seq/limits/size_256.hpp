@@ -12,22 +12,6 @@
 # ifndef BOOST_PREPROCESSOR_SEQ_SIZE_256_HPP
 # define BOOST_PREPROCESSOR_SEQ_SIZE_256_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_SEQ_SIZE(seq) BOOST_PP_SEQ_SIZE_I((seq))
-#    define BOOST_PP_SEQ_SIZE_I(par) BOOST_PP_SEQ_SIZE_II ## par
-#    define BOOST_PP_SEQ_SIZE_II(seq) BOOST_PP_CAT(BOOST_PP_SEQ_SIZE_, BOOST_PP_SEQ_SIZE_0 ## seq)
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG() || BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_SEQ_SIZE(seq) BOOST_PP_SEQ_SIZE_I(seq)
-#    define BOOST_PP_SEQ_SIZE_I(seq) BOOST_PP_CAT(BOOST_PP_SEQ_SIZE_, BOOST_PP_SEQ_SIZE_0 seq)
-# elif defined(__IBMC__) || defined(__IBMCPP__)
-#    define BOOST_PP_SEQ_SIZE(seq) BOOST_PP_CAT(BOOST_PP_SEQ_SIZE_, BOOST_PP_CAT(BOOST_PP_SEQ_SIZE_0, seq))
-# else
-#    define BOOST_PP_SEQ_SIZE(seq) BOOST_PP_CAT(BOOST_PP_SEQ_SIZE_, BOOST_PP_SEQ_SIZE_0 seq)
-# endif
-#
 # define BOOST_PP_SEQ_SIZE_0(_) BOOST_PP_SEQ_SIZE_1
 # define BOOST_PP_SEQ_SIZE_1(_) BOOST_PP_SEQ_SIZE_2
 # define BOOST_PP_SEQ_SIZE_2(_) BOOST_PP_SEQ_SIZE_3

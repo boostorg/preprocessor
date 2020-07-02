@@ -22,11 +22,16 @@
 #
 # /* BOOST_PP_AUTO_REC */
 #
+# include <boost/preprocessor/control/iif.hpp>
+#
+# define BOOST_PP_AUTO_REC(pred, n) BOOST_PP_NODE_ENTRY_ ## n(pred)
+#
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_MAG == 256
 # include <boost/preprocessor/detail/limits/auto_rec_256.hpp>
 # elif BOOST_PP_LIMIT_MAG == 512
+# include <boost/preprocessor/detail/limits/auto_rec_256.hpp>
 # include <boost/preprocessor/detail/limits/auto_rec_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit

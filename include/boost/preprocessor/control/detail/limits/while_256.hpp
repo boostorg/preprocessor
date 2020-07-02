@@ -14,10 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_CONTROL_DETAIL_WHILE_256_HPP
 # define BOOST_PREPROCESSOR_CONTROL_DETAIL_WHILE_256_HPP
 #
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/logical/bool.hpp>
-# include <boost/preprocessor/tuple/eat.hpp>
-#
 # define BOOST_PP_WHILE_1(p, o, s) BOOST_PP_WHILE_1_C(BOOST_PP_BOOL(p(2, s)), p, o, s)
 # define BOOST_PP_WHILE_2(p, o, s) BOOST_PP_WHILE_2_C(BOOST_PP_BOOL(p(3, s)), p, o, s)
 # define BOOST_PP_WHILE_3(p, o, s) BOOST_PP_WHILE_3_C(BOOST_PP_BOOL(p(4, s)), p, o, s)
@@ -531,6 +527,5 @@
 # define BOOST_PP_WHILE_254_C(c, p, o, s) BOOST_PP_IIF(c, BOOST_PP_WHILE_255, s BOOST_PP_TUPLE_EAT_3)(p, o, BOOST_PP_IIF(c, o, BOOST_PP_NIL BOOST_PP_TUPLE_EAT_2)(255, s))
 # define BOOST_PP_WHILE_255_C(c, p, o, s) BOOST_PP_IIF(c, BOOST_PP_WHILE_256, s BOOST_PP_TUPLE_EAT_3)(p, o, BOOST_PP_IIF(c, o, BOOST_PP_NIL BOOST_PP_TUPLE_EAT_2)(256, s))
 # define BOOST_PP_WHILE_256_C(c, p, o, s) BOOST_PP_IIF(c, BOOST_PP_WHILE_257, s BOOST_PP_TUPLE_EAT_3)(p, o, BOOST_PP_IIF(c, o, BOOST_PP_NIL BOOST_PP_TUPLE_EAT_2)(257, s))
-#
 #
 # endif

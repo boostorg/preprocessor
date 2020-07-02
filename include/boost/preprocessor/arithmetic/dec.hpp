@@ -17,11 +17,21 @@
 #
 # /* BOOST_PP_DEC */
 #
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
+#    define BOOST_PP_DEC(x) BOOST_PP_DEC_I(x)
+# else
+#    define BOOST_PP_DEC(x) BOOST_PP_DEC_OO((x))
+#    define BOOST_PP_DEC_OO(par) BOOST_PP_DEC_I ## par
+# endif
+#
+# define BOOST_PP_DEC_I(x) BOOST_PP_DEC_ ## x
+#
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_MAG == 256
 # include <boost/preprocessor/arithmetic/limits/dec_256.hpp>
 # elif BOOST_PP_LIMIT_MAG == 512
+# include <boost/preprocessor/arithmetic/limits/dec_256.hpp>
 # include <boost/preprocessor/arithmetic/limits/dec_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit

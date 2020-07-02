@@ -14,27 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_COMPARISON_NOT_EQUAL_256_HPP
 # define BOOST_PREPROCESSOR_COMPARISON_NOT_EQUAL_256_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-#
-# /* BOOST_PP_NOT_EQUAL */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_NOT_EQUAL(x, y) BOOST_PP_NOT_EQUAL_I(x, y)
-# else
-#    define BOOST_PP_NOT_EQUAL(x, y) BOOST_PP_NOT_EQUAL_OO((x, y))
-#    define BOOST_PP_NOT_EQUAL_OO(par) BOOST_PP_NOT_EQUAL_I ## par
-# endif
-#
-# define BOOST_PP_NOT_EQUAL_I(x, y) BOOST_PP_CAT(BOOST_PP_NOT_EQUAL_CHECK_, BOOST_PP_NOT_EQUAL_ ## x(0, BOOST_PP_NOT_EQUAL_ ## y))
-#
-# /* BOOST_PP_NOT_EQUAL_D */
-#
-# define BOOST_PP_NOT_EQUAL_D(d, x, y) BOOST_PP_NOT_EQUAL(x, y)
-#
-# define BOOST_PP_NOT_EQUAL_CHECK_BOOST_PP_NIL 1
-#
 # define BOOST_PP_NOT_EQUAL_CHECK_BOOST_PP_NOT_EQUAL_0(c, y) 0
 # define BOOST_PP_NOT_EQUAL_CHECK_BOOST_PP_NOT_EQUAL_1(c, y) 0
 # define BOOST_PP_NOT_EQUAL_CHECK_BOOST_PP_NOT_EQUAL_2(c, y) 0

@@ -14,56 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_REPETITION_FOR_256_HPP
 # define BOOST_PREPROCESSOR_REPETITION_FOR_256_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/debug/error.hpp>
-# include <boost/preprocessor/facilities/empty.hpp>
-# include <boost/preprocessor/logical/bool.hpp>
-# include <boost/preprocessor/detail/auto_rec.hpp>
-#
-# /* BOOST_PP_FOR */
-#
-# if 0
-#    define BOOST_PP_FOR(state, pred, op, macro)
-# endif
-#
-# define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256))
-#
-# define BOOST_PP_FOR_P(n) BOOST_PP_CAT(BOOST_PP_FOR_CHECK_, BOOST_PP_FOR_ ## n(1, BOOST_PP_FOR_SR_P, BOOST_PP_FOR_SR_O, BOOST_PP_FOR_SR_M))
-#
-# define BOOST_PP_FOR_SR_P(r, s) s
-# define BOOST_PP_FOR_SR_O(r, s) 0
-# define BOOST_PP_FOR_SR_M(r, s) BOOST_PP_NIL
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    include <boost/preprocessor/repetition/detail/edg/for.hpp>
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    include <boost/preprocessor/repetition/detail/msvc/for.hpp>
-# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-#    include <boost/preprocessor/repetition/detail/dmc/for.hpp>
-# else
-#    include <boost/preprocessor/repetition/detail/for.hpp>
-# endif
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-# define BOOST_PP_FOR_257_PR(s, p) BOOST_PP_BOOL(p##(257, s))
-# else
-# define BOOST_PP_FOR_257_PR(s, p) BOOST_PP_BOOL(p(257, s))
-# endif
-
-# define BOOST_PP_FOR_257_ERROR() BOOST_PP_ERROR(0x0002)
-# define BOOST_PP_FOR_257(s, p, o, m) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_FOR_257_PR(s,p), \
-        BOOST_PP_FOR_257_ERROR, \
-        BOOST_PP_EMPTY \
-        ) \
-    () \
-/**/
-// # define BOOST_PP_FOR_257(s, p, o, m) BOOST_PP_ERROR(0x0002)
-#
-# define BOOST_PP_FOR_CHECK_BOOST_PP_NIL 1
-#
 # define BOOST_PP_FOR_CHECK_BOOST_PP_FOR_1(s, p, o, m) 0
 # define BOOST_PP_FOR_CHECK_BOOST_PP_FOR_2(s, p, o, m) 0
 # define BOOST_PP_FOR_CHECK_BOOST_PP_FOR_3(s, p, o, m) 0

@@ -15,11 +15,16 @@
 # ifndef BOOST_PREPROCESSOR_REPETITION_DETAIL_DMC_FOR_HPP
 # define BOOST_PREPROCESSOR_REPETITION_DETAIL_DMC_FOR_HPP
 #
+# include <boost/preprocessor/control/expr_iif.hpp>
+# include <boost/preprocessor/control/iif.hpp>
+# include <boost/preprocessor/logical/bool.hpp>
+# include <boost/preprocessor/tuple/eat.hpp>
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_FOR == 256
 # include <boost/preprocessor/repetition/detail/dmc/limits/for_256.hpp>
 # elif BOOST_PP_LIMIT_FOR == 512
+# include <boost/preprocessor/repetition/detail/dmc/limits/for_256.hpp>
 # include <boost/preprocessor/repetition/detail/dmc/limits/for_512.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_FOR limit

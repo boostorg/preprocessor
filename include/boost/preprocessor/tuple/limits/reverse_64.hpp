@@ -15,40 +15,6 @@
 # ifndef BOOST_PREPROCESSOR_TUPLE_REVERSE_64_HPP
 # define BOOST_PREPROCESSOR_TUPLE_REVERSE_64_HPP
 #
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/facilities/overload.hpp>
-# include <boost/preprocessor/tuple/size.hpp>
-# include <boost/preprocessor/variadic/size.hpp>
-#
-# /* BOOST_PP_TUPLE_REVERSE */
-#
-# if BOOST_PP_VARIADICS
-#    if BOOST_PP_VARIADICS_MSVC
-#        define BOOST_PP_TUPLE_REVERSE(...) BOOST_PP_TUPLE_REVERSE_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REVERSE_O_, __VA_ARGS__), (__VA_ARGS__))
-#        define BOOST_PP_TUPLE_REVERSE_I(m, args) BOOST_PP_TUPLE_REVERSE_II(m, args)
-#        define BOOST_PP_TUPLE_REVERSE_II(m, args) BOOST_PP_CAT(m ## args,)
-#        define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_TUPLE_SIZE(tuple)) tuple
-#    else
-#        define BOOST_PP_TUPLE_REVERSE(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REVERSE_O_, __VA_ARGS__)(__VA_ARGS__)
-#        define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_VARIADIC_SIZE tuple) tuple
-#    endif
-#    define BOOST_PP_TUPLE_REVERSE_O_2(size, tuple) BOOST_PP_TUPLE_REVERSE_O_1(tuple)
-# else
-#    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#        define BOOST_PP_TUPLE_REVERSE(size, tuple) BOOST_PP_TUPLE_REVERSE_I(size, tuple)
-#        if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#            define BOOST_PP_TUPLE_REVERSE_I(s, t) BOOST_PP_TUPLE_REVERSE_ ## s t
-#        else
-#            define BOOST_PP_TUPLE_REVERSE_I(s, t) BOOST_PP_TUPLE_REVERSE_II(BOOST_PP_TUPLE_REVERSE_ ## s t)
-#            define BOOST_PP_TUPLE_REVERSE_II(res) res
-#        endif
-#    else
-#        define BOOST_PP_TUPLE_REVERSE(size, tuple) BOOST_PP_TUPLE_REVERSE_OO((size, tuple))
-#        define BOOST_PP_TUPLE_REVERSE_OO(par) BOOST_PP_TUPLE_REVERSE_I ## par
-#        define BOOST_PP_TUPLE_REVERSE_I(s, t) BOOST_PP_TUPLE_REVERSE_ ## s ## t
-#    endif
-# endif
 # define BOOST_PP_TUPLE_REVERSE_1(e0) (e0)
 # define BOOST_PP_TUPLE_REVERSE_2(e0, e1) (e1, e0)
 # define BOOST_PP_TUPLE_REVERSE_3(e0, e1, e2) (e2, e1, e0)

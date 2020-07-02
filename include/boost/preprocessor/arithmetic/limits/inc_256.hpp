@@ -14,19 +14,6 @@
 # ifndef BOOST_PREPROCESSOR_ARITHMETIC_INC_256_HPP
 # define BOOST_PREPROCESSOR_ARITHMETIC_INC_256_HPP
 #
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_INC */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_INC(x) BOOST_PP_INC_I(x)
-# else
-#    define BOOST_PP_INC(x) BOOST_PP_INC_OO((x))
-#    define BOOST_PP_INC_OO(par) BOOST_PP_INC_I ## par
-# endif
-#
-# define BOOST_PP_INC_I(x) BOOST_PP_INC_ ## x
-#
 # define BOOST_PP_INC_0 1
 # define BOOST_PP_INC_1 2
 # define BOOST_PP_INC_2 3

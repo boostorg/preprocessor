@@ -15,16 +15,47 @@
 # ifndef BOOST_PREPROCESSOR_LIST_FOLD_LEFT_HPP
 # define BOOST_PREPROCESSOR_LIST_FOLD_LEFT_HPP
 #
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/debug/error.hpp>
+# include <boost/preprocessor/detail/auto_rec.hpp>
+# include <boost/preprocessor/config/limits.hpp>
+#
 # /* BOOST_PP_LIST_FOLD_LEFT */
 #
-# include <boost/preprocessor/config/limits.hpp>
+# if 0
+#    define BOOST_PP_LIST_FOLD_LEFT(op, state, list)
+# endif
+#
+# if BOOST_PP_LIMIT_WHILE == 256
+# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256))
+# define BOOST_PP_LIST_FOLD_LEFT_257(o, s, l) BOOST_PP_ERROR(0x0004)
+# elif BOOST_PP_LIMIT_WHILE == 512
+# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512))
+# define BOOST_PP_LIST_FOLD_LEFT_513(o, s, l) BOOST_PP_ERROR(0x0004)
+# else
+# error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
+# endif
+#
+# define BOOST_PP_LIST_FOLD_LEFT_D(d, o, s, l) BOOST_PP_LIST_FOLD_LEFT_ ## d(o, s, l)
+# define BOOST_PP_LIST_FOLD_LEFT_2ND BOOST_PP_LIST_FOLD_LEFT
+# define BOOST_PP_LIST_FOLD_LEFT_2ND_D BOOST_PP_LIST_FOLD_LEFT_D
+#
+# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    include <boost/preprocessor/list/detail/edg/fold_left.hpp>
+# elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
+#    include <boost/preprocessor/list/detail/dmc/fold_left.hpp>
+# else
+#    include <boost/preprocessor/list/detail/fold_left.hpp>
+# endif
+#
+# define BOOST_PP_LIST_FOLD_LEFT_CHECK_BOOST_PP_NIL 1
 #
 # if BOOST_PP_LIMIT_WHILE == 256
 # include <boost/preprocessor/list/limits/fold_left_256.hpp>
 # elif BOOST_PP_LIMIT_WHILE == 512
+# include <boost/preprocessor/list/limits/fold_left_256.hpp>
 # include <boost/preprocessor/list/limits/fold_left_512.hpp>
-# else
-# error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
 # endif
 #
 # endif

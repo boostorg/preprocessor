@@ -15,6 +15,8 @@
 # ifndef BOOST_PREPROCESSOR_ARITHMETIC_INC_HPP
 # define BOOST_PREPROCESSOR_ARITHMETIC_INC_HPP
 #
+# include <boost/preprocessor/config/config.hpp>
+#
 # /* BOOST_PP_INC */
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()

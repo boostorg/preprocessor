@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <meta content="text/html; charset=windows-1252"
@@ -141,8 +141,8 @@
     <div> In the C++20 specification there is a new construct which can
       be used in the expansion of a variadic macro, called __VA_OPT__.
       This construct when used in the expansion of a variadic macro is
-      followed by an opening paranthesis ('('), preprocessor data, and a
-      closing parenthesis ('}'). When the variadic data passed by the
+      followed by an opening paranthesis '(', preprocessor data, and a
+      closing parenthesis ')'. When the variadic data passed by the
       invocation of a variadic macro is empty, this new construct
       expands to nothing. When the variadic data passed by the
       invocation of a variadic macro is not empty, this new construct
@@ -159,21 +159,23 @@
       it returns 0. <br>
       <br>
       When the __VA_OPT__ construct is supported in C++20 mode the
-      variadic data passed to the variadic macros can be empty,
-      otherwise when not in this mode variadic data passed to the
-      variadic macros should never be empty. In this C+++20 mode
-      invoking BOOST_PP_VARIADIC_SIZE with empty data expands to 0,
-      invoking BOOST_PP_VARIADIC_TO_ARRAY with empty data expands to the
-      empty array '(0,())', and invoking BOOST_PP_VARIADIC_TO_LIST with
-      empty data expands to the empty list 'BOOST_PP_NIL'. Similarly in
-      this C++20 mode passing an empty array '(0,())' to
-      BOOST_PP_ARRAY_ENUM expands to empty variadic data and passing an
-      empty list 'BOOST_PP_NIL' to BOOST_PP_LIST_ENUM also expands to
-      empty variadic data. Neither a seq or a tuple can be empty so
-      passing empty variadic data to either BOOST_PP_VARIADIC_TO_SEQ or
+      variadic data passed to the variadic macros and to
+      BOOST_PP_OVERLOAD can be empty, otherwise when not in this mode
+      variadic data passed to the variadic macros should never be empty.
+      In this C+++20 mode invoking BOOST_PP_VARIADIC_SIZE with empty
+      data expands to 0, invoking BOOST_PP_VARIADIC_TO_ARRAY with empty
+      data expands to the empty array '(0,())', invoking
+      BOOST_PP_VARIADIC_TO_LIST with empty data expands to the empty
+      list 'BOOST_PP_NIL', and invoking BOOST_PP_OVERLOAD with empty
+      data creates an overload name with 0 appended. Similarly in this
+      C++20 mode passing an empty array '(0,())' to BOOST_PP_ARRAY_ENUM
+      expands to empty variadic data and passing an empty list
+      'BOOST_PP_NIL' to BOOST_PP_LIST_ENUM also expands to empty
+      variadic data. Neither a seq or a tuple can be empty so passing
+      empty variadic data to either BOOST_PP_VARIADIC_TO_SEQ or
       BOOST_PP_VARIADIC_TO_TUPLE is erroneous. Likewise passing empty
       data to BOOST_PP_VARIADIC_ELEM is always erroneous since there are
-      no tokens of variadic data to access. <br>
+      no tokens of variadic data to access.<br>
     </div>
     <u style="font-weight: bold;"> Using a Tuple Instead of an Array<br>
     </u>

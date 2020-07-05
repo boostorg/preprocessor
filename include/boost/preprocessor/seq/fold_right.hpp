@@ -29,17 +29,11 @@
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_SEQ == 256
-#
 # define BOOST_PP_SEQ_FOLD_RIGHT BOOST_PP_CAT(BOOST_PP_SEQ_FOLD_RIGHT_, BOOST_PP_AUTO_REC(BOOST_PP_SEQ_FOLD_LEFT_P, 256))
-#
 # define BOOST_PP_SEQ_FOLD_RIGHT_257(op, st, ss) BOOST_PP_ERROR(0x0005)
-#
 # elif BOOST_PP_LIMIT_SEQ == 512
-#
 # define BOOST_PP_SEQ_FOLD_RIGHT BOOST_PP_CAT(BOOST_PP_SEQ_FOLD_RIGHT_, BOOST_PP_AUTO_REC(BOOST_PP_SEQ_FOLD_LEFT_P, 512))
-#
 # define BOOST_PP_SEQ_FOLD_RIGHT_513(op, st, ss) BOOST_PP_ERROR(0x0005)
-#
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_SEQ limit
 # endif

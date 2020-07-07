@@ -15,6 +15,7 @@
 # ifndef BOOST_PREPROCESSOR_LIST_FOLD_LEFT_HPP
 # define BOOST_PREPROCESSOR_LIST_FOLD_LEFT_HPP
 #
+# include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/control/while.hpp>
 # include <boost/preprocessor/debug/error.hpp>
@@ -28,10 +29,10 @@
 # endif
 #
 # if BOOST_PP_LIMIT_WHILE == 256
-# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256))
+# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256)))
 # define BOOST_PP_LIST_FOLD_LEFT_257(o, s, l) BOOST_PP_ERROR(0x0004)
 # elif BOOST_PP_LIMIT_WHILE == 512
-# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512))
+# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512)))
 # define BOOST_PP_LIST_FOLD_LEFT_513(o, s, l) BOOST_PP_ERROR(0x0004)
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit

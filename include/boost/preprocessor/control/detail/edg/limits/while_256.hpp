@@ -14,6 +14,7 @@
 # ifndef BOOST_PREPROCESSOR_CONTROL_DETAIL_EDG_WHILE_256_HPP
 # define BOOST_PREPROCESSOR_CONTROL_DETAIL_EDG_WHILE_256_HPP
 #
+# define BOOST_PP_WHILE_0(p, o, s) BOOST_PP_WHILE_0_I(p, o, s)
 # define BOOST_PP_WHILE_1(p, o, s) BOOST_PP_WHILE_1_I(p, o, s)
 # define BOOST_PP_WHILE_2(p, o, s) BOOST_PP_WHILE_2_I(p, o, s)
 # define BOOST_PP_WHILE_3(p, o, s) BOOST_PP_WHILE_3_I(p, o, s)
@@ -271,6 +272,7 @@
 # define BOOST_PP_WHILE_255(p, o, s) BOOST_PP_WHILE_255_I(p, o, s)
 # define BOOST_PP_WHILE_256(p, o, s) BOOST_PP_WHILE_256_I(p, o, s)
 #
+# define BOOST_PP_WHILE_0_I(p, o, s) BOOST_PP_IF(p(1, s), BOOST_PP_WHILE_1, s BOOST_PP_TUPLE_EAT_3)(p, o, o(1, s))
 # define BOOST_PP_WHILE_1_I(p, o, s) BOOST_PP_IF(p(2, s), BOOST_PP_WHILE_2, s BOOST_PP_TUPLE_EAT_3)(p, o, o(2, s))
 # define BOOST_PP_WHILE_2_I(p, o, s) BOOST_PP_IF(p(3, s), BOOST_PP_WHILE_3, s BOOST_PP_TUPLE_EAT_3)(p, o, o(3, s))
 # define BOOST_PP_WHILE_3_I(p, o, s) BOOST_PP_IF(p(4, s), BOOST_PP_WHILE_4, s BOOST_PP_TUPLE_EAT_3)(p, o, o(4, s))

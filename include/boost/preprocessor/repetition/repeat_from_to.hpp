@@ -18,6 +18,7 @@
 # /* BOOST_PP_REPEAT_FROM_TO */
 #
 # include <boost/preprocessor/arithmetic/add.hpp>
+# include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/arithmetic/sub.hpp>
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/config/config.hpp>
@@ -39,13 +40,13 @@
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_REPEAT == 256
-# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
-# define BOOST_PP_REPEAT_FROM_TO_2(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_2(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
-# define BOOST_PP_REPEAT_FROM_TO_3(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_3(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256)), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_2(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_2(BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256)), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_3(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_3(BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256)), f, l, m, dt)
 # elif BOOST_PP_LIMIT_REPEAT == 512
-# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512), f, l, m, dt)
-# define BOOST_PP_REPEAT_FROM_TO_2(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_2(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512), f, l, m, dt)
-# define BOOST_PP_REPEAT_FROM_TO_3(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_3(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512)), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_2(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_2(BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512)), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_3(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_3(BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512)), f, l, m, dt)
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_REPEAT limit
 # endif

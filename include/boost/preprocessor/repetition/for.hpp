@@ -15,6 +15,7 @@
 # ifndef BOOST_PREPROCESSOR_REPETITION_FOR_HPP
 # define BOOST_PREPROCESSOR_REPETITION_FOR_HPP
 #
+# include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/debug/error.hpp>
 # include <boost/preprocessor/facilities/empty.hpp>
@@ -29,14 +30,15 @@
 # endif
 #
 # if BOOST_PP_LIMIT_FOR == 256
-# define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256))
+# define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256)))
 # elif BOOST_PP_LIMIT_FOR == 512
-# define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 512))
+# define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 512)))
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_FOR limit
 # endif
 #
-# define BOOST_PP_FOR_P(n) BOOST_PP_CAT(BOOST_PP_FOR_CHECK_, BOOST_PP_FOR_ ## n(1, BOOST_PP_FOR_SR_P, BOOST_PP_FOR_SR_O, BOOST_PP_FOR_SR_M))
+# define BOOST_PP_FOR_P(n) BOOST_PP_FOR_P_DEC(BOOST_PP_DEC(n))
+# define BOOST_PP_FOR_P_DEC(n) BOOST_PP_CAT(BOOST_PP_FOR_CHECK_, BOOST_PP_CAT(BOOST_PP_FOR_ , n)(1, BOOST_PP_FOR_SR_P, BOOST_PP_FOR_SR_O, BOOST_PP_FOR_SR_M))
 #
 # define BOOST_PP_FOR_SR_P(r, s) s
 # define BOOST_PP_FOR_SR_O(r, s) 0

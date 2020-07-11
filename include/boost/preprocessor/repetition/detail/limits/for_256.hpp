@@ -14,6 +14,7 @@
 # ifndef BOOST_PREPROCESSOR_REPETITION_DETAIL_FOR_256_HPP
 # define BOOST_PREPROCESSOR_REPETITION_DETAIL_FOR_256_HPP
 #
+# define BOOST_PP_FOR_0(s, p, o, m) BOOST_PP_FOR_0_C(BOOST_PP_BOOL(p(1, s)), s, p, o, m)
 # define BOOST_PP_FOR_1(s, p, o, m) BOOST_PP_FOR_1_C(BOOST_PP_BOOL(p(2, s)), s, p, o, m)
 # define BOOST_PP_FOR_2(s, p, o, m) BOOST_PP_FOR_2_C(BOOST_PP_BOOL(p(3, s)), s, p, o, m)
 # define BOOST_PP_FOR_3(s, p, o, m) BOOST_PP_FOR_3_C(BOOST_PP_BOOL(p(4, s)), s, p, o, m)
@@ -271,6 +272,7 @@
 # define BOOST_PP_FOR_255(s, p, o, m) BOOST_PP_FOR_255_C(BOOST_PP_BOOL(p(256, s)), s, p, o, m)
 # define BOOST_PP_FOR_256(s, p, o, m) BOOST_PP_FOR_256_C(BOOST_PP_BOOL(p(257, s)), s, p, o, m)
 #
+# define BOOST_PP_FOR_0_C(c, s, p, o, m) BOOST_PP_IIF(c, m, BOOST_PP_TUPLE_EAT_2)(1, s) BOOST_PP_IIF(c, BOOST_PP_FOR_1, BOOST_PP_TUPLE_EAT_4)(BOOST_PP_EXPR_IIF(c, o)(1, s), p, o, m)
 # define BOOST_PP_FOR_1_C(c, s, p, o, m) BOOST_PP_IIF(c, m, BOOST_PP_TUPLE_EAT_2)(2, s) BOOST_PP_IIF(c, BOOST_PP_FOR_2, BOOST_PP_TUPLE_EAT_4)(BOOST_PP_EXPR_IIF(c, o)(2, s), p, o, m)
 # define BOOST_PP_FOR_2_C(c, s, p, o, m) BOOST_PP_IIF(c, m, BOOST_PP_TUPLE_EAT_2)(3, s) BOOST_PP_IIF(c, BOOST_PP_FOR_3, BOOST_PP_TUPLE_EAT_4)(BOOST_PP_EXPR_IIF(c, o)(3, s), p, o, m)
 # define BOOST_PP_FOR_3_C(c, s, p, o, m) BOOST_PP_IIF(c, m, BOOST_PP_TUPLE_EAT_2)(4, s) BOOST_PP_IIF(c, BOOST_PP_FOR_4, BOOST_PP_TUPLE_EAT_4)(BOOST_PP_EXPR_IIF(c, o)(4, s), p, o, m)

@@ -82,7 +82,7 @@ alias preprocessor_number_512
         [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=512 : debug_num ]
         [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=512 : facilities_num ]
         [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=512 : iteration_num ]
-        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=512 : list_num ]
+        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_FOR=512 : list_num ]
         [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=512 : logical_num ]
         [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=512 : repetition_num ]
         [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=512 : selection_num ]
@@ -360,6 +360,7 @@ alias preprocessor_c_nvm_num
         [ compile list.c 
           : <define>BOOST_PP_VARIADICS=0
             <define>BOOST_PP_LIMIT_MAG=512
+            <define>BOOST_PP_LIMIT_FOR=512
           : list_c_nvm_num 
         ]
         [ compile logical.c 

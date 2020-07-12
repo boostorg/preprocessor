@@ -61,6 +61,6 @@
 # else
 #    define BOOST_PP_LIST_SIZE_DO_D(d, list) BOOST_PP_LIST_SIZE_D_I(d, list)
 #    define BOOST_PP_LIST_SIZE_D_I(d, list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (1, list)))
-/ endif
+# endif
 #
 # endif

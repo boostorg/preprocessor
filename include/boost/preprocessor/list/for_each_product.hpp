@@ -78,7 +78,7 @@
 # else
 #    if BOOST_PP_VARIADICS
 #        define BOOST_PP_LIST_FOR_EACH_PRODUCT_R(r, macro, ...) BOOST_PP_LIST_FOR_EACH_PRODUCT_R_Q(r, macro, __VA_ARGS__)
-#        define BOOST_PP_LIST_FOR_EACH_PRODUCT_R_Q(r, macro, ...) BOOST_PP_OVERLOAD(BOOST_PP_LIST_FOR_EACH_PRODUCT_R_OV_,__VA_ARGS__)(macro,__VA_ARGS__)
+#        define BOOST_PP_LIST_FOR_EACH_PRODUCT_R_Q(r, macro, ...) BOOST_PP_OVERLOAD(BOOST_PP_LIST_FOR_EACH_PRODUCT_R_OV_,__VA_ARGS__)(r, macro,__VA_ARGS__)
 #    else
 #        define BOOST_PP_LIST_FOR_EACH_PRODUCT_R(r, macro, size, tuple) BOOST_PP_LIST_FOR_EACH_PRODUCT_R_Q(r, macro, size, tuple)
 #        define BOOST_PP_LIST_FOR_EACH_PRODUCT_R_Q(r, macro, size, tuple) BOOST_PP_LIST_FOR_EACH_PRODUCT_R_OV_2(r, macro, size, tuple)

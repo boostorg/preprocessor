@@ -91,7 +91,6 @@ alias preprocessor_number_512
         [ compile stringize.cpp : <define>BOOST_PP_LIMIT_MAG=512 : stringize_num ]
         [ compile tuple.cpp : <define>BOOST_PP_LIMIT_MAG=512 : tuple_num ]
         [ compile variadic.cpp : <define>BOOST_PP_LIMIT_MAG=512 : variadic_num ]
-
   ;
 
 alias preprocessor_v_128
@@ -395,6 +394,27 @@ alias preprocessor_c_nvm_num
         ]
   ;
 
+alias preprocessor_number_rep_512
+   :   
+        [ compile repetition.cpp : 
+          <define>BOOST_PP_LIMIT_MAG=512 
+          <define>BOOST_PP_LIMIT_REPEAT=512 
+          <define>BOOST_PP_LIMIT_FOR=512 
+          : repetition_rep_num 
+        ]
+  ;
+  
+alias preprocessor_number_nvm_rep_512
+   :   
+        [ compile repetition.cpp : 
+          <define>BOOST_PP_LIMIT_MAG=512 
+          <define>BOOST_PP_LIMIT_REPEAT=512 
+          <define>BOOST_PP_LIMIT_FOR=512 
+          <define>BOOST_PP_VARIADICS=0 
+          : repetition_nvm_rep_num 
+        ]
+  ;
+  
 alias preprocessor_isempty : : 
         <toolset>gcc
         <toolset-gcc:version>3.4

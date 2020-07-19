@@ -13,7 +13,9 @@
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/comparison/equal.hpp>
 # include <boost/preprocessor/comparison/not_equal.hpp>
+# include <boost/preprocessor/control/iif.hpp>
 # include <boost/preprocessor/facilities/intercept.hpp>
+# include <boost/preprocessor/logical/bitor.hpp>
 # include <boost/preprocessor/repetition.hpp>
 # include <libs/preprocessor/test/test.h>
 
@@ -43,8 +45,56 @@ template<BOOST_PP_ENUM_PARAMS(MAX, class T)> struct no_rescan;
 # define F1(z, n, p) p n
 BEGIN 1 + (4+5+6) BOOST_PP_REPEAT_FROM_TO(4, 7, F1, -) END
 
+# if BOOST_PP_LIMIT_REPEAT == 512
+
+# define RP512M(z,n,data)                      \
+    struct BOOST_PP_CAT(data,BOOST_PP_INC(n)); \
+/* */
+
+BOOST_PP_REPEAT_FROM_TO(508,512,RP512M,r512_t)
+
+#endif
+
 # define PRED(r, state) BOOST_PP_NOT_EQUAL(state, BOOST_PP_INC(MAX))
 # define OP(r, state) BOOST_PP_INC(state)
 # define MACRO(r, state) BOOST_PP_COMMA_IF(BOOST_PP_NOT_EQUAL(state, 1)) BOOST_PP_CAT(class T, state)
 
 template<BOOST_PP_FOR(1, PRED, OP, MACRO)> struct for_test;
+
+# if BOOST_PP_LIMIT_FOR == 512
+
+# define PRED512(r, state) BOOST_PP_NOT_EQUAL(state, 512)
+
+# define MACRO512_NUL(state)
+
+# define MACRO512_OUT(state) struct BOOST_PP_CAT(f_512t,state);
+
+# define MACRO512(r, state)                    \
+    BOOST_PP_IIF                               \
+        (                                      \
+        BOOST_PP_BITOR                         \
+            (                                  \
+            BOOST_PP_BITOR                     \
+                (                              \
+                BOOST_PP_EQUAL(state,100),     \
+                BOOST_PP_EQUAL(state,200)      \
+                ),                             \
+            BOOST_PP_BITOR                     \
+                (                              \
+                BOOST_PP_BITOR                 \
+                    (                          \
+                    BOOST_PP_EQUAL(state,300), \
+                    BOOST_PP_EQUAL(state,400)  \
+                    ),                         \
+                BOOST_PP_EQUAL(state,500)      \
+                )                              \
+            ),                                 \
+        MACRO512_OUT,                          \
+        MACRO512_NUL                           \
+        )                                      \
+    (state)                                    \
+/* */
+
+BOOST_PP_FOR(0, PRED512, OP, MACRO512)
+
+#endif

@@ -25,6 +25,10 @@
 # elif BOOST_PP_LIMIT_WHILE == 512
 # include <boost/preprocessor/control/detail/edg/limits/while_256.hpp>
 # include <boost/preprocessor/control/detail/edg/limits/while_512.hpp>
+# elif BOOST_PP_LIMIT_WHILE == 1024
+# include <boost/preprocessor/control/detail/edg/limits/while_256.hpp>
+# include <boost/preprocessor/control/detail/edg/limits/while_512.hpp>
+# include <boost/preprocessor/control/detail/edg/limits/while_1024.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
 # endif

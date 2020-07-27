@@ -33,6 +33,10 @@
 # elif BOOST_PP_LIMIT_MAG == 512
 # include <boost/preprocessor/detail/limits/auto_rec_256.hpp>
 # include <boost/preprocessor/detail/limits/auto_rec_512.hpp>
+# elif BOOST_PP_LIMIT_MAG == 1024
+# include <boost/preprocessor/detail/limits/auto_rec_256.hpp>
+# include <boost/preprocessor/detail/limits/auto_rec_512.hpp>
+# include <boost/preprocessor/detail/limits/auto_rec_1024.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit
 # endif

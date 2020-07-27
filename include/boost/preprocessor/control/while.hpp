@@ -33,8 +33,10 @@
 #
 # if BOOST_PP_LIMIT_WHILE == 256
 # define BOOST_PP_WHILE BOOST_PP_CAT(BOOST_PP_WHILE_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256)))
-# elif BOOST_PP_LIMIT_MAG == 512
+# elif BOOST_PP_LIMIT_WHILE == 512
 # define BOOST_PP_WHILE BOOST_PP_CAT(BOOST_PP_WHILE_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512)))
+# elif BOOST_PP_LIMIT_WHILE == 1024
+# define BOOST_PP_WHILE BOOST_PP_CAT(BOOST_PP_WHILE_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 1024)))
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
 # endif
@@ -61,17 +63,23 @@
 #
 # if BOOST_PP_LIMIT_WHILE == 256
 # define BOOST_PP_WHILE_257(p, o, s) BOOST_PP_ERROR(0x0001)
-# elif BOOST_PP_LIMIT_MAG == 512
+# elif BOOST_PP_LIMIT_WHILE == 512
 # define BOOST_PP_WHILE_513(p, o, s) BOOST_PP_ERROR(0x0001)
+# elif BOOST_PP_LIMIT_WHILE == 1024
+# define BOOST_PP_WHILE_1025(p, o, s) BOOST_PP_ERROR(0x0001)
 # endif
 #
 # define BOOST_PP_WHILE_CHECK_BOOST_PP_NIL 1
 #
 # if BOOST_PP_LIMIT_WHILE == 256
 # include <boost/preprocessor/control/limits/while_256.hpp>
-# elif BOOST_PP_LIMIT_MAG == 512
+# elif BOOST_PP_LIMIT_WHILE == 512
 # include <boost/preprocessor/control/limits/while_256.hpp>
 # include <boost/preprocessor/control/limits/while_512.hpp>
+# elif BOOST_PP_LIMIT_WHILE == 1024
+# include <boost/preprocessor/control/limits/while_256.hpp>
+# include <boost/preprocessor/control/limits/while_512.hpp>
+# include <boost/preprocessor/control/limits/while_1024.hpp>
 # endif
 #
 # endif

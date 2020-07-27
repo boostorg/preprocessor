@@ -35,6 +35,10 @@
 # elif BOOST_PP_LIMIT_MAG == 512
 # include <boost/preprocessor/arithmetic/limits/inc_256.hpp>
 # include <boost/preprocessor/arithmetic/limits/inc_512.hpp>
+# elif BOOST_PP_LIMIT_MAG == 1024
+# include <boost/preprocessor/arithmetic/limits/inc_256.hpp>
+# include <boost/preprocessor/arithmetic/limits/inc_512.hpp>
+# include <boost/preprocessor/arithmetic/limits/inc_1024.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_MAG limit
 # endif

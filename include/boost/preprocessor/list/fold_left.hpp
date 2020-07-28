@@ -34,6 +34,9 @@
 # elif BOOST_PP_LIMIT_WHILE == 512
 # define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 512)))
 # define BOOST_PP_LIST_FOLD_LEFT_513(o, s, l) BOOST_PP_ERROR(0x0004)
+# elif BOOST_PP_LIMIT_WHILE == 1024
+# define BOOST_PP_LIST_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_LIST_FOLD_LEFT_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 1024)))
+# define BOOST_PP_LIST_FOLD_LEFT_1025(o, s, l) BOOST_PP_ERROR(0x0004)
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
 # endif
@@ -57,6 +60,10 @@
 # elif BOOST_PP_LIMIT_WHILE == 512
 # include <boost/preprocessor/list/limits/fold_left_256.hpp>
 # include <boost/preprocessor/list/limits/fold_left_512.hpp>
+# elif BOOST_PP_LIMIT_WHILE == 1024
+# include <boost/preprocessor/list/limits/fold_left_256.hpp>
+# include <boost/preprocessor/list/limits/fold_left_512.hpp>
+# include <boost/preprocessor/list/limits/fold_left_1024.hpp>
 # endif
 #
 # endif

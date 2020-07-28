@@ -12,18 +12,6 @@
 # ifndef BOOST_PREPROCESSOR_SEQ_DETAIL_SPLIT_256_HPP
 # define BOOST_PREPROCESSOR_SEQ_DETAIL_SPLIT_256_HPP
 #
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_SEQ_SPLIT */
-#
-# define BOOST_PP_SEQ_SPLIT(n, seq) BOOST_PP_SEQ_SPLIT_D(n, seq)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_SEQ_SPLIT_D(n, seq) (BOOST_PP_SEQ_SPLIT_ ## n seq)
-# else
-#    define BOOST_PP_SEQ_SPLIT_D(n, seq) (BOOST_PP_SEQ_SPLIT_ ## n ## seq)
-# endif
-#
 # define BOOST_PP_SEQ_SPLIT_1(x) (x),
 # define BOOST_PP_SEQ_SPLIT_2(x) (x) BOOST_PP_SEQ_SPLIT_1
 # define BOOST_PP_SEQ_SPLIT_3(x) (x) BOOST_PP_SEQ_SPLIT_2

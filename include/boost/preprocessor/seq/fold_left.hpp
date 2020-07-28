@@ -34,6 +34,8 @@
 # define BOOST_PP_SEQ_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_SEQ_FOLD_LEFT_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_SEQ_FOLD_LEFT_P, 256)))
 # elif BOOST_PP_LIMIT_SEQ == 512
 # define BOOST_PP_SEQ_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_SEQ_FOLD_LEFT_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_SEQ_FOLD_LEFT_P, 512)))
+# elif BOOST_PP_LIMIT_SEQ == 1024
+# define BOOST_PP_SEQ_FOLD_LEFT BOOST_PP_CAT(BOOST_PP_SEQ_FOLD_LEFT_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_SEQ_FOLD_LEFT_P, 1024)))
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_SEQ limit
 # endif
@@ -59,6 +61,10 @@
 # elif BOOST_PP_LIMIT_SEQ == 512
 # include <boost/preprocessor/seq/limits/fold_left_256.hpp>
 # include <boost/preprocessor/seq/limits/fold_left_512.hpp>
+# elif BOOST_PP_LIMIT_SEQ == 1024
+# include <boost/preprocessor/seq/limits/fold_left_256.hpp>
+# include <boost/preprocessor/seq/limits/fold_left_512.hpp>
+# include <boost/preprocessor/seq/limits/fold_left_1024.hpp>
 # endif
 #
 # endif

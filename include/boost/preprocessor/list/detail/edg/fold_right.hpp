@@ -20,11 +20,17 @@
 # include <boost/preprocessor/tuple/eat.hpp>
 # include <boost/preprocessor/config/limits.hpp>
 #
+# define BOOST_PP_LIST_FOLD_RIGHT_CHECK_BOOST_PP_NIL 1
+#
 # if BOOST_PP_LIMIT_WHILE == 256
 # include <boost/preprocessor/list/detail/edg/limits/fold_right_256.hpp>
 # elif BOOST_PP_LIMIT_WHILE == 512
 # include <boost/preprocessor/list/detail/edg/limits/fold_right_256.hpp>
 # include <boost/preprocessor/list/detail/edg/limits/fold_right_512.hpp>
+# elif BOOST_PP_LIMIT_WHILE == 1024
+# include <boost/preprocessor/list/detail/edg/limits/fold_right_256.hpp>
+# include <boost/preprocessor/list/detail/edg/limits/fold_right_512.hpp>
+# include <boost/preprocessor/list/detail/edg/limits/fold_right_1024.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_WHILE limit
 # endif

@@ -40,6 +40,10 @@
 #    elif BOOST_PP_LIMIT_ITERATION == 512
 #    include <boost/preprocessor/iteration/detail/limits/local_256.hpp>
 #    include <boost/preprocessor/iteration/detail/limits/local_512.hpp>
+#    elif BOOST_PP_LIMIT_ITERATION == 1024
+#    include <boost/preprocessor/iteration/detail/limits/local_256.hpp>
+#    include <boost/preprocessor/iteration/detail/limits/local_512.hpp>
+#    include <boost/preprocessor/iteration/detail/limits/local_1024.hpp>
 #    else
 #    error Incorrect value for the BOOST_PP_LIMIT_ITERATION limit
 #    endif

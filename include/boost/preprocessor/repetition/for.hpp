@@ -33,6 +33,8 @@
 # define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256)))
 # elif BOOST_PP_LIMIT_FOR == 512
 # define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 512)))
+# elif BOOST_PP_LIMIT_FOR == 1024
+# define BOOST_PP_FOR BOOST_PP_CAT(BOOST_PP_FOR_, BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 1024)))
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_FOR limit
 # endif
@@ -72,15 +74,10 @@
         ) \
     () \
 /**/
-// # define BOOST_PP_FOR_257(s, p, o, m) BOOST_PP_ERROR(0x0002)
 #
 # elif BOOST_PP_LIMIT_FOR == 512
 #
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-# define BOOST_PP_FOR_513_PR(s, p) BOOST_PP_BOOL(p##(513, s))
-# else
 # define BOOST_PP_FOR_513_PR(s, p) BOOST_PP_BOOL(p(513, s))
-# endif
 
 # define BOOST_PP_FOR_513_ERROR() BOOST_PP_ERROR(0x0002)
 # define BOOST_PP_FOR_513(s, p, o, m) \
@@ -92,7 +89,21 @@
         ) \
     () \
 /**/
-// # define BOOST_PP_FOR_513(s, p, o, m) BOOST_PP_ERROR(0x0002)
+#
+# elif BOOST_PP_LIMIT_FOR == 1024
+#
+# define BOOST_PP_FOR_1025_PR(s, p) BOOST_PP_BOOL(p(1025, s))
+
+# define BOOST_PP_FOR_1025_ERROR() BOOST_PP_ERROR(0x0002)
+# define BOOST_PP_FOR_1025(s, p, o, m) \
+    BOOST_PP_IIF \
+        ( \
+        BOOST_PP_FOR_1025_PR(s,p), \
+        BOOST_PP_FOR_1025_ERROR, \
+        BOOST_PP_EMPTY \
+        ) \
+    () \
+/**/
 #
 # endif
 #
@@ -103,6 +114,10 @@
 # elif BOOST_PP_LIMIT_FOR == 512
 # include <boost/preprocessor/repetition/limits/for_256.hpp>
 # include <boost/preprocessor/repetition/limits/for_512.hpp>
+# elif BOOST_PP_LIMIT_FOR == 1024
+# include <boost/preprocessor/repetition/limits/for_256.hpp>
+# include <boost/preprocessor/repetition/limits/for_512.hpp>
+# include <boost/preprocessor/repetition/limits/for_1024.hpp>
 # endif
 #
 # endif

@@ -55,6 +55,16 @@ BOOST_PP_REPEAT_FROM_TO(508,512,RP512M,r512_t)
 
 #endif
 
+# if BOOST_PP_LIMIT_REPEAT == 1024
+
+# define RP1024M(z,n,data)                      \
+    struct BOOST_PP_CAT(data,BOOST_PP_INC(n)); \
+/* */
+
+BOOST_PP_REPEAT_FROM_TO(1010,1024,RP1024M,r1024_t)
+
+#endif
+
 # define PRED(r, state) BOOST_PP_NOT_EQUAL(state, BOOST_PP_INC(MAX))
 # define OP(r, state) BOOST_PP_INC(state)
 # define MACRO(r, state) BOOST_PP_COMMA_IF(BOOST_PP_NOT_EQUAL(state, 1)) BOOST_PP_CAT(class T, state)
@@ -96,5 +106,63 @@ template<BOOST_PP_FOR(1, PRED, OP, MACRO)> struct for_test;
 /* */
 
 BOOST_PP_FOR(0, PRED512, OP, MACRO512)
+
+#endif
+
+# if BOOST_PP_LIMIT_FOR == 1024
+
+# define PRED1024(r, state) BOOST_PP_NOT_EQUAL(state, 1024)
+
+# define MACRO1024_NUL(state)
+
+# define MACRO1024_OUT(state) struct BOOST_PP_CAT(f_1024t,state);
+
+# define MACRO1024(r, state)                       \
+    BOOST_PP_IIF                                   \
+        (                                          \
+        BOOST_PP_BITOR                             \
+            (                                      \
+            BOOST_PP_BITOR                         \
+                (                                  \
+                BOOST_PP_BITOR                     \
+                    (                              \
+                    BOOST_PP_EQUAL(state,100),     \
+                    BOOST_PP_EQUAL(state,200)      \
+                    ),                             \
+                BOOST_PP_BITOR                     \
+                    (                              \
+                    BOOST_PP_BITOR                 \
+                        (                          \
+                        BOOST_PP_EQUAL(state,300), \
+                        BOOST_PP_EQUAL(state,400)  \
+                        ),                         \
+                    BOOST_PP_EQUAL(state,500)      \
+                    )                              \
+                ),                                 \
+            BOOST_PP_BITOR                         \
+                (                                  \
+                BOOST_PP_BITOR                     \
+                    (                              \
+                    BOOST_PP_EQUAL(state,600),     \
+                    BOOST_PP_EQUAL(state,700)      \
+                    ),                             \
+                BOOST_PP_BITOR                     \
+                    (                              \
+                    BOOST_PP_BITOR                 \
+                        (                          \
+                        BOOST_PP_EQUAL(state,800), \
+                        BOOST_PP_EQUAL(state,900)  \
+                        ),                         \
+                    BOOST_PP_EQUAL(state,1000)     \
+                    )                              \
+                )                                  \
+            ),                                     \
+        MACRO1024_OUT,                             \
+        MACRO1024_NUL                              \
+        )                                          \
+    (state)                                        \
+/* */
+
+BOOST_PP_FOR(0, PRED1024, OP, MACRO1024)
 
 #endif

@@ -75,22 +75,22 @@ alias preprocessor_nvm
 
 alias preprocessor_number_512
    :   
-        [ compile arithmetic.cpp : <define>BOOST_PP_LIMIT_MAG=512 : arithmetic_num ]
-        [ compile array.cpp : <define>BOOST_PP_LIMIT_MAG=512 : array_num ]
-        [ compile comparison.cpp : <define>BOOST_PP_LIMIT_MAG=512 : comparison_num ]
-        [ compile control.cpp : <define>BOOST_PP_LIMIT_MAG=512 : control_num ]
-        [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=512 : debug_num ]
-        [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=512 : facilities_num ]
-        [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_ITERATION=512 : iteration_num ]
-        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_FOR=512 : list_num ]
-        [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=512 : logical_num ]
-        [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=512 : repetition_num ]
-        [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=512 : selection_num ]
-        [ compile seq.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_SEQ=512 : seq_num ]
-        [ compile slot.cpp : <define>BOOST_PP_LIMIT_MAG=512 : slot_num ]
-        [ compile stringize.cpp : <define>BOOST_PP_LIMIT_MAG=512 : stringize_num ]
-        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_MAG=512 : tuple_num ]
-        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_MAG=512 : variadic_num ]
+        [ compile arithmetic.cpp : <define>BOOST_PP_LIMIT_MAG=512 : arithmetic_num_512 ]
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_MAG=512 : array_num_512 ]
+        [ compile comparison.cpp : <define>BOOST_PP_LIMIT_MAG=512 : comparison_num_512 ]
+        [ compile control.cpp : <define>BOOST_PP_LIMIT_MAG=512 : control_num_512 ]
+        [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=512 : debug_num_512 ]
+        [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=512 : facilities_num_512 ]
+        [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_ITERATION=512 : iteration_num_512 ]
+        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_FOR=512 : list_num_512 ]
+        [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=512 : logical_num_512 ]
+        [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=512 : repetition_num_512 ]
+        [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=512 : selection_num_512 ]
+        [ compile seq.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_SEQ=512 : seq_num_512 ]
+        [ compile slot.cpp : <define>BOOST_PP_LIMIT_MAG=512 : slot_num_512 ]
+        [ compile stringize.cpp : <define>BOOST_PP_LIMIT_MAG=512 : stringize_num_512 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_MAG=512 : tuple_num_512 ]
+        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_MAG=512 : variadic_num_512 ]
   ;
 
 alias preprocessor_number_1024
@@ -143,21 +143,21 @@ alias preprocessor_v_256_c
   
 alias preprocessor_number_nvm_512
    :   
-        [ compile arithmetic.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : arithmetic_nvm_num ]
-        [ compile array.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : array_nvm_num ]
-        [ compile comparison.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : comparison_nvm_num ]
-        [ compile control.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : control_nvm_num ]
-        [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : debug_nvm_num ]
-        [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : facilities_nvm_num ]
-        [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_ITERATION=512 <define>BOOST_PP_VARIADICS=0 : iteration_nvm_num ]
-        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : list_nvm_num ]
-        [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : logical_nvm_num ]
-        [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : repetition_nvm_num ]
-        [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : selection_nvm_num ]
-        [ compile seq.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_SEQ=512 <define>BOOST_PP_VARIADICS=0 : seq_nvm_num ]
-        [ compile slot.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : slot_nvm_num ]
-        [ compile stringize.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : stringize_nvm_num ]
-        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : tuple_nvm_num ]
+        [ compile arithmetic.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : arithmetic_nvm_num_512 ]
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : array_nvm_num_512 ]
+        [ compile comparison.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : comparison_nvm_num_512 ]
+        [ compile control.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : control_nvm_num_512 ]
+        [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : debug_nvm_num_512 ]
+        [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : facilities_nvm_num_512 ]
+        [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_ITERATION=512 <define>BOOST_PP_VARIADICS=0 : iteration_nvm_num_512 ]
+        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_FOR=512 <define>BOOST_PP_VARIADICS=0 : list_nvm_num_512 ]
+        [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : logical_nvm_num_512 ]
+        [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : repetition_nvm_num_512 ]
+        [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : selection_nvm_num_512 ]
+        [ compile seq.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_SEQ=512 <define>BOOST_PP_VARIADICS=0 : seq_nvm_num_512 ]
+        [ compile slot.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : slot_nvm_num_512 ]
+        [ compile stringize.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : stringize_nvm_num_512 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_VARIADICS=0 : tuple_nvm_num_512 ]
   ;
 
 alias preprocessor_number_nvm_1024
@@ -169,7 +169,7 @@ alias preprocessor_number_nvm_1024
         [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_VARIADICS=0 : debug_nvm_num_1024 ]
         [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_VARIADICS=0 : facilities_nvm_num_1024 ]
         [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_LIMIT_ITERATION=1024 <define>BOOST_PP_VARIADICS=0 : iteration_nvm_num_1024 ]
-        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_VARIADICS=0 : list_nvm_num_1024 ]
+        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_LIMIT_FOR=1024 <define>BOOST_PP_VARIADICS=0 : list_nvm_num_1024 ]
         [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_VARIADICS=0 : logical_nvm_num_1024 ]
         [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_VARIADICS=0 : repetition_nvm_num_1024 ]
         [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_VARIADICS=0 : selection_nvm_num_1024 ]
@@ -305,7 +305,7 @@ alias preprocessor_number_rep_512
           <define>BOOST_PP_LIMIT_MAG=512 
           <define>BOOST_PP_LIMIT_REPEAT=512 
           <define>BOOST_PP_LIMIT_FOR=512 
-          : repetition_rep_num 
+          : repetition_rep_num_512 
         ]
   ;
   
@@ -316,7 +316,28 @@ alias preprocessor_number_nvm_rep_512
           <define>BOOST_PP_LIMIT_REPEAT=512 
           <define>BOOST_PP_LIMIT_FOR=512 
           <define>BOOST_PP_VARIADICS=0 
-          : repetition_nvm_rep_num 
+          : repetition_nvm_rep_num_512 
+        ]
+  ;
+  
+alias preprocessor_number_rep_1024
+   :   
+        [ compile repetition.cpp : 
+          <define>BOOST_PP_LIMIT_MAG=1024 
+          <define>BOOST_PP_LIMIT_REPEAT=1024 
+          <define>BOOST_PP_LIMIT_FOR=1024 
+          : repetition_rep_num_1024
+        ]
+  ;
+  
+alias preprocessor_number_nvm_rep_1024
+   :   
+        [ compile repetition.cpp : 
+          <define>BOOST_PP_LIMIT_MAG=1024 
+          <define>BOOST_PP_LIMIT_REPEAT=1024 
+          <define>BOOST_PP_LIMIT_FOR=1024 
+          <define>BOOST_PP_VARIADICS=0 
+          : repetition_nvm_rep_num_1024
         ]
   ;
   
@@ -377,7 +398,7 @@ alias preprocessor_config
    :   
         [ run config_info.cpp ]
   ;
-
+  
 alias test_clang_cuda
    :   
         [ compile [ cast _ cpp : clang_cuda.cu ]

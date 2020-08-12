@@ -389,7 +389,7 @@ BEGIN BOOST_PP_LIST_AT(BOOST_PP_LIST_TRANSFORM(BOOST_PP_LIST_TEST_TRANSFORM_OP, 
 
 #endif
 
-# if BOOST_PP_LIMIT_MAG == 1024
+# if BOOST_PP_LIMIT_MAG == 1024 && (!defined(__clang__) || defined(_MSC_VER) || defined(__CODEGEARC__))
 
 #define BOOST_PP_LIST_TEST_TRANSFORM_OP(d, data, elem) BOOST_PP_EQUAL(elem,data)
 

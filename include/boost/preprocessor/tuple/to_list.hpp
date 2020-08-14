@@ -17,9 +17,11 @@
 #
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/control/if.hpp>
 # include <boost/preprocessor/facilities/overload.hpp>
 # include <boost/preprocessor/tuple/size.hpp>
 # include <boost/preprocessor/variadic/size.hpp>
+# include <boost/preprocessor/variadic/has_opt.hpp>
 #
 # /* BOOST_PP_TUPLE_TO_LIST */
 #
@@ -31,7 +33,12 @@
 #        define BOOST_PP_TUPLE_TO_LIST_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_TO_LIST_, BOOST_PP_TUPLE_SIZE(tuple)) tuple
 #    else
 #        define BOOST_PP_TUPLE_TO_LIST(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_TO_LIST_O_, __VA_ARGS__)(__VA_ARGS__)
-#        define BOOST_PP_TUPLE_TO_LIST_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_TO_LIST_, BOOST_PP_VARIADIC_SIZE tuple) tuple
+#        if BOOST_PP_VARIADIC_HAS_OPT()
+#            define BOOST_PP_TUPLE_TO_LIST_O_1(tuple) BOOST_PP_TUPLE_TO_LIST_O_1_SIZE(BOOST_PP_VARIADIC_SIZE tuple, tuple)
+#            define BOOST_PP_TUPLE_TO_LIST_O_1_SIZE(size,tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_TO_LIST_, BOOST_PP_IF(size,size,1)) tuple
+#        else
+#            define BOOST_PP_TUPLE_TO_LIST_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_TO_LIST_, BOOST_PP_VARIADIC_SIZE tuple) tuple
+#        endif
 #    endif
 #    define BOOST_PP_TUPLE_TO_LIST_O_2(size, tuple) BOOST_PP_TUPLE_TO_LIST_O_1(tuple)
 # else

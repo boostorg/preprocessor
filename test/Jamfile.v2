@@ -117,14 +117,14 @@ alias preprocessor_v_128
    :   
         [ compile array.cpp : <define>BOOST_PP_LIMIT_TUPLE=128 : array_v_128 ]
         [ compile tuple.cpp : <define>BOOST_PP_LIMIT_TUPLE=128 : tuple_v_128 ]
-        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=128 : variadic_v_128 ]
+        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=128 <define>BOOST_PP_LIMIT_TUPLE=128 : variadic_v_128 ]
   ;
 
 alias preprocessor_v_256
    :   
         [ compile array.cpp : <define>BOOST_PP_LIMIT_TUPLE=256 : array_v_256 ]
         [ compile tuple.cpp : <define>BOOST_PP_LIMIT_TUPLE=256 : tuple_v_256 ]
-        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=256 : variadic_v_256 ]
+        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=256 <define>BOOST_PP_LIMIT_TUPLE=256 : variadic_v_256 ]
   ;
   
 alias preprocessor_v_128_c

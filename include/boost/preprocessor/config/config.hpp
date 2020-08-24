@@ -112,4 +112,10 @@
 #    define BOOST_PP_VARIADICS 0
 # endif
 #
+# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
+# define BOOST_PP_IS_STANDARD() 1
+# else
+# define BOOST_PP_IS_STANDARD() 0
+# endif
+#
 # endif

@@ -34,6 +34,7 @@
 # include <boost/preprocessor/list/size.hpp>
 # include <boost/preprocessor/variadic/elem.hpp>
 # include <boost/preprocessor/variadic/size.hpp>
+# include <boost/preprocessor/variadic/has_opt.hpp>
 # include <libs/preprocessor/test/test.h>
 
 # define SEQ_NONE ()
@@ -654,7 +655,16 @@ BEGIN BOOST_PP_LIST_SIZE(BOOST_PP_SEQ_TO_LIST(SEQ_NONE)) == 1 END
 
 #if BOOST_PP_VARIADICS
 
+# if BOOST_PP_VARIADIC_HAS_OPT()
+
+BEGIN BOOST_PP_VARIADIC_SIZE(BOOST_PP_SEQ_ENUM(SEQ_NONE)) == 0 END
+
+# else
+
 BEGIN BOOST_PP_VARIADIC_SIZE(BOOST_PP_SEQ_ENUM(SEQ_NONE)) == 1 END
+
+#endif
+
 BEGIN BOOST_PP_VARIADIC_ELEM(0,BOOST_PP_SEQ_ENUM(SEQ)) == 4 END
 BEGIN BOOST_PP_TUPLE_ELEM(2,BOOST_PP_SEQ_ELEM(0,BOOST_PP_VARIADIC_SEQ_TO_SEQ(SEQVAR))) == 8 END
 

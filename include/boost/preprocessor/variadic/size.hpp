@@ -17,10 +17,19 @@
 #
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/control/iif.hpp>
+# include <boost/preprocessor/facilities/check_empty.hpp>
 #
 # /* BOOST_PP_VARIADIC_SIZE */
 #
 # if BOOST_PP_VARIADICS
+#
+#    if BOOST_PP_VARIADIC_HAS_OPT()
+#       define BOOST_PP_VARIADIC_SIZE_EMPTY(...) 0
+#       define BOOST_PP_VARIADIC_SIZE(...) BOOST_PP_IIF(BOOST_PP_CHECK_EMPTY(__VA_ARGS__),BOOST_PP_VARIADIC_SIZE_EMPTY,BOOST_PP_VARIADIC_DO_SIZE)(__VA_ARGS__)
+#    else
+#       define BOOST_PP_VARIADIC_SIZE(...) BOOST_PP_VARIADIC_DO_SIZE(__VA_ARGS__)
+#    endif
 #
 # include <boost/preprocessor/config/limits.hpp>
 #

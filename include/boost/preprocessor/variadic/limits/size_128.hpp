@@ -16,7 +16,7 @@
 # define BOOST_PREPROCESSOR_VARIADIC_SIZE_128_HPP
 #
 #    if BOOST_PP_VARIADICS_MSVC
-#        define BOOST_PP_VARIADIC_SIZE(...)  \
+#        define BOOST_PP_VARIADIC_DO_SIZE(...)  \
                 BOOST_PP_CAT                 \
                     (                        \
                     BOOST_PP_VARIADIC_SIZE_I \
@@ -28,7 +28,7 @@
                     )                        \
          /**/
 #    else
-#        define BOOST_PP_VARIADIC_SIZE(...)  \
+#        define BOOST_PP_VARIADIC_DO_SIZE(...)  \
                 BOOST_PP_VARIADIC_SIZE_I     \
                     (                        \
                     __VA_ARGS__,             \

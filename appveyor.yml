@@ -49,7 +49,7 @@ environment:
       ADDRMD: 32,64
       CXXSTD: 14,17,latest
       PREPROCESSOR: "/Zc:preprocessor"
-      LIMITS: preprocessor_limits
+      PPLIMITS: preprocessor_limits
 
 matrix:
   exclude:
@@ -84,7 +84,7 @@ for:
     - if not "%CXXSTD%" == "" set CXXSTD=cxxstd=%CXXSTD%
     - if not "%ADDRMD%" == "" set ADDRMD=address-model=%ADDRMD%
     - if not "%PREPROCESSOR%" == "" set PREPROCESSOR=cflags=%PREPROCESSOR%
-    - b2 -j3 libs/preprocessor/test toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release %LIMITS%
+    - b2 -j3 libs/preprocessor/test toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release %PPLIMITS%
 
 -
   matrix:

@@ -397,6 +397,35 @@ alias preprocessor_config
         [ run config_info.cpp ]
   ;
   
+explicit preprocessor_number_512 ;
+explicit preprocessor_number_1024 ;
+explicit preprocessor_v_128 ;
+explicit preprocessor_v_256 ;
+explicit preprocessor_v_128_c ;
+explicit preprocessor_v_256_c ;
+explicit preprocessor_number_nvm_512 ;
+explicit preprocessor_number_nvm_1024 ;
+explicit preprocessor_number_rep_512 ;
+explicit preprocessor_number_nvm_rep_512 ;
+explicit preprocessor_number_rep_1024 ;
+explicit preprocessor_number_nvm_rep_1024 ;
+
+alias preprocessor_128 : preprocessor_v_128 preprocessor_v_128_c ;
+alias preprocessor_256 : preprocessor_v_256 preprocessor_v_256_c ;
+alias preprocessor_512 : preprocessor_number_512 preprocessor_number_nvm_512 preprocessor_number_rep_512 preprocessor_number_nvm_rep_512 ;
+alias preprocessor_1024 : preprocessor_number_1024 preprocessor_number_nvm_1024 preprocessor_number_rep_1024 preprocessor_number_nvm_rep_1024 ;
+alias preprocessor_tup : preprocessor_128 preprocessor_256 ;
+alias preprocessor_num : preprocessor_512 preprocessor_1024 ;
+alias preprocessor_limits : preprocessor_tup preprocessor_num ;
+
+explicit preprocessor_128 ;
+explicit preprocessor_256 ;
+explicit preprocessor_512 ;
+explicit preprocessor_1024 ;
+explicit preprocessor_tup ;
+explicit preprocessor_num ;
+explicit preprocessor_limits ;
+  
 alias test_clang_cuda
    :   
         [ compile [ cast _ cpp : clang_cuda.cu ]

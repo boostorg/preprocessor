@@ -15,14 +15,12 @@
 # ifndef BOOST_PREPROCESSOR_ARITHMETIC_DIV_HPP
 # define BOOST_PREPROCESSOR_ARITHMETIC_DIV_HPP
 #
-# include <boost/preprocessor/arithmetic/detail/div_base.hpp>
 # include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/facilities/identity.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/arithmetic/detail/is_1_number.hpp>
 #
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
+#
+# include <boost/preprocessor/arithmetic/detail/div_base.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
 #
 # /* BOOST_PP_DIV */
 #
@@ -43,6 +41,12 @@
 # endif
 #
 # else
+#
+# include <boost/preprocessor/arithmetic/detail/div_base.hpp>
+# include <boost/preprocessor/control/iif.hpp>
+# include <boost/preprocessor/facilities/identity.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
+# include <boost/preprocessor/arithmetic/detail/is_1_number.hpp>
 #
 # /* BOOST_PP_DIV */
 #

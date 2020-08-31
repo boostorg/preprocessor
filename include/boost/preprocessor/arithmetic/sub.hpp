@@ -26,6 +26,38 @@
 # include <boost/preprocessor/arithmetic/detail/is_maximum_number.hpp>
 # include <boost/preprocessor/arithmetic/detail/is_minimum_number.hpp>
 #
+# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
+#
+# /* BOOST_PP_SUB */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_SUB(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
+# else
+#    define BOOST_PP_SUB(x, y) BOOST_PP_SUB_I(x, y)
+#    define BOOST_PP_SUB_I(x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
+# endif
+#
+# define BOOST_PP_SUB_P(d, xy) BOOST_PP_TUPLE_ELEM(2, 1, xy)
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
+#    define BOOST_PP_SUB_O(d, xy) BOOST_PP_SUB_O_I xy
+# else
+#    define BOOST_PP_SUB_O(d, xy) BOOST_PP_SUB_O_I(BOOST_PP_TUPLE_ELEM(2, 0, xy), BOOST_PP_TUPLE_ELEM(2, 1, xy))
+# endif
+#
+# define BOOST_PP_SUB_O_I(x, y) (BOOST_PP_DEC(x), BOOST_PP_DEC(y))
+#
+# /* BOOST_PP_SUB_D */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_SUB_D(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
+# else
+#    define BOOST_PP_SUB_D(d, x, y) BOOST_PP_SUB_D_I(d, x, y)
+#    define BOOST_PP_SUB_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
+# endif
+#
+# else
+#
 # /* BOOST_PP_SUB */
 #
 #    define BOOST_PP_SUB(x, y) BOOST_PP_IIF(BOOST_PP_BITOR(BOOST_PP_DETAIL_IS_MAXIMUM_NUMBER(y),BOOST_PP_DETAIL_IS_MINIMUM_NUMBER(x)),BOOST_PP_IDENTITY_N(0,2),BOOST_PP_SUB_DO)(x,y)
@@ -56,6 +88,8 @@
 # else
 #    define BOOST_PP_SUB_DO_D(d, x, y) BOOST_PP_SUB_D_I(d, x, y)
 #    define BOOST_PP_SUB_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_SUB_P, BOOST_PP_SUB_O, (x, y)))
+# endif
+#
 # endif
 #
 # endif

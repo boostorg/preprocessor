@@ -14,6 +14,19 @@
 # ifndef BOOST_PREPROCESSOR_REPETITION_DEDUCE_R_HPP
 # define BOOST_PREPROCESSOR_REPETITION_DEDUCE_R_HPP
 #
+# include <boost/preprocessor/config/config.hpp>
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
+#
+# include <boost/preprocessor/detail/auto_rec.hpp>
+# include <boost/preprocessor/repetition/for.hpp>
+#
+# /* BOOST_PP_DEDUCE_R */
+#
+# define BOOST_PP_DEDUCE_R() BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256)
+#
+# else
+#
 # /* BOOST_PP_DEDUCE_R */
 #
 # include <boost/preprocessor/arithmetic/dec.hpp>
@@ -29,6 +42,8 @@
 # define BOOST_PP_DEDUCE_R() BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 1024))
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_FOR limit
+# endif
+#
 # endif
 #
 # endif

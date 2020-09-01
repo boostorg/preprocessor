@@ -15,10 +15,7 @@
 # ifndef BOOST_PREPROCESSOR_REPETITION_REPEAT_FROM_TO_HPP
 # define BOOST_PREPROCESSOR_REPETITION_REPEAT_FROM_TO_HPP
 #
-# /* BOOST_PP_REPEAT_FROM_TO */
-#
 # include <boost/preprocessor/arithmetic/add.hpp>
-# include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/arithmetic/sub.hpp>
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/config/config.hpp>
@@ -37,6 +34,15 @@
 #
 # define BOOST_PP_REPEAT_FROM_TO BOOST_PP_CAT(BOOST_PP_REPEAT_FROM_TO_, BOOST_PP_AUTO_REC(BOOST_PP_REPEAT_P, 4))
 #
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
+#
+# define BOOST_PP_REPEAT_FROM_TO_1(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_1(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_2(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_2(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+# define BOOST_PP_REPEAT_FROM_TO_3(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_3(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 256), f, l, m, dt)
+#
+# else
+#
+# include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/config/limits.hpp>
 #
 # if BOOST_PP_LIMIT_REPEAT == 256
@@ -53,6 +59,8 @@
 # define BOOST_PP_REPEAT_FROM_TO_3(f, l, m, dt) BOOST_PP_REPEAT_FROM_TO_D_3(BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_WHILE_P, 1024)), f, l, m, dt)
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_REPEAT limit
+# endif
+#
 # endif
 #
 # define BOOST_PP_REPEAT_FROM_TO_4(f, l, m, dt) BOOST_PP_ERROR(0x0003)

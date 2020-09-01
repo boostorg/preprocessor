@@ -18,7 +18,6 @@
 # include <boost/preprocessor/control/if.hpp>
 # include <boost/preprocessor/tuple/eat.hpp>
 #
-# define BOOST_PP_FOR_0(s, p, o, m) BOOST_PP_IF(p(1, s), m, BOOST_PP_TUPLE_EAT_2)(1, s) BOOST_PP_IF(p(1, s), BOOST_PP_FOR_1, BOOST_PP_TUPLE_EAT_4)(o(1, s), p, o, m)
 # define BOOST_PP_FOR_1(s, p, o, m) BOOST_PP_IF(p(2, s), m, BOOST_PP_TUPLE_EAT_2)(2, s) BOOST_PP_IF(p(2, s), BOOST_PP_FOR_2, BOOST_PP_TUPLE_EAT_4)(o(2, s), p, o, m)
 # define BOOST_PP_FOR_2(s, p, o, m) BOOST_PP_IF(p(3, s), m, BOOST_PP_TUPLE_EAT_2)(3, s) BOOST_PP_IF(p(3, s), BOOST_PP_FOR_3, BOOST_PP_TUPLE_EAT_4)(o(3, s), p, o, m)
 # define BOOST_PP_FOR_3(s, p, o, m) BOOST_PP_IF(p(4, s), m, BOOST_PP_TUPLE_EAT_2)(4, s) BOOST_PP_IF(p(4, s), BOOST_PP_FOR_4, BOOST_PP_TUPLE_EAT_4)(o(4, s), p, o, m)

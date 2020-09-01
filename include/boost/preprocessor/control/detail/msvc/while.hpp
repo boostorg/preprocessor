@@ -17,7 +17,6 @@
 # include <boost/preprocessor/control/if.hpp>
 # include <boost/preprocessor/tuple/eat.hpp>
 #
-# define BOOST_PP_WHILE_0(p, o, s) BOOST_PP_IF(p(1, s), BOOST_PP_WHILE_1, s BOOST_PP_TUPLE_EAT_3)(p, o, o(1, s))
 # define BOOST_PP_WHILE_1(p, o, s) BOOST_PP_IF(p(2, s), BOOST_PP_WHILE_2, s BOOST_PP_TUPLE_EAT_3)(p, o, o(2, s))
 # define BOOST_PP_WHILE_2(p, o, s) BOOST_PP_IF(p(3, s), BOOST_PP_WHILE_3, s BOOST_PP_TUPLE_EAT_3)(p, o, o(3, s))
 # define BOOST_PP_WHILE_3(p, o, s) BOOST_PP_IF(p(4, s), BOOST_PP_WHILE_4, s BOOST_PP_TUPLE_EAT_3)(p, o, o(4, s))

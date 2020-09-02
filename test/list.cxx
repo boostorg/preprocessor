@@ -11,6 +11,7 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/config/limits.hpp>
 # include <boost/preprocessor/arithmetic/add.hpp>
 # include <boost/preprocessor/arithmetic/sub.hpp>
 # include <boost/preprocessor/comparison/equal.hpp>
@@ -37,6 +38,8 @@
 # define L2 (a, (1, (b, (2, BOOST_PP_NIL))))
 # define L3 (c, (3, (d, BOOST_PP_NIL)))
 # define LL (L1, (L2, (L3, BOOST_PP_NIL)))
+
+# if BOOST_PP_LIMIT_MAG == 512
 
 # define LIST_256 \
     (1,(2,(3,(4,(5,(6,(7,(8,(9, \
@@ -73,6 +76,8 @@
     )))))))))))))))))))))))))))))))) \
     )))))))))))))))))))))))))))))))) \
     ))))))))))))))))))))))))))))))))
+    
+#endif
     
 # if BOOST_PP_LIMIT_MAG == 512 || BOOST_PP_LIMIT_MAG == 1024
 

@@ -7,10 +7,11 @@
 #  *                                                                          *
 #  ************************************************************************** */
 #
-# /* Revised by Edward Diener (2011) */
+# /* Revised by Edward Diener (2011,2020) */
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/config/limits.hpp>
 # include <boost/preprocessor/arithmetic/add.hpp>
 # include <boost/preprocessor/arithmetic/dec.hpp>
 # include <boost/preprocessor/arithmetic/div.hpp>
@@ -283,7 +284,6 @@ BEGIN BOOST_PP_SEQ_HEAD(SEQ_1024) == 1 END
 
 BEGIN BOOST_PP_SEQ_FOLD_LEFT(CAT_S, 1, SEQ_NONE) == 11 END
 BEGIN BOOST_PP_SEQ_FOLD_LEFT(SUB_S, 22, SEQ) == 10 END
-
 BEGIN BOOST_PP_SEQ_FOLD_RIGHT(CAT_S, 2, SEQ_NONE) == 21 END
 BEGIN BOOST_PP_SEQ_FOLD_RIGHT(ADD_S, 0, SEQ) == 12 END
 BEGIN BOOST_PP_SEQ_FOLD_RIGHT(REVERSAL, 0, SEQ) == 4 END
@@ -431,13 +431,8 @@ BEGIN BOOST_PP_ARRAY_SIZE(BOOST_PP_SEQ_TO_ARRAY(SEQ_NONE)) == 1 END
 # define LESS_S(s, x, y) BOOST_PP_LESS(x, y)
 # define FILTER_MOD_S(s, data, elem) BOOST_PP_NOT(BOOST_PP_MOD(elem,data))
 BEGIN BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_FILTER(LESS_S, 3, SEQ)) == 45 END
-
-// # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-
 BEGIN BOOST_PP_SEQ_ELEM(4,BOOST_PP_SEQ_FILTER(FILTER_MOD_S, 20, SEQ_100)) == 100 END
 BEGIN BOOST_PP_SEQ_ELEM(2,BOOST_PP_SEQ_FILTER(FILTER_MOD_S, 30, SEQ_100)) == 90 END
-
-// #endif
 
 # if BOOST_PP_LIMIT_SEQ == 512
 

@@ -9,6 +9,8 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/config/limits.hpp>
+#
 # if !BOOST_PP_IS_SELFISH
 #
 # include <libs/preprocessor/test/iteration.h>

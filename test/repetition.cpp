@@ -9,6 +9,7 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/config/limits.hpp>
 # include <boost/preprocessor/arithmetic/inc.hpp>
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/comparison/equal.hpp>

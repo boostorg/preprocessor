@@ -9,6 +9,7 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/config/limits.hpp>
 # include <boost/preprocessor/variadic.hpp>
 # include <boost/preprocessor/array/size.hpp>
 # include <boost/preprocessor/array/elem.hpp>

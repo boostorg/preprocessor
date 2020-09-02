@@ -9,6 +9,7 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
+# include <boost/preprocessor/config/limits.hpp>
 # include <boost/preprocessor/logical.hpp>
 # include <libs/preprocessor/test/test.h>
 

@@ -295,6 +295,8 @@
 #
 # endif
 #
+# endif
+#
 # else
 #
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()

@@ -44,8 +44,9 @@
       </p>
       <p>This situation has now changed and a number of the limitation
         macros specified in config/limits.hpp are now used internally in
-        the library code. This topic is therefore about how an end-user
-        can change the limitations of the library.<br>
+        the library code when the preprocessor is C++ standard
+        conforming. This topic is therefore about how an end-user can
+        change the limitations of the library.<br>
       </p>
     </blockquote>
     <h4>Type of limitations</h4>
@@ -153,7 +154,9 @@
           standard conforming preprocessor. If you change a limitation
           for a compiler that is not a C++ standard conforming
           preprocessor the change is simply ignored and no preprocessor
-          error will occur.<br>
+          error will occur. This is because any non-conforming
+          preprocessor does not actually include or use the macros in
+          the config/limits.hpp file.<br>
         </li>
         <li>WARNING ! WARNING ! WARNING ! Increasing limitations may
           mean that preprocessors may fail because the compiler itself
@@ -252,6 +255,40 @@
         original&nbsp; maximum.<br>
       </p>
     </blockquote>
+    <h4>Testing limitations</h4>
+    <blockquote>
+      <p>The default testing of the preprocessor library, using Boost
+        Build's b2 command in the preprocessor test directory, only
+        tests the default limitations. If you want to test, within the
+        test directory, any of the non-default limitations which may be
+        set, you can do so by invoking the b2 command with any of these
+        explicit targets:<br>
+      </p>
+      <ul>
+        <li>preprocessor_128 : arrays, tuples, and variadics with up to
+          128 elements</li>
+        <li>preprocessor_256 : arrays, tuples, and variadics with up to
+          256 elements</li>
+        <li>preprocessor_512 : numbers, lists, seqs, looping, and
+          iteration constructs with 512 maximum</li>
+        <li>preprocessor_1024 : numbers, lists, seqs, looping, and
+          iteration constructs with 1024 maximum</li>
+        <li>preprocessor_tup : both the first and second items in this
+          list</li>
+        <li>preprocessor_num : both the third and fourth items in this
+          list</li>
+        <li>preprocessor_limits : all preprocessor limitations</li>
+      </ul>
+      If you invoke b2 with the last preprocessor_limits target your
+      testing may take awhile for your compiler. When you choose one of
+      the above targets, as in <code>'b2 preprocessor_limits'</code>,
+      the default tests are not run. If you want the default tests run,
+      along with any of the targets such as preprocessor_limits, your
+      command would be <code>'b2 . preprocessor_limits'</code>, where
+      the '.' notation means all the non-explicit ( aka default )
+      targets.<br>
+    </blockquote>
+    <blockquote> </blockquote>
     <blockquote>
       <ul>
       </ul>

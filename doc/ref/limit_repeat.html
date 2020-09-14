@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <meta content="text/html; charset=windows-1252"
@@ -13,9 +13,10 @@
     <h4>Usage</h4>
     <div class="code"> <b>BOOST_PP_LIMIT_REPEAT</b> </div>
     <h4>Remarks</h4>
-    <div>This macro expands by default to <i>256</i>. The end-user can
-      change this to 512 or 1024 by defining this macro to either value
-      before including any library headers, as long as the end-user also
+    <div>This macro expands by default to <i>256</i>. For a C++
+      standard conforming preprocessor, the end-user can change this to
+      512 or 1024 by defining this macro to either value before
+      including any library headers, as long as the end-user also
       defines the <a
 href="file:///E:/Programming/VersionControl/modular-boost/libs/preprocessor/doc/ref/limit_mag.html">BOOST_PP_LIMIT_MAG</a>
       macro to be equal to or greater than this value. <br>
@@ -38,6 +39,14 @@ href="file:///E:/Programming/VersionControl/modular-boost/libs/preprocessor/doc/
     <h4>Requirements</h4>
     <div> <b>Header:</b> &nbsp;<a href="../headers/config/limits.html">&lt;boost/preprocessor/config/limits.hpp&gt;</a>
     </div>
+    <b>See also<br>
+    </b>
+    <ul>
+      <li><a href="../topics/limitations.html">Limitations</a></li>
+      <li><a href="../ref/is_standard.html">BOOST_PP_IS_STANDARD</a><br>
+      </li>
+    </ul>
+    <br>
     <hr size="1">
     <div style="margin-left: 0px;"> <i>© Copyright <a
           href="http://www.housemarque.com" target="_top">Housemarque Oy</a>

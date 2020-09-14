@@ -43,12 +43,12 @@ environment:
       TOOLSET: msvc-14.2
       ADDRMD: 32,64
       CXXSTD: 14,17,latest
-      PREPROCESSOR: "/Zc:preprocessor"
+      PREPROCESSOR: /Zc:preprocessor
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       TOOLSET: msvc-14.2
       ADDRMD: 32,64
       CXXSTD: 14,17,latest
-      PREPROCESSOR: "/Zc:preprocessor"
+      PREPROCESSOR: /Zc:preprocessor
       PPLIMITS: preprocessor_limits
 
 matrix:
@@ -83,7 +83,7 @@ for:
     - b2 -d0 headers
     - if not "%CXXSTD%" == "" set CXXSTD=cxxstd=%CXXSTD%
     - if not "%ADDRMD%" == "" set ADDRMD=address-model=%ADDRMD%
-    - if not "%PREPROCESSOR%" == "" set PREPROCESSOR=cflags=%PREPROCESSOR%
+    - if not "%PREPROCESSOR%" == "" set PREPROCESSOR=cflags="%PREPROCESSOR%"
     - b2 -j3 libs/preprocessor/test toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release %PPLIMITS%
 
 -

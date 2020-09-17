@@ -25,37 +25,21 @@
 #
 # /* BOOST_PP_TUPLE_REVERSE */
 #
-# if BOOST_PP_VARIADICS
-#    if BOOST_PP_VARIADICS_MSVC
-#        define BOOST_PP_TUPLE_REVERSE(...) BOOST_PP_TUPLE_REVERSE_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REVERSE_O_, __VA_ARGS__), (__VA_ARGS__))
-#        define BOOST_PP_TUPLE_REVERSE_I(m, args) BOOST_PP_TUPLE_REVERSE_II(m, args)
-#        define BOOST_PP_TUPLE_REVERSE_II(m, args) BOOST_PP_CAT(m ## args,)
-#        define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_TUPLE_SIZE(tuple)) tuple
-#    else
-#        define BOOST_PP_TUPLE_REVERSE(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REVERSE_O_, __VA_ARGS__)(__VA_ARGS__)
-#        if BOOST_PP_VARIADIC_HAS_OPT()
-#            define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_TUPLE_REVERSE_O_1_SIZE(BOOST_PP_VARIADIC_SIZE tuple,tuple)
-#            define BOOST_PP_TUPLE_REVERSE_O_1_SIZE(size,tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_IF(size,size,1)) tuple
-#        else
-#            define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_VARIADIC_SIZE tuple) tuple
-#        endif
-#    endif
-#    define BOOST_PP_TUPLE_REVERSE_O_2(size, tuple) BOOST_PP_TUPLE_REVERSE_O_1(tuple)
+# if BOOST_PP_VARIADICS_MSVC
+#     define BOOST_PP_TUPLE_REVERSE(...) BOOST_PP_TUPLE_REVERSE_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REVERSE_O_, __VA_ARGS__), (__VA_ARGS__))
+#     define BOOST_PP_TUPLE_REVERSE_I(m, args) BOOST_PP_TUPLE_REVERSE_II(m, args)
+#     define BOOST_PP_TUPLE_REVERSE_II(m, args) BOOST_PP_CAT(m ## args,)
+#     define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_TUPLE_SIZE(tuple)) tuple
 # else
-#    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#        define BOOST_PP_TUPLE_REVERSE(size, tuple) BOOST_PP_TUPLE_REVERSE_I(size, tuple)
-#        if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#            define BOOST_PP_TUPLE_REVERSE_I(s, t) BOOST_PP_TUPLE_REVERSE_ ## s t
-#        else
-#            define BOOST_PP_TUPLE_REVERSE_I(s, t) BOOST_PP_TUPLE_REVERSE_II(BOOST_PP_TUPLE_REVERSE_ ## s t)
-#            define BOOST_PP_TUPLE_REVERSE_II(res) res
-#        endif
-#    else
-#        define BOOST_PP_TUPLE_REVERSE(size, tuple) BOOST_PP_TUPLE_REVERSE_OO((size, tuple))
-#        define BOOST_PP_TUPLE_REVERSE_OO(par) BOOST_PP_TUPLE_REVERSE_I ## par
-#        define BOOST_PP_TUPLE_REVERSE_I(s, t) BOOST_PP_TUPLE_REVERSE_ ## s ## t
-#    endif
+#     define BOOST_PP_TUPLE_REVERSE(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REVERSE_O_, __VA_ARGS__)(__VA_ARGS__)
+#     if BOOST_PP_VARIADIC_HAS_OPT()
+#         define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_TUPLE_REVERSE_O_1_SIZE(BOOST_PP_VARIADIC_SIZE tuple,tuple)
+#         define BOOST_PP_TUPLE_REVERSE_O_1_SIZE(size,tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_IF(size,size,1)) tuple
+#     else
+#         define BOOST_PP_TUPLE_REVERSE_O_1(tuple) BOOST_PP_CAT(BOOST_PP_TUPLE_REVERSE_, BOOST_PP_VARIADIC_SIZE tuple) tuple
+#     endif
 # endif
+# define BOOST_PP_TUPLE_REVERSE_O_2(size, tuple) BOOST_PP_TUPLE_REVERSE_O_1(tuple)
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
 #

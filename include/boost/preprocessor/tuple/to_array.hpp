@@ -23,24 +23,20 @@
 #
 # /* BOOST_PP_TUPLE_TO_ARRAY */
 #
-# if BOOST_PP_VARIADICS
-#    if BOOST_PP_VARIADICS_MSVC
-#        define BOOST_PP_TUPLE_TO_ARRAY(...) BOOST_PP_TUPLE_TO_ARRAY_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_TO_ARRAY_, __VA_ARGS__), (__VA_ARGS__))
-#        define BOOST_PP_TUPLE_TO_ARRAY_I(m, args) BOOST_PP_TUPLE_TO_ARRAY_II(m, args)
-#        define BOOST_PP_TUPLE_TO_ARRAY_II(m, args) BOOST_PP_CAT(m ## args,)
-#        define BOOST_PP_TUPLE_TO_ARRAY_1(tuple) (BOOST_PP_TUPLE_SIZE(tuple), tuple)
-#    else
-#        define BOOST_PP_TUPLE_TO_ARRAY(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_TO_ARRAY_, __VA_ARGS__)(__VA_ARGS__)
-#        if BOOST_PP_VARIADIC_HAS_OPT()
-#            define BOOST_PP_TUPLE_TO_ARRAY_1(tuple) BOOST_PP_TUPLE_TO_ARRAY_1_SIZE(BOOST_PP_VARIADIC_SIZE tuple, tuple)
-#            define BOOST_PP_TUPLE_TO_ARRAY_1_SIZE(size,tuple) (BOOST_PP_IF(size,size,1), tuple)
-#        else
-#            define BOOST_PP_TUPLE_TO_ARRAY_1(tuple) (BOOST_PP_VARIADIC_SIZE tuple, tuple)
-#        endif
-#    endif
-#    define BOOST_PP_TUPLE_TO_ARRAY_2(size, tuple) (size, tuple)
+# if BOOST_PP_VARIADICS_MSVC
+#     define BOOST_PP_TUPLE_TO_ARRAY(...) BOOST_PP_TUPLE_TO_ARRAY_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_TO_ARRAY_, __VA_ARGS__), (__VA_ARGS__))
+#     define BOOST_PP_TUPLE_TO_ARRAY_I(m, args) BOOST_PP_TUPLE_TO_ARRAY_II(m, args)
+#     define BOOST_PP_TUPLE_TO_ARRAY_II(m, args) BOOST_PP_CAT(m ## args,)
+#     define BOOST_PP_TUPLE_TO_ARRAY_1(tuple) (BOOST_PP_TUPLE_SIZE(tuple), tuple)
 # else
-#    define BOOST_PP_TUPLE_TO_ARRAY(size, tuple) (size, tuple)
+#     define BOOST_PP_TUPLE_TO_ARRAY(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_TO_ARRAY_, __VA_ARGS__)(__VA_ARGS__)
+#     if BOOST_PP_VARIADIC_HAS_OPT()
+#         define BOOST_PP_TUPLE_TO_ARRAY_1(tuple) BOOST_PP_TUPLE_TO_ARRAY_1_SIZE(BOOST_PP_VARIADIC_SIZE tuple, tuple)
+#         define BOOST_PP_TUPLE_TO_ARRAY_1_SIZE(size,tuple) (BOOST_PP_IF(size,size,1), tuple)
+#     else
+#         define BOOST_PP_TUPLE_TO_ARRAY_1(tuple) (BOOST_PP_VARIADIC_SIZE tuple, tuple)
+#     endif
 # endif
+# define BOOST_PP_TUPLE_TO_ARRAY_2(size, tuple) (size, tuple)
 #
 # endif

@@ -19,25 +19,11 @@
 #
 # /* BOOST_PP_EAT */
 #
-# if BOOST_PP_VARIADICS
-#    define BOOST_PP_EAT(...)
-# else
-#    define BOOST_PP_EAT(x)
-# endif
+# define BOOST_PP_EAT(...)
 #
 # /* BOOST_PP_TUPLE_EAT */
 #
-# if BOOST_PP_VARIADICS
-#    define BOOST_PP_TUPLE_EAT(size) BOOST_PP_EAT
-# else
-#    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#        define BOOST_PP_TUPLE_EAT(size) BOOST_PP_TUPLE_EAT_I(size)
-#    else
-#        define BOOST_PP_TUPLE_EAT(size) BOOST_PP_TUPLE_EAT_OO((size))
-#        define BOOST_PP_TUPLE_EAT_OO(par) BOOST_PP_TUPLE_EAT_I ## par
-#    endif
-#    define BOOST_PP_TUPLE_EAT_I(size) BOOST_PP_TUPLE_EAT_ ## size
-# endif
+# define BOOST_PP_TUPLE_EAT(size) BOOST_PP_EAT
 #
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
 #     define BOOST_PP_TUPLE_EAT_N(size) BOOST_PP_TUPLE_EAT_N_I(size)
@@ -45,9 +31,7 @@
 #     define BOOST_PP_TUPLE_EAT_N(size) BOOST_PP_TUPLE_EAT_N_OO((size))
 #     define BOOST_PP_TUPLE_EAT_N_OO(par) BOOST_PP_TUPLE_EAT_N_I ## par
 # endif
-# define BOOST_PP_TUPLE_EAT_N_I(size) BOOST_PP_TUPLE_EAT_ ## size
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
+# define BOOST_PP_TUPLE_EAT_N_I(size) BOOST_PP_EAT
 #
 # define BOOST_PP_TUPLE_EAT_1(e0)
 # define BOOST_PP_TUPLE_EAT_2(e0, e1)
@@ -113,24 +97,5 @@
 # define BOOST_PP_TUPLE_EAT_62(e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61)
 # define BOOST_PP_TUPLE_EAT_63(e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61, e62)
 # define BOOST_PP_TUPLE_EAT_64(e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61, e62, e63)
-#
-# else
-#
-# include <boost/preprocessor/config/limits.hpp>
-#
-# if BOOST_PP_LIMIT_TUPLE == 64
-# include <boost/preprocessor/tuple/limits/eat_64.hpp>
-# elif BOOST_PP_LIMIT_TUPLE == 128
-# include <boost/preprocessor/tuple/limits/eat_64.hpp>
-# include <boost/preprocessor/tuple/limits/eat_128.hpp>
-# elif BOOST_PP_LIMIT_TUPLE == 256
-# include <boost/preprocessor/tuple/limits/eat_64.hpp>
-# include <boost/preprocessor/tuple/limits/eat_128.hpp>
-# include <boost/preprocessor/tuple/limits/eat_256.hpp>
-# else
-# error Incorrect value for the BOOST_PP_LIMIT_TUPLE limit
-# endif
-#
-# endif
 #
 # endif

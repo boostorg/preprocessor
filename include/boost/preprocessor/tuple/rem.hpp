@@ -23,38 +23,27 @@
 #
 # /* BOOST_PP_REM */
 #
-# if BOOST_PP_VARIADICS
-#    if BOOST_PP_VARIADICS_MSVC
-        /* To be used internally when __VA_ARGS__ could be empty ( or is a single element ) */
-#       define BOOST_PP_REM_CAT(...) BOOST_PP_CAT(__VA_ARGS__,)
-#    endif
-#    define BOOST_PP_REM(...) __VA_ARGS__
-# else
-#    define BOOST_PP_REM(x) x
+# if BOOST_PP_VARIADICS_MSVC
+     /* To be used internally when __VA_ARGS__ could be empty ( or is a single element ) */
+#    define BOOST_PP_REM_CAT(...) BOOST_PP_CAT(__VA_ARGS__,)
 # endif
+# define BOOST_PP_REM(...) __VA_ARGS__
 #
 # /* BOOST_PP_TUPLE_REM */
 #
 /*
   VC++8.0 cannot handle the variadic version of BOOST_PP_TUPLE_REM(size)
 */
-# if BOOST_PP_VARIADICS && !(BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400)
+# if !(BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400)
 #    if BOOST_PP_VARIADICS_MSVC
         /* To be used internally when the size could be 0 ( or 1 ) */
 #       define BOOST_PP_TUPLE_REM_CAT(size) BOOST_PP_REM_CAT
 #    endif
 #    define BOOST_PP_TUPLE_REM(size) BOOST_PP_REM
 # else
-#    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#        define BOOST_PP_TUPLE_REM(size) BOOST_PP_TUPLE_REM_I(size)
-#    else
-#        define BOOST_PP_TUPLE_REM(size) BOOST_PP_TUPLE_REM_OO((size))
-#        define BOOST_PP_TUPLE_REM_OO(par) BOOST_PP_TUPLE_REM_I ## par
-#    endif
+#    define BOOST_PP_TUPLE_REM(size) BOOST_PP_TUPLE_REM_I(size)
 #    define BOOST_PP_TUPLE_REM_I(size) BOOST_PP_TUPLE_REM_ ## size
 # endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
 #
 # define BOOST_PP_TUPLE_REM_0()
 # define BOOST_PP_TUPLE_REM_1(e0) e0
@@ -122,52 +111,17 @@
 # define BOOST_PP_TUPLE_REM_63(e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61, e62) e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61, e62
 # define BOOST_PP_TUPLE_REM_64(e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61, e62, e63) e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61, e62, e63
 #
-# else
-#
-# include <boost/preprocessor/config/limits.hpp>
-#
-# if BOOST_PP_LIMIT_TUPLE == 64
-# include <boost/preprocessor/tuple/limits/rem_64.hpp>
-# elif BOOST_PP_LIMIT_TUPLE == 128
-# include <boost/preprocessor/tuple/limits/rem_64.hpp>
-# include <boost/preprocessor/tuple/limits/rem_128.hpp>
-# elif BOOST_PP_LIMIT_TUPLE == 256
-# include <boost/preprocessor/tuple/limits/rem_64.hpp>
-# include <boost/preprocessor/tuple/limits/rem_128.hpp>
-# include <boost/preprocessor/tuple/limits/rem_256.hpp>
-# else
-# error Incorrect value for the BOOST_PP_LIMIT_TUPLE limit
-# endif
-#
-# endif
-#
 # /* BOOST_PP_TUPLE_REM_CTOR */
 #
-# if BOOST_PP_VARIADICS
-#    if BOOST_PP_VARIADICS_MSVC
-#        define BOOST_PP_TUPLE_REM_CTOR(...) BOOST_PP_TUPLE_REM_CTOR_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REM_CTOR_O_, __VA_ARGS__), (__VA_ARGS__))
-#        define BOOST_PP_TUPLE_REM_CTOR_I(m, args) BOOST_PP_TUPLE_REM_CTOR_II(m, args)
-#        define BOOST_PP_TUPLE_REM_CTOR_II(m, args) BOOST_PP_CAT(m ## args,)
-#        define BOOST_PP_TUPLE_REM_CTOR_O_1(tuple) BOOST_PP_EXPAND(BOOST_PP_TUPLE_IS_SINGLE_RETURN(BOOST_PP_REM_CAT,BOOST_PP_REM,tuple) tuple)
-#    else
-#        define BOOST_PP_TUPLE_REM_CTOR(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REM_CTOR_O_, __VA_ARGS__)(__VA_ARGS__)
-#        define BOOST_PP_TUPLE_REM_CTOR_O_1(tuple) BOOST_PP_REM tuple
-#    endif
-#    define BOOST_PP_TUPLE_REM_CTOR_O_2(size, tuple) BOOST_PP_TUPLE_REM_CTOR_O_1(tuple)
+# if BOOST_PP_VARIADICS_MSVC
+#     define BOOST_PP_TUPLE_REM_CTOR(...) BOOST_PP_TUPLE_REM_CTOR_I(BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REM_CTOR_O_, __VA_ARGS__), (__VA_ARGS__))
+#     define BOOST_PP_TUPLE_REM_CTOR_I(m, args) BOOST_PP_TUPLE_REM_CTOR_II(m, args)
+#     define BOOST_PP_TUPLE_REM_CTOR_II(m, args) BOOST_PP_CAT(m ## args,)
+#     define BOOST_PP_TUPLE_REM_CTOR_O_1(tuple) BOOST_PP_EXPAND(BOOST_PP_TUPLE_IS_SINGLE_RETURN(BOOST_PP_REM_CAT,BOOST_PP_REM,tuple) tuple)
 # else
-#    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#        define BOOST_PP_TUPLE_REM_CTOR(size, tuple) BOOST_PP_TUPLE_REM_CTOR_I(BOOST_PP_TUPLE_REM(size), tuple)
-#    else
-#        define BOOST_PP_TUPLE_REM_CTOR(size, tuple) BOOST_PP_TUPLE_REM_CTOR_D(size, tuple)
-#        define BOOST_PP_TUPLE_REM_CTOR_D(size, tuple) BOOST_PP_TUPLE_REM_CTOR_I(BOOST_PP_TUPLE_REM(size), tuple)
-#    endif
-#    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#        define BOOST_PP_TUPLE_REM_CTOR_I(ext, tuple) ext tuple
-#    else
-#        define BOOST_PP_TUPLE_REM_CTOR_I(ext, tuple) BOOST_PP_TUPLE_REM_CTOR_OO((ext, tuple))
-#        define BOOST_PP_TUPLE_REM_CTOR_OO(par) BOOST_PP_TUPLE_REM_CTOR_II ## par
-#        define BOOST_PP_TUPLE_REM_CTOR_II(ext, tuple) ext ## tuple
-#    endif
+#     define BOOST_PP_TUPLE_REM_CTOR(...) BOOST_PP_OVERLOAD(BOOST_PP_TUPLE_REM_CTOR_O_, __VA_ARGS__)(__VA_ARGS__)
+#     define BOOST_PP_TUPLE_REM_CTOR_O_1(tuple) BOOST_PP_REM tuple
 # endif
+# define BOOST_PP_TUPLE_REM_CTOR_O_2(size, tuple) BOOST_PP_TUPLE_REM_CTOR_O_1(tuple)
 #
 # endif

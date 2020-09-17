@@ -22,8 +22,6 @@
 #
 # /* BOOST_PP_VARIADIC_SIZE */
 #
-# if BOOST_PP_VARIADICS
-#
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
 #
 #    if BOOST_PP_VARIADIC_HAS_OPT()
@@ -60,8 +58,6 @@
 # include <boost/preprocessor/variadic/limits/size_256.hpp>
 # else
 # error Incorrect value for the BOOST_PP_LIMIT_TUPLE limit
-# endif
-#
 # endif
 #
 # endif

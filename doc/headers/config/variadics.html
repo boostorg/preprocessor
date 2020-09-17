@@ -8,26 +8,23 @@
   </head>
   <body>
     <div style="margin-left: 0px;"> The <b>config/config.hpp</b>
-      header defines internal configuration macros as well as macros for
-      determining variadic macro support and for determining whether the
-      compiler's preprocessor conforms to the standard. The file
-      is automatically included whenever any Boost PP macros are used.
-      The end-user can manually
-      include it in order to use the BOOST_PP_VARIADICS macro or the
-      BOOST_PP_IS_STANDARD macro, but normally should never have to do
-      so.</div>
+      header defines internal configuration macros as well as a macro
+      for determining whether the compiler's preprocessor conforms to
+      the standard. The file is automatically included whenever any
+      Boost PP macros are used.The end-user can manually include it
+      in order to use the BOOST_PP_IS_STANDARD macro, but normally
+      should never have to do so.</div>
     <h4> Usage </h4>
     <div class="code"> #include <b>&lt;boost/preprocessor/config/config.hpp&gt;</b>
     </div>
     <h4> Contents </h4>
     <ul>
-      <li><a href="../../ref/variadics.html">BOOST_PP_VARIADICS</a></li>
       <li><a href="../../ref/is_standard.html">BOOST_PP_IS_STANDARD</a><br>
       </li>
     </ul>
     <hr size="1">
     <div style="margin-left: 0px;"><i>© Copyright Edward Diener
-        2011,2014</i> </div>
+        2011,2014,2020</i> </div>
     <div style="margin-left: 0px;">
       <p><small>Distributed under the Boost Software License, Version
           1.0. (See accompanying file <a

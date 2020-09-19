@@ -394,7 +394,9 @@ install:
 script:
   - |-
     echo "using $TOOLSET : : $COMPILER ;" > ~/user-config.jam
-  - ./b2 -j 3 libs/preprocessor/test toolset=$TOOLSET cxxstd=$CXXSTD $PPLIMITS
+  - cd libs/preprocessor/test
+  - ../../../b2 -j 3 toolset=$TOOLSET cxxstd=$CXXSTD $PPLIMITS
+  - cd ../../..
 
 notifications:
   email:

@@ -85,8 +85,8 @@ for:
     - if not "%ADDRMD%" == "" set ADDRMD=address-model=%ADDRMD%
     - if not "%PREPROCESSOR%" == "" set PREPROCESSOR=cflags="%PREPROCESSOR%"
     - cd libs/preprocessor/test
-    - ../../../b2 -j3 toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release %PPLIMITS%
-    - cd ../../..
+    - ..\..\..\b2 -j3 toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release %PPLIMITS%
+    - cd ..\..\..
 
 -
   matrix:

@@ -11,8 +11,8 @@
   </head>
   <body>
     <h4>Variadic Macros</h4>
-    <div> Variadic macros are supported by nearly all compilers. This library assumes
-      the compiler supports variadic macros. Variadic macros are macros of the form: </div>
+    <div> Variadic macros are supported by nearly all compilers.
+      Variadic macros are macros of the form: </div>
     <div class="code">
       <pre>#define SOME_MACRO(ZeroOrMoreParameters,...) macro expansion possible specifying __VA_ARGS__</pre>
     </div>
@@ -37,15 +37,27 @@
     </div>
     <u> <span style="font-weight: bold;">Preprocessor Library Support<br>
       </span></u>
-    <div>The library assumes support for variadic macros for all
-      compilers using the library.<br>
+    <div>The library requires support for variadic macros for all
+      compilers using the library. This usually means that compilation
+      at the C level is C99 or higher and that compilation at the C++
+      level is C++11 or higher. Many C++ compilers support variadic
+      macros at the C++98/C++03 level as long as strict compliance is
+      not turned on for those compilers at that level. In particular
+      both the gcc and clang compilers will support variadic macros at
+      the C++98/C++03 levels as long as strict ANSI compliance is not
+      turned on at that level. For those compilers this largely means
+      that the <code>-pedantic</code> or <code>-pedantic-errors</code>
+      option is not used at the C++98/C++03 level of compilation. Boost
+      C++ is deprecating compiling Boost libraries at the C++98/C++03
+      level, so if you must still use this library at that level be
+      aware of these aforementioned caveats.<br>
       <br>
-      <a name="vmvcquirk"></a>Visual C++'s default preprocessor has a few
-      quirks related to variadic macros which require the end-user to code
-      slightly differently. When Visual C++'s default preprocessor is being
-      used BOOST_PP_VARIADICS_MSVC is 1, otherwise it is 0. In this way the
-      end-user can test for the presence of Visual C++'s default preprocessor
-      and code accordingly.<br>
+      <a name="vmvcquirk"></a>Visual C++'s default preprocessor has a
+      few quirks related to variadic macros which require the end-user
+      to code slightly differently. When Visual C++'s default
+      preprocessor is being used BOOST_PP_VARIADICS_MSVC is 1, otherwise
+      it is 0. In this way the end-user can test for the presence of
+      Visual C++'s default preprocessor and code accordingly.<br>
       <br>
       Support for working with variadic data is largely centered on
       being able to convert variadic data to other library data types,
@@ -63,9 +75,9 @@
       of the ability of the variadic parameters to encompass a variable
       number of arguments. The library has functionality which can know
       the number of variadic arguments passed when invoking a variadic
-      macro. This allows the same variadic macro to work
-      with different numbers of parameters, therefore providing more
-      than one syntactical equivalent for the same macro name.<br>
+      macro. This allows the same variadic macro to work with different
+      numbers of parameters, therefore providing more than one
+      syntactical equivalent for the same macro name.<br>
       <br>
       The macros in the library which offer this enhanced functionality
       are all centered on <i>tuple</i> manipulation. With variadic
@@ -148,12 +160,12 @@
     <div>An array as a preprocessor data type is a two-element tuple
       where the first element is the array size and the second element
       is a tuple which constitutes the array data. Because a tuple knows
-      its own size because of compiler support for variadic macros, there is
-      no reason to use the array preprocessor data type as opposed to
-      the tuple preprocessor data type; the tuple data type now has all
-      of the functionality which the array data type has and is
-      syntactically easier to use. The preprocessor array data type is
-      essentially obsolete for modern C++ compilers.</div>
+      its own size because of compiler support for variadic macros,
+      there is no reason to use the array preprocessor data type as
+      opposed to the tuple preprocessor data type; the tuple data type
+      now has all of the functionality which the array data type has and
+      is syntactically easier to use. The preprocessor array data type
+      is essentially obsolete for modern C++ compilers.</div>
     <u style="font-weight: bold;">Using Variadic Data</u>
     <div>Variadic data exists in the form of comma-separated
       preprocessor tokens. This is the case whether the variadic data
@@ -180,10 +192,10 @@
         to work and may fail.<br>
       </span><br>
       This occurs because of a preprocessor weakness in a number of
-      compilers, currently most notably Visual C++'s default preprocessor.
-      Even passing variadic data as arguments to a non-variadic macro, when
-      it is not represented in the form of&nbsp; __VA_ARGS__, may fail with
-      certain compilers.<br>
+      compilers, currently most notably Visual C++'s default
+      preprocessor. Even passing variadic data as arguments to a
+      non-variadic macro, when it is not represented in the form
+      of&nbsp; __VA_ARGS__, may fail with certain compilers.<br>
       <br>
       What follows are very simple examples, showing how variadic data
       can be passed to a non-variadic macro.<br>

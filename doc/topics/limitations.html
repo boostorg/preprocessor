@@ -113,9 +113,8 @@
           BOOST_PP_NOT_EQUAL depend on BOOST_PP_WHILE. So whatever is
           the value for BOOST_PP_LIMIT_MAG is also the value for
           BOOST_PP_LIMIT_WHILE.</li>
-        <li>BOOST_PP_LIMIT_TUPLE depends on BOOST_PP_LIMIT_VARIADIC when
-          variadic macros are supported, since in that case array/tuple
-          functionality often ends up calling variadic data
+        <li>BOOST_PP_LIMIT_TUPLE depends on BOOST_PP_LIMIT_VARIADIC,
+          since array/tuple functionality often ends up calling variadic data
           functionality. So while BOOST_PP_LIMIT_TUPLE can be smaller
           than BOOST_PP_LIMIT_VARIADIC it can never be larger.<br>
         </li>
@@ -204,8 +203,7 @@
           least equal to BOOST_PP_LIMIT_TUPLE if the value of
           BOOST_PP_LIMIT_VARIADIC has not also been changed to be
           greater than BOOST_PP_LIMIT_TUPLE. This is because
-          tuples/arrays depend on variadic functionality when variadic
-          macros are supported..</li>
+          tuples/arrays depend on variadic functionality.</li>
         <li>BOOST_PP_LIMIT_SEQ, BOOST_PP_LIMIT_FOR,
           BOOST_PP_LIMIT_REPEAT, BOOST_PP_LIMIT_ITERATION: If you try to
           set any of these values greater than the BOOST_PP_LIMIT_MAG

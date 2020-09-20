@@ -23,7 +23,7 @@ branches:
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLSET: msvc-10.0,msvc-11.0
+      TOOLSET: msvc-11.0
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLSET: msvc-12.0
       ADDRMD: 32,64
@@ -84,9 +84,8 @@ for:
     - if not "%CXXSTD%" == "" set CXXSTD=cxxstd=%CXXSTD%
     - if not "%ADDRMD%" == "" set ADDRMD=address-model=%ADDRMD%
     - if not "%PREPROCESSOR%" == "" set PREPROCESSOR=cflags="%PREPROCESSOR%"
-    - cd libs/preprocessor/test
-    - ..\..\..\b2 -j3 toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release %PPLIMITS%
-    - cd ..\..\..
+    - if not "%PPLIMITS%" == "" set PPLIMITS=//%PPLIMITS%
+    - b2 libs/preprocessor/test%PPLIMITS% -j3 toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release
 
 -
   matrix:

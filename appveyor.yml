@@ -23,8 +23,6 @@ branches:
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLSET: msvc-11.0
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLSET: msvc-12.0
       ADDRMD: 32,64
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
@@ -46,7 +44,7 @@ environment:
       PREPROCESSOR: /Zc:preprocessor
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       TOOLSET: msvc-14.2
-      ADDRMD: 32,64
+      ADDRMD: 64
       CXXSTD: 14,17,latest
       PREPROCESSOR: /Zc:preprocessor
       PPLIMITS: preprocessor_limits

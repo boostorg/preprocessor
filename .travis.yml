@@ -118,7 +118,7 @@ matrix:
 
     - os: linux
       compiler: g++-8
-      env: TOOLSET=gcc COMPILER=g++-8 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_limits
+      env: TOOLSET=gcc COMPILER=g++-8 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -138,7 +138,7 @@ matrix:
 
     - os: linux
       compiler: g++-9
-      env: TOOLSET=gcc COMPILER=g++-9 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_limits
+      env: TOOLSET=gcc COMPILER=g++-9 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -160,7 +160,7 @@ matrix:
     - os: linux
       dist: bionic
       compiler: g++-10
-      env: TOOLSET=gcc COMPILER=g++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits
+      env: TOOLSET=gcc COMPILER=g++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -306,7 +306,7 @@ matrix:
 
     - os: linux
       compiler: clang++-9
-      env: TOOLSET=clang COMPILER=clang++-9 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits
+      env: TOOLSET=clang COMPILER=clang++-9 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -330,7 +330,7 @@ matrix:
 
     - os: linux
       compiler: clang++-10
-      env: TOOLSET=clang COMPILER=clang++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits
+      env: TOOLSET=clang COMPILER=clang++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -394,7 +394,7 @@ install:
 script:
   - |-
     echo "using $TOOLSET : : $COMPILER ;" > ~/user-config.jam
-  - ./b2 libs/preprocessor/test$PPLIMITS -j 3 toolset=$TOOLSET cxxstd=$CXXSTD
+  - ./b2 libs/preprocessor/test$PPLIMITS -j 3 toolset=$TOOLSET cxxstd=$CXXSTD $ADDRMD
 
 notifications:
   email:

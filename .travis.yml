@@ -118,7 +118,27 @@ matrix:
 
     - os: linux
       compiler: g++-8
-      env: TOOLSET=gcc COMPILER=g++-8 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
+      env: TOOLSET=gcc COMPILER=g++-8 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_tup ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - g++-8
+          sources:
+            - ubuntu-toolchain-r-test
+
+    - os: linux
+      compiler: g++-8
+      env: TOOLSET=gcc COMPILER=g++-8 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_512 ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - g++-8
+          sources:
+            - ubuntu-toolchain-r-test
+
+    - os: linux
+      compiler: g++-8
+      env: TOOLSET=gcc COMPILER=g++-8 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_1024 ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -138,7 +158,27 @@ matrix:
 
     - os: linux
       compiler: g++-9
-      env: TOOLSET=gcc COMPILER=g++-9 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
+      env: TOOLSET=gcc COMPILER=g++-9 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_tup ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - g++-9
+          sources:
+            - ubuntu-toolchain-r-test
+
+    - os: linux
+      compiler: g++-9
+      env: TOOLSET=gcc COMPILER=g++-9 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_512 ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - g++-9
+          sources:
+            - ubuntu-toolchain-r-test
+
+    - os: linux
+      compiler: g++-9
+      env: TOOLSET=gcc COMPILER=g++-9 CXXSTD=03,11,14,17 PPLIMITS=//preprocessor_1024 ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -160,7 +200,29 @@ matrix:
     - os: linux
       dist: bionic
       compiler: g++-10
-      env: TOOLSET=gcc COMPILER=g++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
+      env: TOOLSET=gcc COMPILER=g++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_tup ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - g++-10
+          sources:
+            - ubuntu-toolchain-r-test
+
+    - os: linux
+      dist: bionic
+      compiler: g++-10
+      env: TOOLSET=gcc COMPILER=g++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_512 ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - g++-10
+          sources:
+            - ubuntu-toolchain-r-test
+
+    - os: linux
+      dist: bionic
+      compiler: g++-10
+      env: TOOLSET=gcc COMPILER=g++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_1024 ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -306,7 +368,31 @@ matrix:
 
     - os: linux
       compiler: clang++-9
-      env: TOOLSET=clang COMPILER=clang++-9 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
+      env: TOOLSET=clang COMPILER=clang++-9 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_tup ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - clang-9
+          sources:
+            - ubuntu-toolchain-r-test
+            - sourceline: 'deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-9 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+
+    - os: linux
+      compiler: clang++-9
+      env: TOOLSET=clang COMPILER=clang++-9 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_512 ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - clang-9
+          sources:
+            - ubuntu-toolchain-r-test
+            - sourceline: 'deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-9 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+
+    - os: linux
+      compiler: clang++-9
+      env: TOOLSET=clang COMPILER=clang++-9 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_1024 ADDRMD="address-model=64"
       addons:
         apt:
           packages:
@@ -330,7 +416,31 @@ matrix:
 
     - os: linux
       compiler: clang++-10
-      env: TOOLSET=clang COMPILER=clang++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_limits ADDRMD="address-model=64"
+      env: TOOLSET=clang COMPILER=clang++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_tup ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - clang-10
+          sources:
+            - ubuntu-toolchain-r-test
+            - sourceline: 'deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-10 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+
+    - os: linux
+      compiler: clang++-10
+      env: TOOLSET=clang COMPILER=clang++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_512 ADDRMD="address-model=64"
+      addons:
+        apt:
+          packages:
+            - clang-10
+          sources:
+            - ubuntu-toolchain-r-test
+            - sourceline: 'deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-10 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+
+    - os: linux
+      compiler: clang++-10
+      env: TOOLSET=clang COMPILER=clang++-10 CXXSTD=03,11,14,17,2a PPLIMITS=//preprocessor_1024 ADDRMD="address-model=64"
       addons:
         apt:
           packages:

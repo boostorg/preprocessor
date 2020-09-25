@@ -47,48 +47,6 @@ environment:
       ADDRMD: 32,64
       CXXSTD: 14,17,latest
       PREPROCESSOR: /Zc:preprocessor
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      ADDRMD: 64
-      CXXSTD: 14,17,latest
-      PREPROCESSOR: /Zc:preprocessor
-      PPLIMITS: preprocessor_tup
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      ADDRMD: 64
-      CXXSTD: 14
-      PREPROCESSOR: /Zc:preprocessor
-      PPLIMITS: preprocessor_512
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      ADDRMD: 64
-      CXXSTD: 17
-      PREPROCESSOR: /Zc:preprocessor
-      PPLIMITS: preprocessor_512
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      ADDRMD: 64
-      CXXSTD: latest
-      PREPROCESSOR: /Zc:preprocessor
-      PPLIMITS: preprocessor_512
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      ADDRMD: 64
-      CXXSTD: 14
-      PREPROCESSOR: /Zc:preprocessor
-      PPLIMITS: preprocessor_1024
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      ADDRMD: 64
-      CXXSTD: 17
-      PREPROCESSOR: /Zc:preprocessor
-      PPLIMITS: preprocessor_1024
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      ADDRMD: 64
-      CXXSTD: latest
-      PREPROCESSOR: /Zc:preprocessor
-      PPLIMITS: preprocessor_1024
 
 matrix:
   exclude:
@@ -127,8 +85,7 @@ for:
     - if not "%CXXSTD%" == "" set CXXSTD=cxxstd=%CXXSTD%
     - if not "%ADDRMD%" == "" set ADDRMD=address-model=%ADDRMD%
     - if not "%PREPROCESSOR%" == "" set PREPROCESSOR=cflags="%PREPROCESSOR%"
-    - if not "%PPLIMITS%" == "" set PPLIMITS=//%PPLIMITS%
-    - b2 libs/preprocessor/test%PPLIMITS% -j3 toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release
+    - b2 libs/preprocessor/test -j3 toolset=%TOOLSET% %CXXSTD% %ADDRMD% %PREPROCESSOR% variant=debug,release
 
 -
   matrix:

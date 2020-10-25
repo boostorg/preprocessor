@@ -364,8 +364,8 @@ typedef TYPELIST((int, double, incomplete&lt;void&gt;)) xyz;
 		<div>
 			There are two minor caveats with this result.&nbsp; First, certain types like <code>void</code>
 			can't be the type of an argument, so they have to be wrapped with <code>incomplete&lt;T&gt;</code>.&nbsp; 
-			Second, the necessary double parenthesis is annoying.&nbsp; If and when C++ 
-			gets C99's variadic macros, <code>TYPELIST</code> can be redefined:
+			Second, the necessary double parenthesis is annoying.&nbsp; With variadic macros,
+			<code>TYPELIST</code> can be redefined:
 		</div>
 		<div class="code">
 			<pre>

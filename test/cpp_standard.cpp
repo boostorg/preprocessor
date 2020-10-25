@@ -121,25 +121,12 @@ int print_macro(const std::string name,const std::string expected, const std::st
  return bret;
 }
 
-#if !BOOST_PP_VARIADICS
-
-#define STRINGIZE(arg) # arg
-
-#define PRINT_MACRO_RESULTS(X,exp) print_macro(std::string(# X), std::string(# exp), std::string(STRINGIZE(X)))
-#define PRINT_MACRO(x) std::string(# x)
-#define PRINT_EXPECTED(x) std::string(# x)
-#define PRINT_EXPANSION(x) std::string(STRINGIZE(x))
-
-#else
-
 #define STRINGIZE(...) # __VA_ARGS__
 
 #define PRINT_MACRO_RESULTS(X,...) print_macro(std::string(# X), std::string(# __VA_ARGS__), std::string(STRINGIZE(X)))
 #define PRINT_MACRO(...) std::string(# __VA_ARGS__)
 #define PRINT_EXPECTED(...) std::string(# __VA_ARGS__)
 #define PRINT_EXPANSION(...) std::string(STRINGIZE(__VA_ARGS__))
-
-#endif
 
 #if __cplusplus > 201703L
 
@@ -405,7 +392,7 @@ bret += PRINT_MACRO_RESULTS(char p[] = join(x, y);,char p[] = "x ## y";);
   
 }
 
-#if BOOST_PP_VARIADICS && __cplusplus > 199711L
+#if __cplusplus > 199711L
 
 int print_macros_common_3()
 {
@@ -514,12 +501,7 @@ int print_macros()
 #define FTN_LIKE(a) ( a )
 #define FTN_LIKE( a )( /* note the white space */ a /* other stuff on this line */ )
 
-#if !BOOST_PP_VARIADICS
-
-bret += print_macros_common_1();
-bret += print_macros_common_4();
-
-#elif __cplusplus <= 199711L
+#if __cplusplus <= 199711L
 
 bret += print_macros_common_2();
 bret += print_macros_common_1();

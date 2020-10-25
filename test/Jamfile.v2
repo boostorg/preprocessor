@@ -54,25 +54,60 @@ alias preprocessor
         [ compile variadic.cpp ]
   ;
 
-alias preprocessor_nvm
+alias preprocessor_number_512
    :   
-        [ compile arithmetic.cpp : <define>BOOST_PP_VARIADICS=0 : arithmetic_nvm ]
-        [ compile array.cpp : <define>BOOST_PP_VARIADICS=0 : array_nvm ]
-        [ compile comparison.cpp : <define>BOOST_PP_VARIADICS=0 : comparison_nvm ]
-        [ compile control.cpp : <define>BOOST_PP_VARIADICS=0 : control_nvm ]
-        [ compile debug.cpp : <define>BOOST_PP_VARIADICS=0 : debug_nvm ]
-        [ compile facilities.cpp : <define>BOOST_PP_VARIADICS=0 : facilities_nvm ]
-        [ compile iteration.cpp : <define>BOOST_PP_VARIADICS=0 : iteration_nvm ]
-        [ compile list.cpp : <define>BOOST_PP_VARIADICS=0 : list_nvm ]
-        [ compile logical.cpp : <define>BOOST_PP_VARIADICS=0 : logical_nvm ]
-        [ compile repetition.cpp : <define>BOOST_PP_VARIADICS=0 : repetition_nvm ]
-        [ compile selection.cpp : <define>BOOST_PP_VARIADICS=0 : selection_nvm ]
-        [ compile seq.cpp : <define>BOOST_PP_VARIADICS=0 : seq_nvm ]
-        [ compile slot.cpp : <define>BOOST_PP_VARIADICS=0 : slot_nvm ]
-        [ compile stringize.cpp : <define>BOOST_PP_VARIADICS=0 : stringize_nvm ]
-        [ compile tuple.cpp : <define>BOOST_PP_VARIADICS=0 : tuple_nvm ]
+        [ compile arithmetic.cpp : <define>BOOST_PP_LIMIT_MAG=512 : arithmetic_num_512 ]
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_MAG=512 : array_num_512 ]
+        [ compile comparison.cpp : <define>BOOST_PP_LIMIT_MAG=512 : comparison_num_512 ]
+        [ compile control.cpp : <define>BOOST_PP_LIMIT_MAG=512 : control_num_512 ]
+        [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=512 : debug_num_512 ]
+        [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=512 : facilities_num_512 ]
+        [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_ITERATION=512 : iteration_num_512 ]
+        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_FOR=512 : list_num_512 ]
+        [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=512 : logical_num_512 ]
+        [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=512 : repetition_num_512 ]
+        [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=512 : selection_num_512 ]
+        [ compile seq.cpp : <define>BOOST_PP_LIMIT_MAG=512 <define>BOOST_PP_LIMIT_SEQ=512 : seq_num_512 ]
+        [ compile slot.cpp : <define>BOOST_PP_LIMIT_MAG=512 : slot_num_512 ]
+        [ compile stringize.cpp : <define>BOOST_PP_LIMIT_MAG=512 : stringize_num_512 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_MAG=512 : tuple_num_512 ]
+        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_MAG=512 : variadic_num_512 ]
   ;
 
+alias preprocessor_number_1024
+   :   
+        [ compile arithmetic.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : arithmetic_num_1024 ]
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : array_num_1024 ]
+        [ compile comparison.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : comparison_num_1024 ]
+        [ compile control.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : control_num_1024 ]
+        [ compile debug.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : debug_num_1024 ]
+        [ compile facilities.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : facilities_num_1024 ]
+        [ compile iteration.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_LIMIT_ITERATION=1024 : iteration_num_1024 ]
+        [ compile list.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_LIMIT_FOR=1024 : list_num_1024 ]
+        [ compile logical.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : logical_num_1024 ]
+        [ compile repetition.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : repetition_num_1024 ]
+        [ compile selection.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : selection_num_1024 ]
+        [ compile seq.cpp : <define>BOOST_PP_LIMIT_MAG=1024 <define>BOOST_PP_LIMIT_SEQ=1024 : seq_num_1024 ]
+        [ compile slot.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : slot_num_1024 ]
+        [ compile stringize.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : stringize_num_1024 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : tuple_num_1024 ]
+        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_MAG=1024 : variadic_num_1024 ]
+  ;
+
+alias preprocessor_v_128
+   :   
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_TUPLE=128 : array_v_128 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_TUPLE=128 : tuple_v_128 ]
+        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=128 <define>BOOST_PP_LIMIT_TUPLE=128 : variadic_v_128 ]
+  ;
+
+alias preprocessor_v_256
+   :   
+        [ compile array.cpp : <define>BOOST_PP_LIMIT_TUPLE=256 : array_v_256 ]
+        [ compile tuple.cpp : <define>BOOST_PP_LIMIT_TUPLE=256 : tuple_v_256 ]
+        [ compile variadic.cpp : <define>BOOST_PP_LIMIT_VARIADIC=256 <define>BOOST_PP_LIMIT_TUPLE=256 : variadic_v_256 ]
+  ;
+  
 alias preprocessor_c
    :   
         [ compile arithmetic.c 
@@ -137,62 +172,26 @@ alias preprocessor_c
         ]
   ;
 
-alias preprocessor_c_nvm
+alias preprocessor_number_rep_512
    :   
-        [ compile arithmetic.c 
-          : <define>BOOST_PP_VARIADICS=0            
-          : arithmetic_c_nvm 
-        ]
-        [ compile array.c 
-          : <define>BOOST_PP_VARIADICS=0            
-          : array_c_nvm 
-        ]
-        [ compile comparison.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : comparison_c_nvm 
-        ]
-        [ compile control.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : control_c_nvm 
-        ]
-        [ compile debug.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : debug_c_nvm 
-        ]
-        [ compile facilities.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : facilities_c_nvm 
-        ]
-        [ compile list.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : list_c_nvm 
-        ]
-        [ compile logical.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : logical_c_nvm 
-        ]
-        [ compile selection.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : selection_c_nvm 
-        ]
-        [ compile seq.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : seq_c_nvm 
-        ]
-        [ compile slot.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : slot_c_nvm 
-        ]
-        [ compile stringize.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : stringize_c_nvm 
-        ]
-        [ compile tuple.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : tuple_c_nvm 
+        [ compile repetition.cpp : 
+          <define>BOOST_PP_LIMIT_MAG=512 
+          <define>BOOST_PP_LIMIT_REPEAT=512 
+          <define>BOOST_PP_LIMIT_FOR=512 
+          : repetition_rep_num_512 
         ]
   ;
-
+  
+alias preprocessor_number_rep_1024
+   :   
+        [ compile repetition.cpp : 
+          <define>BOOST_PP_LIMIT_MAG=1024 
+          <define>BOOST_PP_LIMIT_REPEAT=1024 
+          <define>BOOST_PP_LIMIT_FOR=1024 
+          : repetition_rep_num_1024
+        ]
+  ;
+  
 alias preprocessor_isempty : : 
         <toolset>gcc
         <toolset-gcc:version>3.4
@@ -212,15 +211,10 @@ alias preprocessor_isempty
   :   
        [ compile isempty.cpp ]
        [ compile checkempty.cpp ]
-       [ compile-fail isempty_variadic_standard_failure.cpp : <define>BOOST_PP_VARIADICS=1 ]
-       [ compile-fail isempty_variadic_standard_failure2.cpp : <define>BOOST_PP_VARIADICS=1 ]
+       [ compile-fail isempty_variadic_standard_failure.cpp ]
+       [ compile-fail isempty_variadic_standard_failure2.cpp ]
        [ compile vaopt.cpp ]
  ; 
-
-alias preprocessor_isempty_nvm
-   :   
-       [ compile isempty.cpp : <define>BOOST_PP_VARIADICS=0 : isempty_nvm ]
-  ;
 
 alias preprocessor_isempty_c
   :   
@@ -229,28 +223,43 @@ alias preprocessor_isempty_c
          : isempty_c 
        ]
        [ compile-fail isempty_variadic_standard_failure.c 
-         : <define>BOOST_PP_VARIADICS=1
+         : 
          : isempty_variadic_standard_failure_c 
        ]
        [ compile-fail isempty_variadic_standard_failure2.c 
-         : <define>BOOST_PP_VARIADICS=1
+         : 
          : isempty_variadic_standard_failure2_c 
        ]
  ;
-
-alias preprocessor_isempty_c_nvm
-   :   
-        [ compile isempty.c 
-          : <define>BOOST_PP_VARIADICS=0
-          : isempty_c_nvm 
-        ]
-  ;
 
 alias preprocessor_config
    :   
         [ run config_info.cpp ]
   ;
+  
+explicit preprocessor_number_512 ;
+explicit preprocessor_number_1024 ;
+explicit preprocessor_v_128 ;
+explicit preprocessor_v_256 ;
+explicit preprocessor_number_rep_512 ;
+explicit preprocessor_number_rep_1024 ;
 
+alias preprocessor_128 : preprocessor_v_128 ;
+alias preprocessor_256 : preprocessor_v_256 ;
+alias preprocessor_512 : preprocessor_number_512 preprocessor_number_rep_512 ;
+alias preprocessor_1024 : preprocessor_number_1024 preprocessor_number_rep_1024 ;
+alias preprocessor_tup : preprocessor_128 preprocessor_256 ;
+alias preprocessor_num : preprocessor_512 preprocessor_1024 ;
+alias preprocessor_limits : preprocessor_tup preprocessor_num ;
+
+explicit preprocessor_128 ;
+explicit preprocessor_256 ;
+explicit preprocessor_512 ;
+explicit preprocessor_1024 ;
+explicit preprocessor_tup ;
+explicit preprocessor_num ;
+explicit preprocessor_limits ;
+  
 alias test_clang_cuda
    :   
         [ compile [ cast _ cpp : clang_cuda.cu ]

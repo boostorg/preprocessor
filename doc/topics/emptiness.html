@@ -125,13 +125,12 @@
       BOOST_PP_VARIADIC_HAS_OPT, which is a function-like macro taking
       no parameters and returning 1 if the __VA_OPT__ construct is
       supported and 0 if it is not. The macro only returns 1 when
-      variadic macros are supported, when the compiler is at the C++20
-      level, and when the __VA_OPT__ construct can be used according to
-      the C++20 standard. In particular the macro needs the compiler to
-      be working at the C++20 level despite the fact that at least one
-      major compiler supports the __VA_OPT__ construct in some of its
-      latest releases even when the compiler is being used at a C++
-      standard level below that of C++20. The reason this Boost
+      the compiler is at the C++20 level, and when the __VA_OPT__ construct
+      can be used according to the C++20 standard. In particular the macro
+      needs the compiler to be working at the C++20 level despite the fact
+      that at least one major compiler supports the __VA_OPT__ construct in
+      some of its latest releases even when the compiler is being used at a
+      C++ standard level below that of C++20. The reason this Boost
       preprocessor library requires the C++20 level is because that same
       major compiler can produce a warning, or even an error, when it
       even sees a macro using the __VA_OPT__ construct at a level below
@@ -139,9 +138,8 @@
       requiring strict adherence to the level of the C++ standard being
       used are passed on the command line. So taking a conservative
       approach the BOOST_PP_VARIADIC_HAS_OPT macros requires compilation
-      at the C++20 level, along with variadic macro support, along with
-      the testing code expanding to 1, in order to specify that
-      __VA_OPT__ is supported.<br>
+      at the C++20 level, along with the testing code expanding to 1,
+      in order to specify that __VA_OPT__ is supported.<br>
       <br>
       The actual Boost Preprocessor library for testing for emptiness in
       C++20 mode is called BOOST_PP_CHECK_EMPTY. The macro is a variadic

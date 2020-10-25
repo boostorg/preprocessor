@@ -339,7 +339,7 @@ install:
 script:
   - |-
     echo "using $TOOLSET : : $COMPILER ;" > ~/user-config.jam
-  - ./b2 libs/preprocessor/test -j 3 toolset=$TOOLSET cxxstd=$CXXSTD $ADDRMD
+  - ./b2 libs/preprocessor/test -j $nproc toolset=$TOOLSET cxxstd=$CXXSTD $ADDRMD
 
 notifications:
   email:

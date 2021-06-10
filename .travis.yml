@@ -302,8 +302,9 @@ matrix:
       env: CMAKE_TEST=1
       script:
         - mkdir __build__ && cd __build__
-        - cmake -DBOOST_ENABLE_CMAKE=1 -DBoost_VERBOSE=1 -DBOOST_INCLUDE_LIBRARIES=preprocessor ..
-        - ctest --output-on-failure -R boost_preprocessor
+        - cmake -DBUILD_TESTING=ON -DBOOST_INCLUDE_LIBRARIES=preprocessor ..
+        - cmake --build . --target tests
+        - ctest --output-on-failure
 
     - os: linux
       env: CMAKE_SUBDIR_TEST=1
@@ -317,8 +318,9 @@ matrix:
     - os: linux
       env: CMAKE_INSTALL_TEST=1
       script:
+        - pip install --user cmake
         - mkdir __build__ && cd __build__
-        - cmake -DBOOST_ENABLE_CMAKE=1 -DBoost_VERBOSE=1 -DBOOST_INCLUDE_LIBRARIES=preprocessor -DCMAKE_INSTALL_PREFIX=~/.local ..
+        - cmake -DBOOST_INCLUDE_LIBRARIES=preprocessor -DCMAKE_INSTALL_PREFIX=~/.local ..
         - cmake --build . --target install
         - cd ../libs/preprocessor/test/cmake_install_test && mkdir __build__ && cd __build__
         - cmake -DCMAKE_INSTALL_PREFIX=~/.local ..

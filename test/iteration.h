@@ -11,6 +11,8 @@
 #
 # if !BOOST_PP_IS_ITERATING
 #
+# include <boost/config.hpp>
+#
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/comparison/equal.hpp>
 # include <boost/preprocessor/control/expr_iif.hpp>
@@ -176,6 +178,10 @@
 # include BOOST_PP_ITERATE()
 #
 # undef ITER50SA
+#
+# ifndef BOOST_HAS_PRAGMA_ONCE
+# pragma once
+# endif
 #
 # endif
 #

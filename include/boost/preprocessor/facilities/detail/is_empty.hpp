@@ -16,8 +16,6 @@
 
 #if BOOST_PP_VARIADICS_MSVC
 
-# pragma warning(once:4002)
-
 #define BOOST_PP_DETAIL_IS_EMPTY_IIF_0(t, b) b
 #define BOOST_PP_DETAIL_IS_EMPTY_IIF_1(t, b) t
 

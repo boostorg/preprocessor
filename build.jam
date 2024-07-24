@@ -11,9 +11,10 @@ project /boost/preprocessor
     ;
 
 explicit
-    [ alias boost_preprocessor ]
+    [ alias boost_preprocessor : : : : <library>$(boost_dependencies) ]
     [ alias all : boost_preprocessor test ]
     ;
 
 call-if : boost-library preprocessor
     ;
+

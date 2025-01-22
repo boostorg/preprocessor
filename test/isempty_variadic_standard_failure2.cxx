@@ -20,16 +20,16 @@
   
 # include <boost/preprocessor/variadic/has_opt.hpp>
 
-BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN9) == BOOST_PP_VARIADIC_HAS_OPT() END
+static_assert(BOOST_PP_IS_EMPTY(FUNC_GEN9) == BOOST_PP_VARIADIC_HAS_OPT(), "");
 
 #else
 
-BEGIN BOOST_PP_IS_EMPTY(FUNC_GEN9) == 0 END
+static_assert(BOOST_PP_IS_EMPTY(FUNC_GEN9) == 0, "");
 
 #endif
 
 #else
   
-BEGIN 1 == 0 END
+static_assert(1 == 0, "");
 
 #endif

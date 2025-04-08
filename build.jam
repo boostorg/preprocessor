@@ -6,15 +6,13 @@
 require-b2 5.2 ;
 
 project /boost/preprocessor
-    : common-requirements
-        <include>include
     ;
 
 explicit
-    [ alias boost_preprocessor : : : : <library>$(boost_dependencies) ]
+    [ alias boost_preprocessor : : :
+        : <include>include <library>$(boost_dependencies) ]
     [ alias all : boost_preprocessor test ]
     ;
 
 call-if : boost-library preprocessor
     ;
-

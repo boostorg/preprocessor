@@ -85,15 +85,8 @@
 	Once these two macros are defined, the local iteration is initiated by <i>including</i> <b>BOOST_PP_LOCAL_ITERATE</b>().
 </div>
 <div class="code"><pre>
-??=include BOOST_PP_LOCAL_ITERATE()
+#include BOOST_PP_LOCAL_ITERATE()
 </pre></div>
-<div>
-	(The <code>??=</code> token is a trigraph for <code>#</code>.&nbsp;
-	I use the trigraph to make it clear that I am <i>including</i> a file rather than defining or expanding a macro, but it is not necessary.&nbsp;
-	Even the digraph version, <code>%:</code>, could be used.&nbsp;
-	Some compilers do not readily accept trigraphs and digraphs, so keep that in mind.&nbsp;
-	Other than that, use whichever one you prefer.)
-</div>
 <div>
 	In order to repeat the <code>sample</code> specialization, the pieces must be put together....
 </div>
@@ -103,7 +96,7 @@
    /**/
 
 #define BOOST_PP_LOCAL_LIMITS (0, 10)
-??=include BOOST_PP_LOCAL_ITERATE()
+#include BOOST_PP_LOCAL_ITERATE()
 </pre></div>
 <div>
 	This will result in a specialization of <code>sample</code> for each number in the range of <i>0</i> to <i>10</i>.&nbsp;
@@ -132,7 +125,7 @@ template&lt;&gt; struct sample&lt;10&gt; { };
 #define BOOST_PP_LOCAL_LIMITS LIMITS
 #define BOOST_PP_LOCAL_MACRO(n) SAMPLE(n)
 
-??=include BOOST_PP_LOCAL_ITERATE()
+#include BOOST_PP_LOCAL_ITERATE()
 </pre></div>
 <h4>See Also</h4>
 <ul>

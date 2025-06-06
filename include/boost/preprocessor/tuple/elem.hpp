@@ -30,7 +30,7 @@
 /*
   Use BOOST_PP_REM_CAT if it is a single element tuple ( which might be empty )
   else use BOOST_PP_REM. This fixes a VC++ problem with an empty tuple and BOOST_PP_TUPLE_ELEM
-  functionality. See tuple_elem_bug_test.cxx.
+  functionality. See tuple.cpp.
 */
 #     define BOOST_PP_TUPLE_ELEM_O_2(n, tuple) \
          BOOST_PP_VARIADIC_ELEM(n, BOOST_PP_EXPAND(BOOST_PP_TUPLE_IS_SINGLE_RETURN(BOOST_PP_REM_CAT,BOOST_PP_REM,tuple) tuple)) \

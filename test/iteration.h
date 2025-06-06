@@ -183,10 +183,10 @@
 # if defined NO_FLAGS
 
 struct BOOST_PP_CAT(X, BOOST_PP_ITERATION()) {
-    BEGIN
+    static_assert(
         BOOST_PP_ITERATION() >= BOOST_PP_ITERATION_START() &&
         BOOST_PP_ITERATION() <= BOOST_PP_ITERATION_FINISH()
-    END
+    );
 };
 
 # elif BOOST_PP_ITERATION_DEPTH() == 1 \

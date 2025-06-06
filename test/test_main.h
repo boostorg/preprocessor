@@ -25,7 +25,7 @@ using namespace std;
 #endif
 
 int main(void) {
-    printf("pass " __TIME__);
+    printf("pass %s\n", __TIME__);
     return 0;
 }
 

@@ -9,4 +9,4 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include "stringize.cxx"
+# include "stringize.cpp"

@@ -13,34 +13,34 @@
 # include <boost/preprocessor/selection.hpp>
 # include "test.h"
 
-BEGIN BOOST_PP_MAX(2, 2) == 2 END
-BEGIN BOOST_PP_MAX(2, 1) == 2 END
-BEGIN BOOST_PP_MAX(1, 2) == 2 END
+static_assert(BOOST_PP_MAX(2, 2) == 2, "");
+static_assert(BOOST_PP_MAX(2, 1) == 2, "");
+static_assert(BOOST_PP_MAX(1, 2) == 2, "");
 
-BEGIN BOOST_PP_MIN(2, 2) == 2 END
-BEGIN BOOST_PP_MIN(2, 1) == 1 END
-BEGIN BOOST_PP_MIN(1, 2) == 1 END
+static_assert(BOOST_PP_MIN(2, 2) == 2, "");
+static_assert(BOOST_PP_MIN(2, 1) == 1, "");
+static_assert(BOOST_PP_MIN(1, 2) == 1, "");
 
 # if BOOST_PP_LIMIT_MAG == 512
 
-BEGIN BOOST_PP_MAX(438, 438) == 438 END
-BEGIN BOOST_PP_MAX(371, 289) == 371 END
-BEGIN BOOST_PP_MAX(390, 468) == 468 END
+static_assert(BOOST_PP_MAX(438, 438) == 438, "");
+static_assert(BOOST_PP_MAX(371, 289) == 371, "");
+static_assert(BOOST_PP_MAX(390, 468) == 468, "");
 
-BEGIN BOOST_PP_MIN(391, 391) == 391 END
-BEGIN BOOST_PP_MIN(425, 274) == 274 END
-BEGIN BOOST_PP_MIN(410, 503) == 410 END
+static_assert(BOOST_PP_MIN(391, 391) == 391, "");
+static_assert(BOOST_PP_MIN(425, 274) == 274, "");
+static_assert(BOOST_PP_MIN(410, 503) == 410, "");
 
 # endif
 
 # if BOOST_PP_LIMIT_MAG == 1024
 
-BEGIN BOOST_PP_MAX(892, 892) == 892 END
-BEGIN BOOST_PP_MAX(967, 640) == 967 END
-BEGIN BOOST_PP_MAX(583, 745) == 745 END
+static_assert(BOOST_PP_MAX(892, 892) == 892, "");
+static_assert(BOOST_PP_MAX(967, 640) == 967, "");
+static_assert(BOOST_PP_MAX(583, 745) == 745, "");
 
-BEGIN BOOST_PP_MIN(837, 837) == 837 END
-BEGIN BOOST_PP_MIN(646, 583) == 583 END
-BEGIN BOOST_PP_MIN(782, 826) == 782 END
+static_assert(BOOST_PP_MIN(837, 837) == 837, "");
+static_assert(BOOST_PP_MIN(646, 583) == 583, "");
+static_assert(BOOST_PP_MIN(782, 826) == 782, "");
 
 # endif

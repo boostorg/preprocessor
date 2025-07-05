@@ -44,7 +44,7 @@ TEST(MAX)
 template<BOOST_PP_ENUM_PARAMS(MAX, class T)> struct no_rescan;
 
 # define F1(z, n, p) p n
-BEGIN 1 + (4+5+6) BOOST_PP_REPEAT_FROM_TO(4, 7, F1, -) END
+static_assert(1 + (4+5+6) BOOST_PP_REPEAT_FROM_TO(4, 7, F1, -), "");
 
 # if BOOST_PP_LIMIT_REPEAT == 512
 

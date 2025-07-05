@@ -15,20 +15,20 @@
 # include <boost/preprocessor/arithmetic/mul.hpp>
 # include "test.h"
 
-BEGIN BOOST_PP_APPLY(BOOST_PP_NIL) 0 == 0 END
-BEGIN BOOST_PP_APPLY((0)) == 0 END
+static_assert(BOOST_PP_APPLY(BOOST_PP_NIL) 0 == 0, "");
+static_assert(BOOST_PP_APPLY((0)) == 0, "");
 
-BEGIN BOOST_PP_APPLY((BOOST_PP_EMPTY))() 0 == 0 END
+static_assert(BOOST_PP_APPLY((BOOST_PP_EMPTY))() 0 == 0, "");
 
 # define MACRO(x, y, z) 1
 # define ARGS (1, 2, 3)
 
-BEGIN BOOST_PP_EXPAND(MACRO ARGS) == 1 END
+static_assert(BOOST_PP_EXPAND(MACRO ARGS) == 1, "");
 
-BEGIN BOOST_PP_IDENTITY(1)() == 1 END
-BEGIN BOOST_PP_IDENTITY_N(36,10)(0,1,2,3,4,5,6,7,8,9) == 36 END
+static_assert(BOOST_PP_IDENTITY(1)() == 1, "");
+static_assert(BOOST_PP_IDENTITY_N(36,10)(0,1,2,3,4,5,6,7,8,9) == 36, "");
 
-BEGIN BOOST_PP_CAT(BOOST_PP_INTERCEPT, 2) 1 == 1 END
+static_assert(BOOST_PP_CAT(BOOST_PP_INTERCEPT, 2) 1 == 1, "");
 
 #define OVMAC_1(x) BOOST_PP_ADD(x,5)
 #define OVMAC_2(x,y) BOOST_PP_ADD(x,y)
@@ -45,7 +45,7 @@ BEGIN BOOST_PP_CAT(BOOST_PP_INTERCEPT, 2) 1 == 1 END
 
 #endif
 
-BEGIN OVTEST(3,4,5) == 17 END
-BEGIN OVTEST(9,3,2,7) == 41 END
-BEGIN OVTEST(8) == 13 END
-BEGIN OVTEST(24,61) == 85 END
+static_assert(OVTEST(3,4,5) == 17, "");
+static_assert(OVTEST(9,3,2,7) == 41, "");
+static_assert(OVTEST(8) == 13, "");
+static_assert(OVTEST(24,61) == 85, "");

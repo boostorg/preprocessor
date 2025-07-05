@@ -14,7 +14,9 @@
 # ifndef BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_H
 # define BOOST_LIBS_PREPROCESSOR_REGRESSION_TEST_H
 #
-# include "test_macro.h"
+# ifndef __cplusplus
+# include <assert.h>  // C static_assert
+# endif
 #include "test_main.h"
 #
 # endif

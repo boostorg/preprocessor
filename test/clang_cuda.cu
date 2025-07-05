@@ -9,15 +9,14 @@
 #
 # /* See http://www.boost.org for most recent version. */
 #
-# include "test_macro.h"
 
 #if defined(__clang__) && defined(__CUDACC__) && defined(__CUDA__)
 
-BEGIN BOOST_PP_VARIADICS == 1 END
+static_assert(BOOST_PP_VARIADICS == 1, "");
 
 #else
 
-BEGIN 0 == 1 END
+static_assert(0 == 1, "");
 
 #endif
 

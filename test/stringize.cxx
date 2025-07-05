@@ -23,14 +23,14 @@
 #define FDATA(x) BOOST_PP_INC(x)
 
 # if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-BEGIN sizeof(BOOST_PP_STRINGIZE(NDATA)) / sizeof(char) == 1 END
-BEGIN sizeof(BOOST_PP_WSTRINGIZE(NDATA)) / sizeof(wchar_t) == 1 END
+static_assert(sizeof(BOOST_PP_STRINGIZE(NDATA)) / sizeof(char) == 1, "");
+static_assert(sizeof(BOOST_PP_WSTRINGIZE(NDATA)) / sizeof(wchar_t) == 1, "");
 #endif
-BEGIN sizeof(BOOST_PP_STRINGIZE(DATA)) / sizeof(char) == 5 END
-BEGIN sizeof(BOOST_PP_STRINGIZE(FDATA(1))) / sizeof(char) == 2 END
-BEGIN sizeof(BOOST_PP_STRINGIZE(FDATA(9))) / sizeof(char) == 3 END
-BEGIN sizeof(BOOST_PP_WSTRINGIZE(DATA)) / sizeof(wchar_t) == 5 END
-BEGIN sizeof(BOOST_PP_WSTRINGIZE(FDATA(1))) / sizeof(wchar_t) == 2 END
-BEGIN sizeof(BOOST_PP_WSTRINGIZE(FDATA(9))) / sizeof(wchar_t) == 3 END
-BEGIN sizeof(BOOST_PP_STRINGIZE(VDATA)) / sizeof(char) == 8 END
-BEGIN sizeof(BOOST_PP_WSTRINGIZE(VDATA)) / sizeof(wchar_t) == 8 END
+static_assert(sizeof(BOOST_PP_STRINGIZE(DATA)) / sizeof(char) == 5, "");
+static_assert(sizeof(BOOST_PP_STRINGIZE(FDATA(1))) / sizeof(char) == 2, "");
+static_assert(sizeof(BOOST_PP_STRINGIZE(FDATA(9))) / sizeof(char) == 3, "");
+static_assert(sizeof(BOOST_PP_WSTRINGIZE(DATA)) / sizeof(wchar_t) == 5, "");
+static_assert(sizeof(BOOST_PP_WSTRINGIZE(FDATA(1))) / sizeof(wchar_t) == 2, "");
+static_assert(sizeof(BOOST_PP_WSTRINGIZE(FDATA(9))) / sizeof(wchar_t) == 3, "");
+static_assert(sizeof(BOOST_PP_STRINGIZE(VDATA)) / sizeof(char) == 8, "");
+static_assert(sizeof(BOOST_PP_WSTRINGIZE(VDATA)) / sizeof(wchar_t) == 8, "");

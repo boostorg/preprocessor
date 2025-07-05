@@ -34,5 +34,5 @@
         ) \
 /**/
 
-BEGIN TN_TEST_ONE(A,(1)) == 1 END
-BEGIN TN_TEST_ONE(A,()) == 0 END
+static_assert(TN_TEST_ONE(A,(1)) == 1, "");
+static_assert(TN_TEST_ONE(A,()) == 0, "");

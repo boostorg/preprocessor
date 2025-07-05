@@ -15,7 +15,7 @@
 #
 # include "iteration.h"
 #
-# define TEST(n) BEGIN n == n END
+# define TEST(n) static_assert(n == n);
 #
 # define BOOST_PP_LOCAL_MACRO(n) TEST(n)
 # define BOOST_PP_LOCAL_LIMITS (1, 5)
@@ -42,6 +42,6 @@
 #
 # else
 
-BEGIN BOOST_PP_IS_SELFISH == 1 END
+static_assert(BOOST_PP_IS_SELFISH == 1, "");
 
 # endif

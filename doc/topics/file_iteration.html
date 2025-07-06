@@ -197,12 +197,17 @@ template&lt;&gt; struct sample&lt;5&gt; { };
    #ifndef SAMPLE_H
    #define SAMPLE_H
 
+   #include &lt;boost/config.hpp&gt; // BOOST_HAS_PRAGMA_ONCE
    #include &lt;boost/preprocessor/iteration/iterate.hpp&gt;
 
    template&lt;int&gt; struct sample;
 
    #define BOOST_PP_ITERATION_PARAMS_1 (3, (1, 5, "sample.h"))
    ??=include BOOST_PP_ITERATE()
+
+   #ifndef BOOST_HAS_PRAGMA_ONCE
+      #pragma once
+   #endif
 
    #endif // SAMPLE_H
 
@@ -212,6 +217,17 @@ template&lt;&gt; struct sample&lt;5&gt; { };
 
 #endif
 </pre>
+		</div>
+		<div>
+			Although not necessary for correctness, <code>#pragma once</code> is
+			added after <b>BOOST_PP_ITERATE</b> to trigger the <i>multiple-include
+			optimization</i>, allowing compilers to avoid subsequent includes of
+			"sample.h" to improve build speed. In this instance the the include guard
+			is not sufficient to trigger the multiple-include optimization as is it not
+			the first preprocessor directive occurring in the file.
+			<code>#pragma once</code> must occur <i>after the last top-level</i>
+			<b>BOOST_PP_ITERATE()</b>, after which "sample.h" will no longer
+			self-include.
 		</div>
 		<div>
 			Using the same file like this raises another issue.&nbsp; What happens when a 
@@ -227,6 +243,7 @@ template&lt;&gt; struct sample&lt;5&gt; { };
    #ifndef SAMPLE_H
    #define SAMPLE_H
 
+   #include &lt;boost/config.hpp&gt; // BOOST_HAS_PRAGMA_ONCE
    #include &lt;boost/preprocessor/iteration/iterate.hpp&gt;
    #include &lt;boost/preprocessor/repetition/enum_params.hpp&gt;
    #include &lt;boost/preprocessor/repetition/enum_shifted_params.hpp&gt;
@@ -256,6 +273,10 @@ template&lt;&gt; struct sample&lt;5&gt; { };
 
    #define BOOST_PP_ITERATION_PARAMS_1 (4, (2, TYPELIST_MAX, "sample.h", 2))
    ??=include BOOST_PP_ITERATE()
+
+   #ifndef BOOST_HAS_PRAGMA_ONCE
+      #pragma once
+   #endif
 
    #endif // SAMPLE_H
 
@@ -330,6 +351,10 @@ template&lt;&gt; struct sample&lt;5&gt; { };
 
    #define BOOST_PP_ITERATION_PARAMS_1 (3, (1, EXTRACT_MAX, "extract.h"))
    ??=include BOOST_PP_ITERATE()
+
+   #ifndef BOOST_HAS_PRAGMA_ONCE
+      #pragma once
+   #endif
 
    #endif // EXTRACT_H
 
@@ -459,6 +484,10 @@ for (int i = start(1); i <= finish(1); ++i) {
 
    #define BOOST_PP_ITERATION_PARAMS_1 (3, (1, 2, "file.h"))
    ??=include BOOST_PP_ITERATE()
+
+   #ifndef BOOST_HAS_PRAGMA_ONCE
+      #pragma once
+   #endif
 
    #endif // FILE_H
 
@@ -665,6 +694,10 @@ for (int i = start(1); i <= finish(1); ++i) {
    #include "detail/define_file_h.h"
 
    ??=include BOOST_PP_ITERATE()
+
+   #ifndef BOOST_HAS_PRAGMA_ONCE
+      #pragma once
+   #endif
 
 #endif // FILE_H
 
@@ -936,6 +969,10 @@ template&lt;class T&gt; struct function_traits&lt;T&amp;&gt; : function_traits&l
    #if !BOOST_PP_IS_SELFISH
       #define BOOST_PP_INDIRECT_SELF "function_traits.hpp"
       ??=include BOOST_PP_INCLUDE_SELF()
+   #endif
+
+   #ifndef BOOST_HAS_PRAGMA_ONCE
+      #pragma once
    #endif
 
 // iteration over cv-qualifiers
